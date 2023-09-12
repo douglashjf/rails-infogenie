@@ -5,5 +5,9 @@
       <% end %>
   </div>
 
-  <%=  @card.content %>
+  <ul>
+    <li><%=  Summary.where(card: @card).last.key_points %></li>
+    <li><%=  Summary.where(card: @card).last.key_questions %></li>
+  </ul>
+  <%= link_to 'Create New Card', new_card_path %>
 </div>
