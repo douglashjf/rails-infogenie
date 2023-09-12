@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_cards, only: %i[show edit update destroy]
+  before_action :set_cards, only: %i[show destroy]
 
   def index
     @cards = Card.all
@@ -23,24 +23,13 @@ class CardsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    @card.update(house_params)
-    if @card.save
-      redirect_to @card
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
   def destroy
     @card.destroy
     redirect_to cards_path, status: :see_other
   end
 
   private
+
   def set_cards
     @card = Card.find(params[:id])
   end
