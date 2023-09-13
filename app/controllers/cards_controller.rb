@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
-  before_action :set_cards, only: %i[show destroy]
+  before_action :set_cards, only: %i[show favourites destroy]
 
   def index
-    @cards = Card.all
+    @cards = Card.active
   end
 
   def show
@@ -23,9 +23,17 @@ class CardsController < ApplicationController
     end
   end
 
+  def toggle_favourites
+    if current_user.favourites.exists?(card: @card)
+      current_user.favourites.where(card: @card).destroy_all
+    else
+      Favourite.create(user: current_user, card: @card)
+    end
+  end
+
   def destroy
-    @card.destroy
-    redirect_to cards_path, status: :see_other
+    @card.deleted_at = DateTime.now
+    @card.save
   end
 
   private
@@ -35,7 +43,7 @@ class CardsController < ApplicationController
   end
 
   def params_cards
-    params.require(:card).permit(:content)
+    params.require(:card).permit(:primary_keywords, :secondary_keywords)
   end
 
 end
