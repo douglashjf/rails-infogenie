@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :cards, except: %i[edit update] do
     member do
       post :toggle_favourites
+      post :delete
     end
   end
 
