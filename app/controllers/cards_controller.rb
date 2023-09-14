@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_cards, only: %i[show toggle_favourites delete]
+  before_action :set_cards, only: %i[show toggle_favourites destroy]
 
   def index
     @cards = Card.active
@@ -31,17 +31,11 @@ class CardsController < ApplicationController
     end
   end
 
-  def delete
-    @card.deleted_at = DateTime.now
-    @card.save
-    redirect_to cards_path
-  end
 
   def destroy
     @card.deleted_at = DateTime.now
     @card.save
-    puts 'hello hello'
-    raise
+
     redirect_to cards_path
   end
 

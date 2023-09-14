@@ -12,9 +12,7 @@
     <% end %>
   </ul>
 
-  <%# <%= button_to 'Delete', delete_card_path(@card), method: :post, class: "btn btn-warning btn-sm", data: { turbo_confirm: "Are you sure?"} %>
-
-  <%= button_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
     <% if current_user.favourites.exists?(card: @card) %>
       <%= button_to '➖ Remove from Favourites', toggle_favourites_card_path(@card), method: :post, remote: true, class: "btn btn-primary is-favourites", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} %>
