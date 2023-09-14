@@ -37,6 +37,14 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def destroy
+    @card.deleted_at = DateTime.now
+    @card.save
+    puts 'hello hello'
+    raise
+    redirect_to cards_path
+  end
+
   private
 
   def set_cards
