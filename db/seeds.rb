@@ -10,10 +10,9 @@
 
 puts "Clearing old data"
 
-User.destroy_all
-Card.destroy_all
 Summary.destroy_all
-
+Card.destroy_all
+User.destroy_all
 # Create data
 
 puts "Creating new data"
@@ -124,8 +123,8 @@ puts "Created card 6"
 
 card_7 = Card.create!(
   user_id: user_yiyang.id,
-  primary_keywords: "Deleted"
-  secondary_keywords: "Deleted"
+  primary_keywords: "Deleted",
+  secondary_keywords: "Deleted",
   deleted_at: Time.current
 )
 
@@ -136,7 +135,7 @@ Summary.create!(
                "Cryptocurrency is a form of digital or virtual currency that uses cryptography for security.",
                "A blockchain is a public ledger that records all transactions made with a particular cryptocurrency.",
                "Bitcoin, created in 2009 by an anonymous person or group using the pseudonym Satoshi Nakamoto, was the first cryptocurrency and remains the most well-known and valuable. ",
-               "Altcoins are cryptocurrencies other than Bitcoin."]
+               "Altcoins are cryptocurrencies other than Bitcoin."],
   key_questions: ["What is the Purpose and Use Case?",
                   "How Secure is the Cryptocurrency?",
                   "What is the Market and Price History?",
@@ -147,12 +146,12 @@ puts "Created summary 1"
 
 # Second Summary
 Summary.create!(
-  card: card_2.id,
+  card_id: card_2.id,
   key_points: ["Pitch and Scales",
                "Rhythm and Time Signatures",
                "Chords and Harmony",
                "Musical Notation",
-               "Form and Structure"]
+               "Form and Structure"],
   key_questions: ["What is Music Theory?",
                   "How Are Musical Notes Represented and Named?",
                   "What Are Scales and Why Are They Important?",
@@ -163,12 +162,12 @@ puts "Created summary 2"
 
 # Third Summary
 Summary.create!(
-  card: card_3.id,
+  card_id: card_3.id,
   key_points:  ["Distance and Origin",
                 "Training and Preparation",
                 "Race Atmosphere",
                 "Hydration and Nutrition",
-                "Endurance Challenge"]
+                "Endurance Challenge"],
   key_questions: ["What Is the Standard Distance of a Marathon?",
                   "How Do I Prepare for a Marathon?",
                   "What Are Common Challenges During a Marathon?",
@@ -179,12 +178,12 @@ puts "Created summary 3"
 
 # Fourth Summary
 Summary.create!(
-  card: card_4.id,
+  card_id: card_4.id,
   key_points: ["Entertainment and Singing",
                "Social Activity",
                "Equipment",
                "Song Selection",
-               "Performance and Confidence"]
+               "Performance and Confidence"],
   key_questions: ["What Is Karaoke?",
                   "Where Can You Do Karaoke?",
                   "How Does Karaoke Work?",
@@ -195,12 +194,12 @@ puts "Created summary 4"
 
 # Fifth Summary
 Summary.create!(
-  card: card_5.id,
+  card_id: card_5.id,
   key_points: ["Coding Challenges and Katas",
                "Community and Rankings",
                "Language Support",
                "Learning and Skill Improvement",
-               "Gamified Learning"]
+               "Gamified Learning"],
   key_questions: ["What Is CodeWars and How Does It Work?",
                   "What Are CodeWars Katas?",
                   "How Can I Join and Participate in CodeWars?",
@@ -211,13 +210,13 @@ puts "Created summary 5"
 
 # Sixth Summary
 Summary.create!(
-  card: card_6.id,
+  card_id: card_6.id,
   key_points: ["Scoring System",
                "Court and Equipment",
                "Serving and Rallying",
                "Scoring a Point",
-               "Tournaments and Rankings"]
-  key_questions: ["How is Tennis Scored, and What is the Meaning of "Deuce" and "Advantage"?",
+               "Tournaments and Rankings"],
+  key_questions: ["How is Tennis Scored, and What is the Meaning of Deuce and Advantage?",
                   "What Are the Basic Rules for Serving in Tennis?",
                   "What Are the Four Grand Slam Tournaments in Tennis, and Why Are They So Important?",
                   "How Does the Tennis Ranking System Work, and What Role Does It Play in Professional Tennis?",
@@ -226,14 +225,14 @@ Summary.create!(
 puts "Created summary 6"
 
 Summary.create!(
-  card: card_6.id,
+  card_id: card_6.id,
   key_points: [
     "Unique Scoring System: Tennis uses a scoring system where points are awarded as 15, 30, 40, and then the game point. Deuce occurs at 40-40, and a player must win two consecutive points to win the game.",
     "Court and Equipment: Tennis is played on a rectangular court with a net in the middle. Players use a racket to hit a ball over the net into the opponent's court.",
     "Serving and Rallying: Matches begin with a serve, and players take turns hitting the ball back and forth in rallies, aiming to keep the ball in play.",
     "Scoring a Point: Points are earned based on the outcome of each rally. A player wins the game by reaching 40 points and being ahead by at least two points.",
     "Tournaments and Rankings: Tennis is played at various levels, from casual matches to prestigious tournaments like Wimbledon. Players earn ranking points that determine their positions in the tennis world."
-]
+  ],
 
   key_questions: [
     "How is Tennis Scored, and What Does 'Love' Mean in Tennis Scoring?",
@@ -241,12 +240,13 @@ Summary.create!(
     "What Are the Four Major Grand Slam Tournaments, and What Makes Each of Them Unique?",
     "How Does Tie-Break Scoring Work in Tennis, and When Is It Used?",
     "What Are Some of the Most Famous Tennis Players in History, and What Are Their Achievements?"
-]
-
+  ]
 )
 puts "Created summary 7"
 
 Favourite.create!(
   user_id: User.last.id,
-  card_id: User.last.id
+  card_id: Card.last.id
 )
+
+puts "favourite created"
