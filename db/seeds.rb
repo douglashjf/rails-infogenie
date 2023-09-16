@@ -18,22 +18,6 @@ Summary.destroy_all
 
 puts "Creating new data"
 
-# Creating six users, cards and summaries.
-first_name = %w[ Zong Yong]
-last_name = %w[ Yang Han Cheng]
-primary_keywords = %w[Crypto Music Marathon Karaoke Code]
-secondary_keywords = %w[Currency Theory Race Singing Wars]
-key_points = %W["Etherium is one of the main trading currencies"
-                 "Grade 5 music theory is compulsory to go higher"
-                  "42km is the distance of the full marathon"
-                   "Very common way to de-stress"
-                    "Very good to improve coding skills"]
-key_questions = %W["What is the lowest price ethereum can go?"
-                   "What is the highest music theory grade?"
-                    "What is the history of marathon?"
-                     "What is the most common place for karaoke?"
-                      "What is the most common language in coding?"]
-
 # Initialize the iteration variable
 
 # First User
@@ -141,47 +125,116 @@ puts "Created card 6"
 # First Summary
 Summary.create!(
   card_id: card_1.id,
-  key_points: "Etherium is one of the main trading currencies",
-  key_questions: "What is the lowest price ethereum can go?"
+  key_points: ["Etherium is one of the main trading currencies",
+               "Cryptocurrency is a form of digital or virtual currency that uses cryptography for security.",
+               "A blockchain is a public ledger that records all transactions made with a particular cryptocurrency.",
+               "Bitcoin, created in 2009 by an anonymous person or group using the pseudonym Satoshi Nakamoto, was the first cryptocurrency and remains the most well-known and valuable. ",
+               "Altcoins are cryptocurrencies other than Bitcoin."]
+  key_questions: ["What is the Purpose and Use Case?",
+                  "How Secure is the Cryptocurrency?",
+                  "What is the Market and Price History?",
+                  "Who is Behind the Cryptocurrency?",
+                  "What is the Regulatory Environment?"]
 )
 puts "Created summary 1"
 
 # Second Summary
 Summary.create!(
   card: card_2.id,
-  key_points: "Grade 5 music theory is compulsory to go higher",
-  key_questions: "What is the highest music theory grade?"
+  key_points: ["Pitch and Scales",
+               "Rhythm and Time Signatures",
+               "Chords and Harmony",
+               "Musical Notation",
+               "Form and Structure"]
+  key_questions: ["What is Music Theory?",
+                  "How Are Musical Notes Represented and Named?",
+                  "What Are Scales and Why Are They Important?",
+                  "How Do Chords and Harmony Work?",
+                  "What Are Time Signatures, and How Do They Affect Rhythm?"]
 )
 puts "Created summary 2"
 
 # Third Summary
 Summary.create!(
   card: card_3.id,
-  key_points:  "42km is the distance of the full marathon",
-  key_questions: "What is the history of marathon?"
+  key_points:  ["Distance and Origin",
+                "Training and Preparation",
+                "Race Atmosphere",
+                "Hydration and Nutrition",
+                "Endurance Challenge"]
+  key_questions: ["What Is the Standard Distance of a Marathon?",
+                  "How Do I Prepare for a Marathon?",
+                  "What Are Common Challenges During a Marathon?",
+                  "What Is the Importance of Hydration and Nutrition in Marathons?",
+                  "What Are Some Famous Marathons Around the World?"]
 )
 puts "Created summary 3"
 
 # Fourth Summary
 Summary.create!(
   card: card_4.id,
-  key_points: "Very common way to de-stress",
-  key_questions: "What is the most common place for karaoke?"
+  key_points: ["Entertainment and Singing",
+               "Social Activity",
+               "Equipment",
+               "Song Selection",
+               "Performance and Confidence"]
+  key_questions: ["What Is Karaoke?",
+                  "Where Can You Do Karaoke?",
+                  "How Does Karaoke Work?",
+                  "What Are the Key Components of a Karaoke Setup?",
+                  "Is Karaoke Just for Fun, or Can It Be Competitive?"]
 )
 puts "Created summary 4"
 
 # Fifth Summary
 Summary.create!(
   card: card_5.id,
-  key_points: "Very good to improve coding skills",
-  key_questions: "What is the most common language in coding?"
+  key_points: ["Coding Challenges and Katas",
+               "Community and Rankings",
+               "Language Support",
+               "Learning and Skill Improvement",
+               "Gamified Learning"]
+  key_questions: ["What Is CodeWars and How Does It Work?",
+                  "What Are CodeWars Katas?",
+                  "How Can I Join and Participate in CodeWars?",
+                  "How Can CodeWars Help Me Improve as a Programmer?",
+                  "What Is the CodeWars Community Like, and How Can I Interact with Others?"]
 )
 puts "Created summary 5"
 
 # Sixth Summary
 Summary.create!(
   card: card_6.id,
-  key_points: "There are 8 levels of coding",
-  key_questions: "What is the different languages they have?"
+  key_points: ["Scoring System",
+               "Court and Equipment",
+               "Serving and Rallying",
+               "Scoring a Point",
+               "Tournaments and Rankings"]
+  key_questions: ["How is Tennis Scored, and What is the Meaning of "Deuce" and "Advantage"?",
+                  "What Are the Basic Rules for Serving in Tennis?",
+                  "What Are the Four Grand Slam Tournaments in Tennis, and Why Are They So Important?",
+                  "How Does the Tennis Ranking System Work, and What Role Does It Play in Professional Tennis?",
+                  "What Are Some Famous Tennis Rivalries and Moments in Tennis History?"]
 )
 puts "Created summary 6"
+
+Summary.create!(
+  card: card_6.id,
+  key_points: [
+    "Unique Scoring System: Tennis uses a scoring system where points are awarded as 15, 30, 40, and then the game point. Deuce occurs at 40-40, and a player must win two consecutive points to win the game.",
+    "Court and Equipment: Tennis is played on a rectangular court with a net in the middle. Players use a racket to hit a ball over the net into the opponent's court.",
+    "Serving and Rallying: Matches begin with a serve, and players take turns hitting the ball back and forth in rallies, aiming to keep the ball in play.",
+    "Scoring a Point: Points are earned based on the outcome of each rally. A player wins the game by reaching 40 points and being ahead by at least two points.",
+    "Tournaments and Rankings: Tennis is played at various levels, from casual matches to prestigious tournaments like Wimbledon. Players earn ranking points that determine their positions in the tennis world."
+]
+
+  key_questions: [
+    "How is Tennis Scored, and What Does 'Love' Mean in Tennis Scoring?",
+    "What Are the Different Types of Tennis Courts, and How Do They Affect Gameplay?",
+    "What Are the Four Major Grand Slam Tournaments, and What Makes Each of Them Unique?",
+    "How Does Tie-Break Scoring Work in Tennis, and When Is It Used?",
+    "What Are Some of the Most Famous Tennis Players in History, and What Are Their Achievements?"
+]
+
+)
+puts "Created summary 7"
