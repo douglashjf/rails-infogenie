@@ -122,6 +122,13 @@ card_6 = Card.create!(
 )
 puts "Created card 6"
 
+card_7 = Card.create!(
+  user_id: user_yiyang.id,
+  primary_keywords: "Deleted"
+  secondary_keywords: "Deleted"
+  deleted_at: Time.current
+)
+
 # First Summary
 Summary.create!(
   card_id: card_1.id,
@@ -238,3 +245,8 @@ Summary.create!(
 
 )
 puts "Created summary 7"
+
+Favourite.create!(
+  user_id: User.last.id,
+  card_id: User.last.id
+)
