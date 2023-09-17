@@ -112,7 +112,7 @@ card_4 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Karaoke",
   secondary_keywords: "Singing",
-  # deleted_at: Time.current
+  deleted_at: Time.current
 )
 puts "Created card 4"
 
