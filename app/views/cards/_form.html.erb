@@ -1,4 +1,4 @@
-<%= simple_form_for(card, url: generate_summary_summaries_path, method: :post) do |f| %>
+<%= simple_form_for(card) do |f| %>
     <%= f.input :primary_keywords, placeholder: "Any keywords in particular?" %>
     <%= f.input :secondary_keywords, placeholder: "Enter up to 3 additional keywords to refine search.."  %>
     <%= f.button :submit, class: "btn btn-success" %>
