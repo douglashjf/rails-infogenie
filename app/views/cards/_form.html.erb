@@ -1,5 +1,5 @@
 <%= simple_form_for(card) do |f| %>
     <%= f.input :primary_keywords, placeholder: "Any keywords in particular?" %>
-    <%= f.input :secondary_keywords, placeholder: "Anything else you want to add?"  %>
+    <%= f.input :secondary_keywords, placeholder: "Enter up to 3 additional keywords to refine search.."  %>
     <%= f.button :submit, class: "btn btn-success" %>
   <% end %>
