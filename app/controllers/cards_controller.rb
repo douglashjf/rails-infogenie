@@ -17,7 +17,7 @@ class CardsController < ApplicationController
     @card.user = current_user
 
     if @card.save
-      redirect_to card_path(@card)
+      redirect_to generate_summary_summaries_path(card_id: @card.id)
     else
       render :new, status: :unprocessable_entity
     end
