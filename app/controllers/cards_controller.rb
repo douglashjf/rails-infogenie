@@ -15,9 +15,10 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(params_cards)
     @card.user = current_user
+    Summary.generate_summary(@card)
 
     if @card.save
-      redirect_to generate_summary_summaries_path(card_id: @card.id)
+      redirect_to card_path(card: @card)
     else
       render :new, status: :unprocessable_entity
     end
