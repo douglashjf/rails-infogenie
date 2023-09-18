@@ -9,10 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :summaries do
-    post 'generate_summary', on: :collection
-  end
-
   resources :favourites, only: :index
 
   # Defines the root path route ("/")

@@ -13,11 +13,22 @@ class CardsController < ApplicationController
   end
 
   def create
+    # create the card with the params
     @card = Card.new(params_cards)
     @card.user = current_user
-
+    # validation for card.save
     if @card.save
-      redirect_to generate_summary_summaries_path(card_id: @card.id)
+      # call the API with the params
+      prompt = "Can you explain #{@card.primary_keywords}. Associated keywords include: #{@card.secondary_keywords}. My desired output is 5 bullet points summarizing this entire primary keyword. Give me this response in JSON format " #edit this prompt to refine results
+      response = OpenaiService.new(prompt).call
+      # API will return results
+      key_points = response
+      key_questions = response
+      # save the results in a new instance of Summary
+      summary = Summary.new(key_points:, key_questions:)
+      summary.card = @card
+      summary.save!
+      redirect_to card_path(@card)
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +41,6 @@ class CardsController < ApplicationController
       Favourite.create(user: current_user, card: @card)
     end
   end
-
 
   def destroy
     @card.deleted_at = DateTime.now
@@ -48,5 +58,4 @@ class CardsController < ApplicationController
   def params_cards
     params.require(:card).permit(:primary_keywords, :secondary_keywords)
   end
-
 end
