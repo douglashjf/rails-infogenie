@@ -1,0 +1,80 @@
+.button-signup {
+  text-align: center;
+  border-radius: 15px;
+  width: 80%;
+  background: linear-gradient(to right, #0056b3, #007bff);
+  padding: 12px 20px;
+  color: white;
+}
+
+.rounded-input {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.signin-rounded-inputs {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.signup-header {
+  padding-top: 65px;
+  font-weight: 800;
+  font-size: 35px;
+}
+
+.page-container {
+  background-color: white;
+  height: 100vh;
+}
+
+.overlay-image {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  z-index: 1;
+}
+
+.grey-container {
+  background-color: #D9D9D9;
+  height: 100vh;
+  border-radius: 20px;
+}
+
+.image-container{
+  padding: 130px;
+}
+
+.custom-label {
+  margin-bottom: 2px;
+}
+
+.custom-wrap {
+  margin-bottom: 12px !important;
+}
+
+.custom-signin-wrap {
+  margin-bottom: 3px !important;
+}
+
+.forgotpw-link {
+  font-size: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.external-sign {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #b6b5b5, #efefef);
+  border: none;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}

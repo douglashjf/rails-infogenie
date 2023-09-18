@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :cards
   has_many :favourites
+
+  validates :first_name, :last_name, presence: true
 end
