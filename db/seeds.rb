@@ -87,6 +87,7 @@ puts "Created summary 2"
 # Third Card
 card_3 = Card.create!(
   user_id: user_jacob.id,
+
   primary_keywords: "Marathon",
   secondary_keywords: "Race"
 )
