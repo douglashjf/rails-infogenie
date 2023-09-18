@@ -30,7 +30,7 @@ user_sean = User.create(
   first_name: 'Sean',
   last_name: 'Seanson',
   email: 'sean@gmail.com',
-  password: 'password',
+  password: 'password'
   # deleted_at: Time.current
 )
 puts 'Created Sean user (soft delete), 1 card'
