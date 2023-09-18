@@ -1,3 +1,21 @@
 .card-link {
   text-decoration: none;
 }
+
+.card {
+  border: none;
+  border-radius:20px;
+  margin-bottom: 100px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 307px;
+  height: 375px;
+  padding-top: 100%;
+  position: relative;
+}
+
+.card-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
