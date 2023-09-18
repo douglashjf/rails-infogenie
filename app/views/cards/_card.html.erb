@@ -5,15 +5,12 @@
         <div class="card col-12">
           <a href="<%= card_path(card) %>" class="card-link">
             <div class="card-body">
-              <h5 class="card-title"><%= card.primary_keywords %></h5>
-              <h6 class="card-subtitle mb-3 text-muted text-center"><%= card.secondary_keywords %></h6>
-                <% if card.summaries.last.present? %>
-                  <ul class="card-text">
-                    <% card.summaries.last.key_points.each do |sentence| %>
-                      <li><%= sentence %></li>
-                    <% end %>
-                  </ul>
-                <% end %>
+              <h5><%= card.primary_keywords %></h5>
+              <p>Created by: <%= card.user.first_name %></p>
+              <h6 class="card-subtitle mb-3 text-muted"><%= card.secondary_keywords %></h6>
+              <% if card.summaries.last.present? %>
+                <p class="card-info"><%= card.summaries.last.key_points.first  %></p>
+              <% end %>
             </div>
           </a>
         </div>
@@ -21,6 +18,3 @@
     </div>
   </div>
 </div>
-<%# <% if card.summaries.last.present? %>
-                <%# <p class="card-text"><%= card.summaries.last.key_points %>
-              <%# <% end %>
