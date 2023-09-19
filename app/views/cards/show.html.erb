@@ -4,12 +4,40 @@
         <i class="fas fa-arrow-left"></i>
       <% end %>
   </div>
-  <div class = category>
-    <% @card.categories.each do |category| %>
-      <div class = category-tag>
-        <%= category %>
+
+  <div class="row">
+    <div class="col-8">
+      <div class="card-title">
+        <%= @card.primary_keywords %>
       </div>
-    <% end %>
+    </div>
+    <div class="col-4">
+      <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
+        <% if current_user.favourites.exists?(card: @card) %>
+          <%= button_to '➖ Remove from Favourites', toggle_favourites_card_path(@card), method: :post, remote: true, class: "btn btn-primary is-favourites", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} %>
+        <% else %>
+          <%= button_to '➕ Add to Favourites', toggle_favourites_card_path(@card), method: :post, remote: true, class: "btn btn-primary", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="category-posters d-flex justify-content-between">
+      <div class="category">
+        <% @card.categories.each do |category| %>
+          <div class="category-tag">
+            <%= category %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-poster">
+      <div class="text-right">Posted by: <%= @card.user.first_name %></div>
+    </div>
+  </div>
+  <hr>
+  <%# Card content   %>
   </div>
     <ul>
     <% if @card.summaries.last.present?  %>
@@ -25,12 +53,7 @@
     <% end %>
   </ul>
 
-  <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
-    <% if current_user.favourites.exists?(card: @card) %>
-      <%= button_to '➖ Remove from Favourites', toggle_favourites_card_path(@card), method: :post, remote: true, class: "btn btn-primary is-favourites", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} %>
-    <% else %>
-      <%= button_to '➕ Add to Favourites', toggle_favourites_card_path(@card), method: :post, remote: true, class: "btn btn-primary", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} %>
-    <% end %>
-  </div>
+  <hr>
+  <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
 </div>

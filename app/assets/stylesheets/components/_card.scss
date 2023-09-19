@@ -1,3 +1,8 @@
+.card-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
 .card-link {
   text-decoration: none;
 }
@@ -13,6 +18,12 @@
   position: relative;
 }
 
+.card-poster {
+  font-style: italic;
+  font-size: 15px;
+  text-align: right;
+}
+
 .card-body {
   color: black;
   text-align: center;
@@ -24,6 +35,8 @@
   overflow: hidden;
 }
 
-.card-title {
+
+
+.delete-button {
   font-weight: bold;
 }

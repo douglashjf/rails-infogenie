@@ -1,5 +1,5 @@
 <%= simple_form_for(card) do |f| %>
-    <%= f.input :primary_keywords, placeholder: "Any keywords in particular?" %>
-    <%= f.input :secondary_keywords, placeholder: "Enter up to 3 additional keywords to refine search.."  %>
-    <%= f.button :submit, class: "btn btn-success" %>
-  <% end %>
+  <%= f.input :primary_keywords, label: "What is the topic you want to learn today?", placeholder: "Ex: Genie", input_html: { class: "italic-placeholder" } %>
+  <%= f.input :secondary_keywords, label: "Give up to 3 additional keywords for more context", placeholder: "Lamps Arabia", input_html: { class: "italic-placeholder" } %>
+  <%= f.button :submit, class: "btn btn-success" %>
+<% end %>
