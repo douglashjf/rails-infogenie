@@ -5,6 +5,12 @@
 
     def index
       @cards = Card.active
+
+      if params[:query].present?
+        @cards = @cards.search_by_query(params[:query])
+      end
+
+      @cards = @cards.any? ? @cards : Card.active
     end
 
     def show

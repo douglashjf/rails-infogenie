@@ -8,4 +8,19 @@ class Card < ApplicationRecord
 
   validates :primary_keywords, :secondary_keywords, presence: true
   validates :primary_keywords, format: { with: /\D+/ }
+
+  include PgSearch::Model
+
+  pg_search_scope :search_by_query,
+    associated_against: {
+      user: :first_name
+    },
+    against: {
+      primary_keywords: 'A',
+      secondary_keywords: 'B',
+      categories: 'C'
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
