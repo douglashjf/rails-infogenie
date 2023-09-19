@@ -1,14 +1,15 @@
-
-<div class="container">
-
-  <div class="mb-3">
-    <%= render 'pages/search' %>
+<div class="page-container">
+  <div class="top-grey-container mb-3">
+    <div class="d-flex flex-column align-items-start justify-content-end h-100">
+      <div class="main-content">
+        <div class="main-heading"><h1>Hi <%= current_user.first_name %></h1></div>
+        <%= render partial: 'shared/searchbar' %>
+      </div>
+    </div>
   </div>
+    <div class="card-container">
+      <%= render 'card', locals: { card: @card } %>
+    </div>
 
-  <%= render 'card', locals: { card: @card } %>
-
-
-  <%= link_to 'Create New Card', new_card_path %>
-
-
+    <%# <%= link_to 'Create New Card', new_card_path %>
 </div>
