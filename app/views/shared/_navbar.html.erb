@@ -3,7 +3,7 @@
 
   # controller_name, action_name and current_page? are helpers you can use to render/do stuff conditionally
   show_navbar = false if controller_name == "registrations" || controller_name == "sessions" || controller_name == "passwords"
-  # show_navbar = false if current_page?(new_user_registration_path) || current_page?(new_user_session_path) || current_page?(user_registration_path) || current_page?(user_session_path)
+  show_navbar = true if current_page?(edit_user_registration_path)
 %>
 
 <% if show_navbar %>
@@ -47,4 +47,39 @@
       </div>
     </div>
   </div>
+
+
+
+  <nav class="navbar fixed-bottom bottom-navbar">
+    <div class="navbar-rectangle">
+      <div class="container-fluid d-flex justify-content-between" data-controller="navbar-active" >
+        <div>
+          <%= link_to cards_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "home" } do %>
+            <i class="fa-solid fa-house-user nav-icon"></i>
+            Home
+          <% end %>
+        </div>
+        <div>
+          <%= link_to new_card_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "create" } do %>
+            <i class="fa-solid fa-circle-plus nav-icon"></i>
+            Create
+          <% end %>
+        </div>
+
+        <div>
+          <%= link_to favourites_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "favourite" } do %>
+            <i class="fa-solid fa-heart nav-icon"></i>
+            Favourite
+          <% end %>
+        </div>
+        <div>
+          <%= link_to edit_user_registration_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "profile" } do %>
+            <i class="fa-regular fa-user nav-icon"></i>
+            Profile
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+
 <% end %>

@@ -39,7 +39,8 @@ puts 'Created Sean user, 1 card'
 card_1 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Cryptocurrency",
-  secondary_keywords: "Trading"
+  secondary_keywords: "Trading",
+  categories: ["Technology", "Economics"]
 )
 puts "Created card 1"
 
@@ -63,7 +64,8 @@ puts "Created summary 1"
 card_2 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Music",
-  secondary_keywords: "Theory"
+  secondary_keywords: "Theory",
+  categories: ["Art", "Society"]
 )
 puts "Created card 2"
 
@@ -86,9 +88,9 @@ puts "Created summary 2"
 # Third Card
 card_3 = Card.create!(
   user_id: user_jacob.id,
-
   primary_keywords: "Marathon",
-  secondary_keywords: "Race"
+  secondary_keywords: "Race",
+  categories: ["Life", "Health"]
 )
 puts "Created card 3"
 
@@ -112,6 +114,7 @@ card_4 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Karaoke",
   secondary_keywords: "Singing",
+  categories: ["Life", "Culture"],
   deleted_at: Time.current
 )
 puts "Created card 4"
@@ -135,7 +138,8 @@ puts "Created summary 4"
 card_5 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Code",
-  secondary_keywords: "Wars"
+  secondary_keywords: "Wars",
+  categories: ["Technology", "Software"]
 )
 puts "Created card 5"
 
