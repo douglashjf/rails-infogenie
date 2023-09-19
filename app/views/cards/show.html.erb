@@ -7,8 +7,15 @@
 
   <ul>
     <% if @card.summaries.last.present?  %>
-      <li><%=  @card.summaries.last.key_points %></li>
-      <li><%=  @card.summaries.last.key_questions %></li>
+      <strong>Key Points</strong>
+      <% @card.summaries.last.key_points.each do |key_point| %>
+        <li><%= key_point %></li>
+      <% end %>
+      <br>
+      <strong>Key Questions</strong>
+       <% @card.summaries.last.key_questions.each do |key_question| %>
+        <li><%= key_question %></li>
+      <% end %>
     <% end %>
   </ul>
 

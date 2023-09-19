@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_16_042723) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_064200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,11 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_042723) do
   end
 
   create_table "summaries", force: :cascade do |t|
-    t.text "key_points"
-    t.text "key_questions"
     t.bigint "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "key_points", default: [], array: true
+    t.string "key_questions", default: [], array: true
     t.index ["card_id"], name: "index_summaries_on_card_id"
   end
 
