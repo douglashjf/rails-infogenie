@@ -4,8 +4,14 @@
         <i class="fas fa-arrow-left"></i>
       <% end %>
   </div>
-
-  <ul>
+  <div class = category>
+    <% @card.categories.each do |category| %>
+      <div class = category-tag>
+        <%= category %>
+      </div>
+    <% end %>
+  </div>
+    <ul>
     <% if @card.summaries.last.present?  %>
       <strong>Key Points</strong>
       <% @card.summaries.last.key_points.each do |key_point| %>
