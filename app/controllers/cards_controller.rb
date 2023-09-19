@@ -26,6 +26,10 @@ class CardsController < ApplicationController
       # call the API with the params
       key_points = call_api(primary_keywords, secondary_keywords, "key points")
       key_questions = call_api(primary_keywords, secondary_keywords, "key questions")
+      # Extract the selected categories from the API response
+      selected_categories = call_api(primary_keywords, secondary_keywords, "selected categories")
+      # Save the selected categories to the card
+      @card.update(categories: selected_categories)
 
       # save the results in a new instance of Summary
       summary = Summary.new(key_points:, key_questions:)
@@ -64,7 +68,7 @@ class CardsController < ApplicationController
 
   def call_api(primary_keywords, secondary_keywords, query)
     # construct the prompt
-    prompt = "Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is 2 bullet points summarising this entire primary keyword with the associated keyword and 2 bullet points output of key questions. Give me the response in json format of Ruby Arrays. 1st array will be 2 bullet points of the key_points and 2nd array will be 2 bullet points output of key_questions. Output should also be within 100 max_tokens " #edit this prompt to refine results
+    prompt = "Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is a JSON of 3 arrays: (i) key_points: 2 bullet points summarising this entire primary keyword with the associated keywords, (ii) key_questions: 2 bullet points output of key questions and (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}. Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }. Output should also be within 1000 max_tokens. "  #edit this prompt to refine results
     # Call the API with the params
     response = OpenaiService.new(prompt).call
     # API will return results
@@ -72,5 +76,6 @@ class CardsController < ApplicationController
     parsed_response = JSON.parse(response)
     return parsed_response["key_points"] if query == "key points"
     return parsed_response["key_questions"] if query == "key questions"
+    return parsed_response["selected_categories"] if query == "selected categories"
   end
 end
