@@ -2,8 +2,8 @@
   show_navbar = true
 
   # controller_name, action_name and current_page? are helpers you can use to render/do stuff conditionally
-  # show_navbar = false if controller_name == "pages" && action_name == "home"
-  show_navbar = false if current_page?(new_user_registration_path) || current_page?(new_user_session_path)
+  show_navbar = false if controller_name == "registrations" || controller_name == "sessions" || controller_name == "passwords"
+  # show_navbar = false if current_page?(new_user_registration_path) || current_page?(new_user_session_path) || current_page?(user_registration_path) || current_page?(user_session_path)
 %>
 
 <% if show_navbar %>

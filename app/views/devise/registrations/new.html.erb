@@ -18,38 +18,39 @@
                 <%= f.input :first_name,
                             required: true,
                             autofocus: true,
-                            input_html: { autocomplete: "first_name", class: "rounded-input" },
+                            input_html: { autocomplete: "first_name", class: "signup-rounded-input" },
                             label_html: { class: "custom-label" },
-                            wrapper_html: { class: "custom-wrap" }  %>
+                            wrapper_html: { class: "custom-signup-wrap" }  %>
               </div>
               <div class="col">
                 <%= f.input :last_name,
                             required: true,
                             autofocus: true,
-                            input_html: { autocomplete: "last_name", class: "rounded-input" },
+                            input_html: { autocomplete: "last_name", class: "signup-rounded-input" },
                             label_html: { class: "custom-label"  },
-                            wrapper_html: { class: "custom-wrap" } %>
+                            wrapper_html: { class: "custom-signup-wrap" } %>
               </div>
             </div>
             <%= f.input :email,
                         required: true,
                         autofocus: true,
-                        input_html: { autocomplete: "email", class: "rounded-input" },
+                        input_html: { autocomplete: "email", class: "signup-rounded-input" },
                         label_html: { class: "custom-label" },
-                        wrapper_html: { class: "custom-wrap" } %>
+                        wrapper_html: { class: "custom-signup-wrap" } %>
             <div class="row">
               <div class="col">
                 <%= f.input :password,
                             required: true,
 
-                            input_html: { autocomplete: "new-password", class: "rounded-input" },
+                            input_html: { autocomplete: "new-password", class: "signup-rounded-input" },
                             label_html: { class: "custom-label" },
                             placeholder: "🔑" %>
               </div>
               <div class="col">
-                <%= f.input :retype_password,
+                <%= f.input :password_confirmation,
                         required: true,
-                        input_html: { autocomplete: "new-password", class: "rounded-input" },
+                        input_html: { autocomplete: "new-password", class: "signup-rounded-input" },
+                        label: "Retype Password",
                         label_html: { class: "custom-label" } %>
               </div>
             </div>
@@ -61,11 +62,17 @@
 
         <% end %>
 
-      <div class="text-center">
-        <%= render "devise/shared/links" %>
-      </div>
+      <div class="text-center"><%= render "devise/shared/links" %></div>
 
-      <p class="text-center mt-3">Or continue with</p>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="me-2 d-flex align-items-center">
+          <button class="rectangle-left"></button>
+        </div>
+          <p class="text-center mt-3">Or continue with</p>
+        <div class="ms-2 d-flex align-items-center">
+          <button class="rectangle-right"></button>
+        </div>
+      </div>
 
       <div class="d-flex justify-content-center">
       <button class="me-3 external-sign"><i class="fa-brands fa-google"></i></button>
