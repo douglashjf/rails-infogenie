@@ -16,7 +16,7 @@ user_doug = User.create!(
   email: "doug@gmail.com",
   password: "password"
 )
-puts "Created Doug 2 cards 2 favourites (1 card from deleted user Sean)"
+puts "Created Doug 2 cards 2 favourites (1 card deleted by Jacob)"
 
 user_jacob = User.create!(
   first_name: "Jacob",
@@ -31,9 +31,8 @@ user_sean = User.create(
   last_name: 'Seanson',
   email: 'sean@gmail.com',
   password: 'password'
-  # deleted_at: Time.current
 )
-puts 'Created Sean user (soft delete), 1 card'
+puts 'Created Sean user, 1 card'
 
 
 # Card 1
@@ -167,10 +166,4 @@ Favourite.create!(
 Favourite.create!(
   user_id: user_doug.id,
   card_id: card_4.id
-)
-
-# deleted user
-Favourite.create!(
-  user_id: user_doug.id,
-  card_id: card_5.id
 )
