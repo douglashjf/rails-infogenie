@@ -5,12 +5,14 @@
       <% end %>
   </div>
 
-  <ul>
-    <% if @card.summaries.last.present?  %>
-      <li><%=  @card.summaries.last.key_points %></li>
-      <li><%=  @card.summaries.last.key_questions %></li>
-    <% end %>
-  </ul>
+  <% if @key_points.present? %>
+    <h3>Key Points:</h3>
+    <ul>
+      <% @key_points.each do |point| %>
+        <li><%= point %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">

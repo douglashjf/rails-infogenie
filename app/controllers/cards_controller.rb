@@ -6,6 +6,9 @@ class CardsController < ApplicationController
   end
 
   def show
+    if @card.summaries.last.present? && @card.summaries.last.key_points.present?
+      @key_points = JSON.parse(@card.summaries.last.key_points)
+    end
   end
 
   def new
@@ -19,11 +22,11 @@ class CardsController < ApplicationController
     # validation for card.save
     if @card.save
       # call the API with the params
-      prompt = "Can you explain #{@card.primary_keywords}. Associated keywords include: #{@card.secondary_keywords}. My desired output is 5 bullet points summarizing this entire primary keyword. Give me this response in JSON format " #edit this prompt to refine results
+      prompt = "Can you explain #{@card.primary_keywords}. Associated keywords include: #{@card.secondary_keywords}. My desired output is 5 bullet points summarizing this entire primary keyword. Give me this response in JSON format." #edit this prompt to refine results
       response = OpenaiService.new(prompt).call
       # API will return results
-      key_points = response
-      key_questions = response
+      key_points = response_json
+      key_questions = response_json
       # save the results in a new instance of Summary
       summary = Summary.new(key_points:, key_questions:)
       summary.card = @card
