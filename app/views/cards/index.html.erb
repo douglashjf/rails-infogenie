@@ -1,12 +1,18 @@
-<div class="page-container">
+<div class="container">
   <div class="top-grey-container mb-3">
     <div class="d-flex flex-column align-items-start justify-content-end h-100">
       <div class="main-content">
-        <div class="main-heading"><h1>Hi <%= current_user.first_name %></h1></div>
-        <%= render partial: 'shared/searchbar' %>
+        <div class="main-heading"><h1>Hi <%= current_user.first_name %>!</h1></div>
+        <%= render 'shared/searchbar' %>
       </div>
     </div>
   </div>
+    <div class="wish-button-container mb-3">
+      <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
+        Wish for a new topic!
+        <%= image_tag "lamp.png", class: "lamp-icon" %>
+      <% end %>
+    </div>
     <div class="card-container">
       <%= render 'card', locals: { card: @card } %>
     </div>

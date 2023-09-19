@@ -8,9 +8,6 @@
               <h5><%= card.primary_keywords %></h5>
               <p>Created by: <%= card.user.first_name %></p>
               <h6 class="card-subtitle mb-3 text-muted"><%= card.secondary_keywords %></h6>
-              <% if card.summaries.last.present? %>
-                <p class="card-info"><%= card.summaries.last.key_points.first  %></p>
-              <% end %>
             </div>
           </a>
         </div>
