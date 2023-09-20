@@ -8,6 +8,12 @@
               <h5><%= card.primary_keywords %></h5>
               <p>Created by: <%= card.user.first_name %></p>
               <h6 class="card-subtitle mb-3 text-muted"><%= card.secondary_keywords %></h6>
+              <% card.categories.each do |category| %>
+                <%= button_tag class: "icon-button" do %>
+                  <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
+                  <%= category %>
+                <% end %>
+              <% end %>
             </div>
           </a>
         </div>

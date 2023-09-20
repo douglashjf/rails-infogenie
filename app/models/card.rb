@@ -15,11 +15,7 @@ class Card < ApplicationRecord
     associated_against: {
       user: :first_name
     },
-    against: {
-      primary_keywords: 'A',
-      secondary_keywords: 'B',
-      categories: 'C'
-    },
+    against: %i[primary_keywords secondary_keywords categories],
     using: {
       tsearch: { prefix: true }
     }
