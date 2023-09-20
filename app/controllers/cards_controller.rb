@@ -4,7 +4,10 @@ class CardsController < ApplicationController
   before_action :set_cards, only: %i[show toggle_favourites destroy]
 
   def index
-    @cards = Card.active
+    if user_signed_in? && current_user.categories.present?
+      @cards = Card.active
+    end
+
   end
 
   def show
