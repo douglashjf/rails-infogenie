@@ -11,24 +11,24 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%# <div class="row">
-            <div class="col"> %>
-              <%#= f.input :first_name,
+          <div class="row">
+            <div class="col">
+              <%= f.input :first_name,
                           required: true,
                           autofocus: true,
                           input_html: { autocomplete: "first_name", class: "signup-rounded-input" },
                           label_html: { class: "custom-label" },
                           wrapper_html: { class: "custom-signup-wrap" }  %>
-            <%# </div> %>
-            <%# <div class="col"> %>
-              <%#= f.input :last_name,
+            </div>
+            <div class="col">
+              <%= f.input :last_name,
                           required: true,
                           autofocus: true,
                           input_html: { autocomplete: "last_name", class: "signup-rounded-input" },
                           label_html: { class: "custom-label"  },
                           wrapper_html: { class: "custom-signup-wrap" } %>
-            <%# </div> %>
-          <%# </div> %>
+            </div>
+          </div>
 
 
 
@@ -63,7 +63,7 @@
                       label_html: { class: "custom-label" },
                       wrapper_html: { class: "custom-profile-wrap" } %>
             </div>
-            <p class="profile-password-hint">Leave new password blank if no change needed</p>
+            <p class="profile-password-hint text-center">Leave new password blank if no change needed</p>
           </div>
 
           <%= f.input :current_password,
@@ -79,9 +79,9 @@
 
       <% end %>
 
-    <div class="text-center">
+    <%# <div class="text-center">
       <%= button_to "Delete Account", registration_path(resource_name), class:"button-delete-profile", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
-    </div>
+    <%# </div> %>
   </div>
 
 </div>
