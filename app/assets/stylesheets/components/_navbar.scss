@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: transparent;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,6 +9,14 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.rounded-top-right {
+  border-top-right-radius: 12px; /* Adjust the radius as needed */
 }
 
 .bottom-navbar {
@@ -33,6 +41,10 @@
 
 .nav-icon {
   font-size: 30px;
+}
+
+.offcanvas-options {
+  color: #8a8a8e;
 }
 
 .is-active {
