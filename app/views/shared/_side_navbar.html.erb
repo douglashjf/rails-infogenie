@@ -1,0 +1,107 @@
+<%
+  show_side_navbar = true
+
+  # controller_name, action_name and current_page? are helpers you can use to render/do stuff conditionally
+  show_side_navbar = false if controller_name == "registrations" || controller_name == "sessions" || controller_name == "passwords" || current_page?(new_card_path) || controller_name == "cards" && action_name == "show"
+  show_side_navbar = true if current_page?(edit_user_registration_path)
+%>
+
+<% if show_side_navbar %>
+
+   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon mt-3">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark" aria-controls="offcanvasDark" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <img src="<%= asset_path('infogenie-logofavicon-black 3.png') %>" alt="logo" style="width: 60px;">
+      <% end %>
+
+    </div>
+  </div>
+
+
+  <%# Section below is code pertaining to drawer/offcanvas %>
+
+  <div class="offcanvas offcanvas-start text-bg-dark rounded-top-right" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel" style="width: 200px;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title mt-3" id="offcanvasDarkLabel">InfoGenie</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <div class="container d-flex flex-column" style="height: 85vh;">
+          <div class="mb-3 offcanvas-options">
+            Dashboard
+          </div>
+
+          <div class="mb-3 offcanvas-options">
+            Analytics
+          </div>
+
+          <div class="mb-3 offcanvas-options">
+            Reports
+          </div>
+
+          <div class="mb-3 offcanvas-options">
+            Alerts
+          </div>
+
+          <div class="mb-3 offcanvas-options">
+            Help
+          </div>
+
+          <div class="mt-auto offcanvas-options">
+            <i class="fa-solid fa-gear"></i> Profile Settings
+          </div>
+
+        </div>
+
+        <!--
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item active">
+                <%= link_to "Home", "#", class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Messages", "#", class: "nav-link" %>
+              </li>
+              <li class="nav-item dropdown">
+              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+              </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <%= link_to "Action", "#", class: "dropdown-item" %>
+                  <%= link_to "Another action", "#", class: "dropdown-item" %>
+                  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+                </div>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        -->
+
+
+      </div>
+      <!--
+      <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+      -->
+    </div>
+  </div>
+<% end %>
