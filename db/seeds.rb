@@ -40,7 +40,7 @@ card_1 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Cryptocurrency",
   secondary_keywords: "Trading",
-  categories: ["Technology", "Economics"]
+  categories: []
 )
 puts "Created card 1"
 
@@ -65,7 +65,7 @@ card_2 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Music",
   secondary_keywords: "Theory",
-  categories: ["Art", "Society"]
+  categories: []
 )
 puts "Created card 2"
 
@@ -90,7 +90,7 @@ card_3 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Marathon",
   secondary_keywords: "Race",
-  categories: ["Life", "Health"]
+  categories: []
 )
 puts "Created card 3"
 
@@ -114,7 +114,7 @@ card_4 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Karaoke",
   secondary_keywords: "Singing",
-  categories: ["Life", "Culture"],
+  categories: [],
   deleted_at: Time.current
 )
 puts "Created card 4"
@@ -139,7 +139,7 @@ card_5 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Code",
   secondary_keywords: "Wars",
-  categories: ["Technology", "Software"]
+  categories: []
 )
 puts "Created card 5"
 
@@ -171,3 +171,10 @@ Favourite.create!(
   user_id: user_doug.id,
   card_id: card_4.id
 )
+
+# Create Fixed Categories based on list
+TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Technology Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
+TAG.each do |category|
+  Category.create!(tag: category)
+  puts "Created #{category}"
+end
