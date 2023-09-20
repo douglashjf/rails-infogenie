@@ -12,11 +12,11 @@ class Card < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_query,
-    associated_against: {
-      user: :first_name
-    },
-    against: %i[primary_keywords secondary_keywords categories],
-    using: {
-      tsearch: { prefix: true }
-    }
+                  against: %i[primary_keywords secondary_keywords categories],
+                  associated_against: {
+                    user: :first_name
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

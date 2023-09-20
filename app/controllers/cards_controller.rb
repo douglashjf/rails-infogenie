@@ -3,26 +3,26 @@ require 'json'
 class CardsController < ApplicationController
   before_action :set_cards, only: %i[show toggle_favourites destroy]
 
-    def index
-      @cards = Card.active
+  def index
+    @cards = Card.active
 
-      if params[:query].present?
-        sql_subquery = <<~SQL
-          cards.user_id IN (SELECT users.id FROM users WHERE users.first_name @@ :query)
-          OR cards.primary_keywords @@ :query
-          OR cards.secondary_keywords @@ :query
-          OR EXISTS (
-            SELECT 1
-            FROM unnest(cards.categories) AS category
-            WHERE category @@ :query
-          )
-        SQL
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        cards.user_id IN (SELECT users.id FROM users WHERE users.first_name @@ :query)
+        OR cards.primary_keywords @@ :query
+        OR cards.secondary_keywords @@ :query
+        OR EXISTS (
+          SELECT 1
+          FROM unnest(cards.categories) AS category
+          WHERE category @@ :query
+        )
+      SQL
 
-        @cards = @cards.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
-      end
-
-      @cards = @cards.any? ? @cards : Card.active
+      @cards = @cards.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
     end
+
+    @cards = @cards.any? ? @cards : Card.active
+  end
 
   def show
   end
