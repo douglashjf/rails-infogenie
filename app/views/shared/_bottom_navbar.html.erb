@@ -2,7 +2,7 @@
   show_bottom_navbar = true
 
   # controller_name, action_name and current_page? are helpers you can use to render/do stuff conditionally
-  show_bottom_navbar = false if controller_name == "registrations" || controller_name == "sessions" || controller_name == "passwords"
+  show_bottom_navbar = false if controller_name == "registrations" || controller_name == "sessions" || controller_name == "passwords" || controller_name == "categories"
   show_bottom_navbar = true if current_page?(edit_user_registration_path)
 %>
 

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :favourites, only: :index
   resources :categories, only: %i[edit update]
-
   # Defines the root path route ("/")
   # root "articles#index"
 end
