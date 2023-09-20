@@ -1,0 +1,39 @@
+.profile-container {
+  background-color: #D9D9D9;
+  height: 100vh;
+}
+
+.profile-password-hint {
+  color: #0E0000BF;
+  font-size: 14px !important;
+}
+
+.custom-profile-wrap {
+  margin-bottom: 2px !important;
+}
+
+.profile-header {
+  font-size: 22px;
+  font-size: bold;
+}
+
+.button-save-profile {
+  text-align: center;
+  border-radius: 15px;
+  width: 80%;
+  background-color: black;
+  padding: 12px 20px;
+  color: white;
+}
+
+.button-delete-profile {
+  border-radius: 15px;
+  width: 80%;
+  background-color: rgb(80, 80, 80);
+  padding: 12px 20px;
+  color: white;
+}
+
+.avatar {
+  border-radius: 50%;
+}
