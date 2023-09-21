@@ -5,6 +5,6 @@ class CategoriesController < ApplicationController
 
   def update
     current_user.categories = Category.where(id: params[:user][:category_ids])
-    redirect_to cards_path
+    redirect_to cards_path, notice: 'Categories updated successfully.'
   end
 end

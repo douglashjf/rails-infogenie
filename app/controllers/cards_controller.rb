@@ -5,7 +5,9 @@ class CardsController < ApplicationController
 
   def index
     if user_signed_in? && current_user.categories.present?
-    @cards = Card.active
+      @cards = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
+    end
+
 
     if params[:query].present?
       sql_subquery = <<~SQL

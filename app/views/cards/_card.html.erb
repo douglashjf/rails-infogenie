@@ -10,7 +10,7 @@
                   <% card.categories.each do |category| %>
                     <%= button_tag class: "icon-button" do %>
                       <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
-                      <%= category %>
+                      <%= category.tag %>
                     <% end %>
                  <% end %>
               </div>
