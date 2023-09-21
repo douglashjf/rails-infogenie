@@ -4,7 +4,9 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    current_user.categories = Category.where(id: params[:user][:category_ids])
-    redirect_to cards_path, notice: 'Categories updated successfully.'
+    unselected_categories = Category.where(id: params[:user][:category_ids])
+    current_user.categories = Category.all - unselected_categories
+    redirect_to cards_path, notice: 'Preference saved successfully.'
+
   end
 end

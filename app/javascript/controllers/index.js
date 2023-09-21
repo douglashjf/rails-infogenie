@@ -13,5 +13,8 @@ application.register("hello", HelloController)
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)
 
+import SelectedTopicsController from "./selected_topics_controller"
+application.register("selected-topics", SelectedTopicsController)
+
 import TopicErrorController from "./topic_error_controller"
 application.register("topic-error", TopicErrorController)
