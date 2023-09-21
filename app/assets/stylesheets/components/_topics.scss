@@ -1,0 +1,12 @@
+.flashMessage {
+  position: fixed;
+  top: 16px;
+  right: 10px;
+  z-index: 1000;
+  padding: 15px 20px;
+  background-color: #fff5df;
+  border-color: #feebc4;
+  border-width: 2px;
+  color:#9f7340;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
