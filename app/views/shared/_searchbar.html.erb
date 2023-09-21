@@ -1,0 +1,15 @@
+<div class="search-container d-flex">
+  <%= form_with url: cards_path, method: :get, class: "flex-grow-1" do |form| %>
+    <!-- Search bar input and button in one line -->
+    <div class="input-group search-input-group">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control flex-grow-1",
+        placeholder: "Ask The Genie"
+      %>
+      <%= button_tag(type: "submit", class: "btn search-button p-2") do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
