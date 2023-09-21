@@ -2,21 +2,20 @@
   <div class="row">
     <div class="card-container d-flex justify-content-center flex-wrap align-items-center">
       <% @cards.each do |card| %>
-        <div class="card col-12">
-          <a href="<%= card_path(card) %>" class="card-link">
-            <div class="card-body">
-              <h5><%= card.primary_keywords %></h5>
-              <p>Created by: <%= card.user.first_name %></p>
-              <h6 class="card-subtitle mb-3 text-muted"><%= card.secondary_keywords %></h6>
-              <% card.categories.each do |category| %>
-                <%= button_tag class: "icon-button" do %>
-                  <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
-                  <%= category %>
-                <% end %>
-              <% end %>
-            </div>
-          </a>
-        </div>
+          <div class="card col-12">
+            <a href="<%= card_path(card) %>" class="card-link">
+              <div class="card-body">
+                <div class="card-title"><%= card.primary_keywords %></div>
+                <p>Created by: <%= card.user.first_name %></p>
+                  <% card.categories.each do |category| %>
+                    <%= button_tag class: "icon-button" do %>
+                      <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
+                      <%= category %>
+                    <% end %>
+                 <% end %>
+              </div>
+            </a>
+          </div>
       <% end %>
     </div>
   </div>

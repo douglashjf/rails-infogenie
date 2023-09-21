@@ -4,10 +4,10 @@
       <div class="main-content">
         <div class="main-heading"><h1>Hi <%= current_user.first_name %>!</h1></div>
       </div>
-      <div class="d-flex align-items-center text-right">
-          <%= render 'shared/searchbar' %>
-          <%= image_tag "filter.png", class: "filter-icon" %>
-    </div>
+        <div class="d-flex align-items-center text-right">
+            <%= render 'shared/searchbar' %>
+            <%= image_tag "filter.png", class: "filter-icon" %>
+      </div>
   </div>
     <div class="wish-button-container my-5">
       <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
