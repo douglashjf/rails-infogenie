@@ -6,6 +6,8 @@ class CardsController < ApplicationController
   def index
     if user_signed_in? && current_user.categories.present?
       @cards = Card.active
+
+
     end
 
   end
@@ -32,7 +34,9 @@ class CardsController < ApplicationController
       # Extract the selected categories from the API response
       selected_categories = call_api(primary_keywords, secondary_keywords, "selected categories")
       # Save the selected categories to the card
-      @card.update(categories: selected_categories)
+      # @card.update(categories: selected_categories)
+      @card.categories = Category.where(tag: selected_categories)
+
 
       # save the results in a new instance of Summary
       summary = Summary.new(key_points:, key_questions:)
@@ -72,6 +76,7 @@ class CardsController < ApplicationController
   def call_api(primary_keywords, secondary_keywords, query)
     # construct the prompt
     prompt = "Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is a JSON of 3 arrays: (i) key_points: 2 bullet points summarising this entire primary keyword with the associated keywords, (ii) key_questions: 2 bullet points output of key questions and (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}. Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }. Output should also be within 1000 max_tokens. "  #edit this prompt to refine results
+
     # Call the API with the params
     response = OpenaiService.new(prompt).call
     # API will return results
