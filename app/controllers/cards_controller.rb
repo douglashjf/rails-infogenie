@@ -5,28 +5,17 @@ class CardsController < ApplicationController
 
   def index
     if user_signed_in? && current_user.categories.present?
-      @cards = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
+      base_query = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
     else
-      @cards = Card.active
+      base_query = Card.active
     end
 
-
-    # if params[:query].present?
-    #   sql_subquery = <<~SQL
-    #     cards.user_id IN (SELECT users.id FROM users WHERE users.first_name @@ :query)
-    #     OR cards.primary_keywords @@ :query
-    #     OR cards.secondary_keywords @@ :query
-    #     OR EXISTS (
-    #       SELECT 1
-    #       FROM unnest(cards.categories) AS category
-    #       WHERE category @@ :query
-    #     )
-    #   SQL
-
-    #   @cards = @cards.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
-    # end
-
-    # @cards = @cards.any? ? @cards : Card.active
+    if params[:query].present?
+      keyword_search = base_query.search_by_keyword(params[:query])
+      @cards = keyword_search.distinct  # Remove duplicates in case a card matches in both category and keyword search
+    else
+      @cards = base_query
+    end
   end
 
   def show

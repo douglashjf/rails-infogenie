@@ -1,21 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="card-container d-flex justify-content-center flex-wrap align-items-center">
-      <% @cards.each do |card| %>
+      <% if @cards.present? %>
+        <% @cards.each do |card| %>
           <div class="card col-12">
             <a href="<%= card_path(card) %>" class="card-link">
               <div class="card-body">
                 <div class="card-title"><%= card.primary_keywords %></div>
                 <p>Created by: <%= card.user.first_name %></p>
-                  <% card.categories.each do |category| %>
-                    <%= button_tag class: "icon-button" do %>
-                      <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
-                      <%= category.tag %>
-                    <% end %>
-                 <% end %>
+                <% card.categories.each do |category| %>
+                  <%= button_tag class: "icon-button" do %>
+                    <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
+                    <%= category.tag %>
+                  <% end %>
+                <% end %>
               </div>
             </a>
           </div>
+        <% end %>
+      <% else %>
+        <p>No cards found.</p>
       <% end %>
     </div>
   </div>
