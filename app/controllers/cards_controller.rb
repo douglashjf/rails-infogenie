@@ -4,10 +4,11 @@ class CardsController < ApplicationController
   before_action :set_cards, only: %i[show toggle_favourites destroy]
 
   def index
-    # if user_signed_in? && current_user.categories.present?
+    if user_signed_in? && current_user.categories.present?
       @cards = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
-
-    # end
+    else
+      @cards = Card.active
+    end
 
 
     # if params[:query].present?
