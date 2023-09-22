@@ -1,5 +1,8 @@
 puts "Clearing old data"
 
+UserCategory.destroy_all
+CardCategory.destroy_all
+Category.destroy_all
 Favourite.destroy_all
 Summary.destroy_all
 Card.destroy_all
@@ -204,7 +207,8 @@ Favourite.create!(
 )
 
 # Create Fixed Categories based on list
-TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Blockchain Data Science Technology Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
+TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
+
 TAG.each do |category|
   Category.create!(tag: category)
   puts "Created #{category}"

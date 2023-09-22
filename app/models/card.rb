@@ -4,21 +4,21 @@ class Card < ApplicationRecord
   has_many :favourites
   has_many :card_categories
   has_many :categories, through: :card_categories
-  CATEGORIES = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Technology Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
+  CATEGORIES = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
 
   scope :active, -> { where(deleted_at: nil) }
 
   validates :primary_keywords, :secondary_keywords, presence: true
   validates :primary_keywords, format: { with: /\D+/ }
 
-  include PgSearch::Model
+  # include PgSearch::Model
 
-  pg_search_scope :search_by_query,
-                  against: %i[primary_keywords secondary_keywords categories],
-                  associated_against: {
-                    user: :first_name
-                  },
-                  using: {
-                    tsearch: { prefix: true }
-                  }
+  # pg_search_scope :search_by_query,
+  #                 against: %i[primary_keywords secondary_keywords categories],
+  #                 associated_against: {
+  #                   user: :first_name
+  #                 },
+  #                 using: {
+  #                   tsearch: { prefix: true }
+  #                 }
 end
