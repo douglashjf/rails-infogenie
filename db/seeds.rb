@@ -37,13 +37,37 @@ user_sean = User.create(
 )
 puts 'Created Sean user, 1 card'
 
+# Create Fixed Categories based on list
+TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
+
+TAG.each do |category|
+  Category.create!(tag: category)
+  puts "Created #{category}"
+  # # Find the "Technology" category by name
+  # technology_category = Category.find_by(tag: "Technology")
+  # # Update the categories attribute of Card 1
+  # card_1.categories << technology_category if technology_category
+end
+
+category_names = TAG
+
+# Initialize an array to store the actual Category objects
+categories_for_card = []
+
+
+# Find or create categories and add them to the array
+category_names.each do |category_name|
+  category = Category.find_or_create_by(tag: category_name)
+  categories_for_card << category
+end
+
 
 # Card 1
 card_1 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Cryptocurrency",
   secondary_keywords: "Trading",
-  categories: []
+  categories: [categories_for_card[8], categories_for_card[9]]
 )
 puts "Created card 1"
 
@@ -66,7 +90,7 @@ card_2 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Music",
   secondary_keywords: "Theory",
-  categories: []
+  categories: [categories_for_card[13], categories_for_card[19]]
 )
 puts "Created card 2"
 
@@ -89,7 +113,7 @@ card_3 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Running",
   secondary_keywords: "Marathon Diet",
-  categories: []
+  categories: [categories_for_card[1], categories_for_card[2]]
 )
 puts "Created card 3"
 
@@ -110,7 +134,7 @@ card_4 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Karaoke",
   secondary_keywords: "Singing",
-  categories: [],
+  categories: [categories_for_card[19], categories_for_card[23]],
   deleted_at: Time.current
 )
 puts "Created card 4"
@@ -133,7 +157,7 @@ card_5 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Coding",
   secondary_keywords: "Bootcamp",
-  categories: []
+  categories: [categories_for_card[11], categories_for_card[7]]
 )
 puts "Created card 5"
 
@@ -154,7 +178,7 @@ card_6 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Artificial Intelligence",
   secondary_keywords: "Machine Learning",
-  categories: []
+  categories: [categories_for_card[8], categories_for_card[10]]
 )
 puts "Created card 5"
 
@@ -175,7 +199,7 @@ card_7 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Data Science",
   secondary_keywords: "Big Data",
-  categories: []
+  categories: [categories_for_card[10], categories_for_card[8]]
 )
 puts "Created card 7"
 
@@ -205,11 +229,3 @@ Favourite.create!(
   user_id: user_doug.id,
   card_id: card_4.id
 )
-
-# Create Fixed Categories based on list
-TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
-
-TAG.each do |category|
-  Category.create!(tag: category)
-  puts "Created #{category}"
-end
