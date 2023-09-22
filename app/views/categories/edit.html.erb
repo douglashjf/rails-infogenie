@@ -23,26 +23,3 @@
     <% end %>
 
 </div>
-
-
-<!-- using checkboxes
-<div data-controller="topic-error" data-topic-error-target="container" >
-
-  <%= form_for(current_user, url: category_path, method: :put, data: { action: "submit->topic-error#checkError"}) do |f| %>
-    <div class="form-group">
-        <% @categories.each do |category| %>
-          <div class="form-check">
-            <%= f.check_box :category_ids, { multiple: true }, category.id, nil %>
-            <%= label_tag category.tag %>
-          </div>
-        <% end %>
-    </div>
-    <div class="form-group">
-      <%= f.submit 'Save Preference', class: 'btn btn-primary' %>
-    </div>
-
-
-  <% end %>
-
-</div>
--->
