@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: transparent;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -48,5 +52,10 @@
 }
 
 .is-active {
+  color: white;
+}
+
+.navbar-topics-link {
+  text-decoration: none;
   color: white;
 }

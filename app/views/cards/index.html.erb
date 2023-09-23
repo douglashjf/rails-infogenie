@@ -1,14 +1,34 @@
-
-<div class="container">
-
-  <div class="mb-3">
-    <%= render 'pages/search' %>
+<div class="index-page">
+  <div class="top-grey-container mb-3">
+    <div class="d-flex flex-column align-items-start justify-content-end h-100">
+      <div class="main-content">
+        <div class="main-heading"><h1>Hi <%= current_user.first_name %>!</h1></div>
+      </div>
+        <div class="d-flex align-items-center text-right">
+            <%= render 'shared/searchbar' %>
+            <%= link_to edit_category_path(1) do %>
+              <%= image_tag "filter.png", class: "filter-icon" %>
+            <% end %>
+      </div>
   </div>
-
-  <%= render 'card', locals: { card: @card } %>
-
-
-  <%= link_to 'Create New Card', new_card_path %>
-
-
+    <div class="wish-button-container mt-5 mb-3">
+      <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
+        Wish for a new topic!
+        <%= image_tag "lamp.png", class: "lamp-icon" %>
+      <% end %>
+    </div>
+    <div class="text-center">
+      You've selected:
+      <div class="category-posters d-flex justify-content-equally justify-content-center mb-3">
+        <% current_user.categories.each do |category| %>
+          <div class="category-tag">
+            <%= category.tag %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-container">
+      <%= render 'card', locals: { card: @card } %>
+    </div>
+    <%# <%= link_to 'Create New Card', new_card_path %>
 </div>

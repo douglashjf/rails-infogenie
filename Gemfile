@@ -78,3 +78,5 @@ group :test do
 end
 
 gem "ruby-openai"
+
+gem "pg_search"

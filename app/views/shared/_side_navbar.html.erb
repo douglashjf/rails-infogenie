@@ -2,8 +2,8 @@
   show_side_navbar = true
 
   # controller_name, action_name and current_page? are helpers you can use to render/do stuff conditionally
-  show_side_navbar = false if controller_name == "registrations" || controller_name == "sessions" || controller_name == "passwords" || current_page?(new_card_path) || controller_name == "cards" && action_name == "show"
-  show_side_navbar = true if current_page?(edit_user_registration_path)
+  show_side_navbar = false if controller_name == "registrations" || controller_name == "sessions" || controller_name == "passwords" || current_page?(new_card_path) || controller_name == "cards" && action_name == "show" || controller_name == "categories"
+
 %>
 
 <% if show_side_navbar %>
@@ -34,7 +34,7 @@
       <div>
         <div class="container d-flex flex-column" style="height: 85vh;">
           <div class="mb-3 offcanvas-options">
-            Dashboard
+            <%= link_to 'Re-select Topics', edit_category_path(1), class: "navbar-topics-link" %>
           </div>
 
           <div class="mb-3 offcanvas-options">

@@ -1,5 +1,8 @@
 puts "Clearing old data"
 
+UserCategory.destroy_all
+CardCategory.destroy_all
+Category.destroy_all
 Favourite.destroy_all
 Summary.destroy_all
 Card.destroy_all
@@ -34,29 +37,51 @@ user_sean = User.create(
 )
 puts 'Created Sean user, 1 card'
 
+# Create Fixed Categories based on list
+TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
+
+TAG.each do |category|
+  Category.create!(tag: category)
+  puts "Created #{category}"
+  # # Find the "Technology" category by name
+  # technology_category = Category.find_by(tag: "Technology")
+  # # Update the categories attribute of Card 1
+  # card_1.categories << technology_category if technology_category
+end
+
+category_names = TAG
+
+# Initialize an array to store the actual Category objects
+categories_for_card = []
+
+
+# Find or create categories and add them to the array
+category_names.each do |category_name|
+  category = Category.find_or_create_by(tag: category_name)
+  categories_for_card << category
+end
+
 
 # Card 1
 card_1 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Cryptocurrency",
   secondary_keywords: "Trading",
-  categories: ["Technology", "Economics"]
+  categories: [categories_for_card[8], categories_for_card[9]]
 )
 puts "Created card 1"
 
 # Summary 1
 Summary.create!(
   card_id: card_1.id,
-  key_points: ["Etherium is one of the main trading currencies",
-               "Cryptocurrency is a form of digital or virtual currency that uses cryptography for security.",
-               "A blockchain is a public ledger that records all transactions made with a particular cryptocurrency.",
-               "Bitcoin, created in 2009 by an anonymous person or group using the pseudonym Satoshi Nakamoto, was the first cryptocurrency and remains the most well-known and valuable. ",
-               "Altcoins are cryptocurrencies other than Bitcoin."],
-  key_questions: ["What is the Purpose and Use Case?",
-                  "How Secure is the Cryptocurrency?",
-                  "What is the Market and Price History?",
-                  "Who is Behind the Cryptocurrency?",
-                  "What is the Regulatory Environment?"]
+  key_points: [
+    "Cryptocurrency is a digital or virtual form of currency that uses cryptography for secure financial transactions and control the creation of new units.",
+    "Trading is one of the activities associated with cryptocurrency, where individuals buy and sell digital assets in various markets."
+  ],
+  key_questions: [
+    "What is cryptocurrency and how does it work?",
+    "How does trading in cryptocurrency function and what are the risks involved?"
+  ]
 )
 puts "Created summary 1"
 
@@ -65,47 +90,42 @@ card_2 = Card.create!(
   user_id: user_doug.id,
   primary_keywords: "Music",
   secondary_keywords: "Theory",
-  categories: ["Art", "Society"]
+  categories: [categories_for_card[13], categories_for_card[19]]
 )
 puts "Created card 2"
 
 # Second Summary
 Summary.create!(
   card_id: card_2.id,
-  key_points: ["Pitch and Scales",
-               "Rhythm and Time Signatures",
-               "Chords and Harmony",
-               "Musical Notation",
-               "Form and Structure"],
-  key_questions: ["What is Music Theory?",
-                  "How Are Musical Notes Represented and Named?",
-                  "What Are Scales and Why Are They Important?",
-                  "How Do Chords and Harmony Work?",
-                  "What Are Time Signatures, and How Do They Affect Rhythm?"]
+  key_points: [
+    "Music is an art form that uses sound and rhythm to express emotions, tell stories, and evoke certain moods.",
+    "Music theory is the study of the principles and practices of music, including elements like melody, harmony, rhythm, and form."
+  ],
+  key_questions: [
+    "What is the purpose of music and how does it communicate emotions?",
+    "What are the key components studied in music theory and how do they contribute to musical composition?"
+  ]
 )
 puts "Created summary 2"
 
 # Third Card
 card_3 = Card.create!(
   user_id: user_jacob.id,
-  primary_keywords: "Marathon",
-  secondary_keywords: "Race",
-  categories: ["Life", "Health"]
+  primary_keywords: "Running",
+  secondary_keywords: "Marathon Diet",
+  categories: [categories_for_card[1], categories_for_card[2]]
 )
 puts "Created card 3"
 
 Summary.create!(
   card_id: card_3.id,
-  key_points:   ["Distance and Origin",
-                "Training and Preparation",
-                "Race Atmosphere",
-                "Hydration and Nutrition",
-                "Endurance Challenge"],
-  key_questions: ["What Is the Standard Distance of a Marathon?",
-                  "How Do I Prepare for a Marathon?",
-                  "What Are Common Challenges During a Marathon?",
-                  "What Is the Importance of Hydration and Nutrition in Marathons?",
-                  "What Are Some Famous Marathons Around the World?"]
+  key_points: [
+    "Running is a physical activity that involves the movement of the body at a faster pace than walking.",
+    "Marathon diet refers to the nutritional plan followed by runners in preparation for a marathon race."],
+  key_questions: [
+    "What is the definition of running and how does it differ from walking?",
+    "What is a marathon diet and how does it support the training and performance of marathon runners?"
+  ],
 )
 puts "Created summary 3"
 
@@ -114,49 +134,87 @@ card_4 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Karaoke",
   secondary_keywords: "Singing",
-  categories: ["Life", "Culture"],
+  categories: [categories_for_card[19], categories_for_card[23]],
   deleted_at: Time.current
 )
 puts "Created card 4"
 
 Summary.create!(
   card_id: card_4.id,
-  key_points: ["Entertainment and Singing",
-               "Social Activity",
-               "Equipment",
-               "Song Selection",
-               "Performance and Confidence"],
-  key_questions: ["What Is Karaoke?",
-                  "Where Can You Do Karaoke?",
-                  "How Does Karaoke Work?",
-                  "What Are the Key Components of a Karaoke Setup?",
-                  "Is Karaoke Just for Fun, or Can It Be Competitive?"]
+  key_points: [
+    "Karaoke is a form of entertainment where people sing along to recorded music without the original vocals.",
+    "Singing is the act of producing musical sounds with the voice, typically with words and melody."
+  ],
+  key_questions: [
+    "What is karaoke and how does it work?",
+    "What is the role of singing in karaoke and how does it enhance the overall experience?"
+  ]
 )
 puts "Created summary 4"
 
 # Fifth Card
 card_5 = Card.create!(
   user_id: user_sean.id,
-  primary_keywords: "Code",
-  secondary_keywords: "Wars",
-  categories: ["Technology", "Software"]
+  primary_keywords: "Coding",
+  secondary_keywords: "Bootcamp",
+  categories: [categories_for_card[11], categories_for_card[7]]
 )
 puts "Created card 5"
 
 Summary.create!(
   card_id: card_5.id,
-  key_points: ["Coding Challenges and Katas",
-               "Community and Rankings",
-               "Language Support",
-               "Learning and Skill Improvement",
-               "Gamified Learning"],
-  key_questions: ["What Is CodeWars and How Does It Work?",
-                  "What Are CodeWars Katas?",
-                  "How Can I Join and Participate in CodeWars?",
-                  "How Can CodeWars Help Me Improve as a Programmer?",
-                  "What Is the CodeWars Community Like, and How Can I Interact with Others?"]
+  key_points: [
+    "Coding refers to the process of writing instructions in a programming language to create software applications or websites",
+    "Bootcamps are intensive training programs that teach coding skills in a short period of time"
+  ],
+  key_questions: [
+    "What is the purpose of coding?",
+    "How do bootcamps help in learning coding?"
+  ]
 )
 puts "Created summary 5"
+
+card_6 = Card.create!(
+  user_id: user_sean.id,
+  primary_keywords: "Artificial Intelligence",
+  secondary_keywords: "Machine Learning",
+  categories: [categories_for_card[8], categories_for_card[10]]
+)
+puts "Created card 5"
+
+Summary.create!(
+  card_id: card_6.id,
+  key_points: [
+    "Artificial Intelligence (AI) is a field of computer science that focuses on creating intelligent machines capable of performing tasks that typically require human intelligence",
+    "Machine Learning is a subset of AI that involves training machines to learn from data and make predictions or decisions without being explicitly programmed"
+  ],
+  key_questions: [
+    "What is Artificial Intelligence?",
+    "How does Machine Learning work?"
+  ]
+)
+puts "Created summary 6"
+
+card_7 = Card.create!(
+  user_id: user_sean.id,
+  primary_keywords: "Data Science",
+  secondary_keywords: "Big Data",
+  categories: [categories_for_card[10], categories_for_card[8]]
+)
+puts "Created card 7"
+
+Summary.create!(
+  card_id: card_7.id,
+  key_points: [
+    "Data Science is a multidisciplinary field that uses scientific methods, algorithms, and systems to extract knowledge and insights from structured and unstructured data",
+    "Big Data refers to extremely large and complex datasets that cannot be easily managed, processed, or analyzed using traditional data processing applications"
+  ],
+  key_questions: [
+    "What is Data Science?",
+    "How is Big Data used in Data Science?"
+  ]
+)
+puts "Created summary 7"
 
 # Create favourites for Doug (1x existing, 1x deleted)
 
