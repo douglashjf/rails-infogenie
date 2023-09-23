@@ -5,18 +5,22 @@
       <% end %>
   </div>
 
-  <div class="row">
-    <div class="col-8">
+  <div class="d-flex justify-content-start align-items-center">
+    <div >
       <div class="card-title">
         <%= @card.primary_keywords %>
       </div>
     </div>
-    <div class="col-4">
+    <div >
       <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
         <% if current_user.favourites.exists?(card: @card) %>
-          <%= button_to '➖ Remove from Favourites', toggle_favourites_card_path(@card), method: :post, remote: true, class: "btn btn-primary is-favourites", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} %>
+          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+            <i class="fa-solid fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+          <% end %>
         <% else %>
-          <%= button_to '➕ Add to Favourites', toggle_favourites_card_path(@card), method: :post, remote: true, class: "btn btn-primary", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} %>
+          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+            <i class="fa-regular fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+            <% end %>
         <% end %>
       </div>
     </div>

@@ -1,9 +1,4 @@
-.is-favourites {
-  background-color: white;
-  color: #0D6EFD;
-  border-width: 2px;
-  border-color: #0D6EFD;
-}
+
 
 .flash-message {
 padding: 15px 20px;
@@ -21,4 +16,7 @@ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 .fav-container {
   margin-top: 130px;
   padding-bottom: 130px;
-}
+
+.favourites-button {
+  border: none;
+  background-color: transparent;
