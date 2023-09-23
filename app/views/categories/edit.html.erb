@@ -4,7 +4,7 @@
     <h2>Please Select Your Topic!</h2>
   </div>
   <div class="category-container" data-controller="selected-topics" >
-    <%= form_for(current_user, url: category_path, method: :put, data: { action: "submit->selected-topics#validate"}) do |f| %>
+    <%= form_for(current_user, url: category_path, method: :put) do |f| %>
 
       <div class="category-grid"  data-selected-topics-target="container">
         <% @categories.each do |category| %>
