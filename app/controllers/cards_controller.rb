@@ -44,6 +44,7 @@ class CardsController < ApplicationController
       @card.categories = Category.where(tag: selected_categories)
 
 
+
       # save the results in a new instance of Summary
       summary = Summary.new(key_points:, key_questions:)
       summary.card = @card

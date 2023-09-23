@@ -7,8 +7,14 @@ import { application } from "./application"
 import FavouritesButtonController from "./favourites_button_controller"
 application.register("favourites-button", FavouritesButtonController)
 
+import FunFactController from "./fun_fact_controller"
+application.register("fun-fact", FunFactController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import LoadingPageController from "./loading_page_controller"
+application.register("loading-page", LoadingPageController)
 
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)

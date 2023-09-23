@@ -1,0 +1,27 @@
+<div class="d-none container z-3 w-100 top-0 left-0 position-absolute vh-100 bg-light" data-loading-page-target="loadingPage">
+  <div class="lamp-container pt-5" >
+    <div class="spinner">
+      <svg>
+        <use href="<%= asset_path('icons.svg')%>#icon-loader"></use>
+      </svg>
+    </div>
+    <img src="<%= asset_path('lamp-loading.png') %>" alt="Loading" class="ms-3">
+  </div>
+  <div class="text-center pb-2">
+    <p >The average time it takes to grant a wish is about the time it takes to make a cup of coffee</p>
+  </div>
+  <div class="d-flex justify-content-center">
+    <hr style="width: 50px; ">
+  </div>
+  <div class="d-flex flex-column">
+    <div class="text-center my-4 pb-2" >
+      <strong>Did You Know?</strong>
+      <div class="mt-4" data-controller="fun-fact">
+        <p data-fun-fact-target="factText"></p>
+      </div>
+    </div>
+    <div class="text-center fixed-bottom mb-5 pb-5 ">
+      <p style="font-weight: bold; color: grey; font-size: 18px;" ><em>Granting your wish...</em></p>
+    </div>
+  </div>
+</div>
