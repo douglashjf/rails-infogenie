@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   root to: "pages#home"
+  get "faq", to: "pages#faq"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :cards, except: %i[edit update] do

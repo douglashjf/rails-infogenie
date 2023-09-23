@@ -52,6 +52,10 @@
           <div class="mb-3 offcanvas-options">
             Help
           </div>
+
+          <div class="mb-3 offcanvas-options">
+             <%= link_to "FAQ", faq_path, class: "navbar-topics-link" %>
+          </div>
           <% if user_signed_in? %>
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
           <% end %>
