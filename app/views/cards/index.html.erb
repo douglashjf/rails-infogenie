@@ -11,21 +11,23 @@
             <% end %>
       </div>
   </div>
-    <div class="wish-button-container mt-5 mb-3">
-      <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
-        Wish for a new topic!
-        <%= image_tag "lamp.png", class: "lamp-icon" %>
-      <% end %>
-    </div>
-    <div class="text-center">
-      You've selected:
-      <div class="category-posters d-flex justify-content-equally justify-content-center mb-3">
-        <% current_user.categories.each do |category| %>
-          <div class="category-tag">
-            <%= category.tag %>
+      <div class="text-center mt-5 mb-3">
+      <% if current_user.categories.present? %>
+          Topics selected:
+          <div class="category-posters d-flex justify-content-equally justify-content-center mb-3">
+            <% current_user.categories.each do |category| %>
+              <div class="category-tag">
+                <%= category.tag %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
+      <% end %>
+      <div class="wish-button-container">
+            <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
+              Wish for a new card!
+              <%= image_tag "lamp.png", class: "lamp-icon" %>
+            <% end %>
+          </div>
     </div>
     <div class="card-container">
       <%= render 'card', locals: { card: @card } %>

@@ -1,11 +1,12 @@
 <div class="container fav-container d-flex flex-column align-items-center">
-  <div class="fav-heading mb-5"><h1>Favourites list</h1></div>
+  <div class="fav-heading mb-3"><h1>Favourites list</h1></div>
     <% @favourites.each do |favourite| %>
       <% card = favourite.card %>
       <div class="card col-12">
-         <div class="card-body">
-            <div class="card-title"><%= card.primary_keywords %></div>
-              <div class="card-subtitle"><%= card.secondary_keywords %></div>
+         <a href="<%= card_path(card) %>" class="card-link">
+              <div class="card-body">
+                <div class="card-title"><%= card.primary_keywords %></div>
+                <div class="card-subtitle"><%= card.secondary_keywords %></div>
                 <p>Created by: <%= card.user.first_name %></p>
                 <% card.categories.each do |category| %>
                   <%= button_tag class: "icon-button" do %>
@@ -13,7 +14,8 @@
                     <%= category.tag %>
                   <% end %>
                 <% end %>
-          </div>
+              </div>
+            </a>
         </div>
     <% end %>
 
