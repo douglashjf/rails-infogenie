@@ -11,14 +11,17 @@ class Card < ApplicationRecord
   validates :primary_keywords, :secondary_keywords, presence: true
   validates :primary_keywords, format: { with: /\D+/ }
 
-  # include PgSearch::Model
+  include PgSearch::Model
 
-  # pg_search_scope :search_by_query,
-  #                 against: %i[primary_keywords secondary_keywords categories],
-  #                 associated_against: {
-  #                   user: :first_name
-  #                 },
-  #                 using: {
-  #                   tsearch: { prefix: true }
-  #                 }
+  pg_search_scope :search_by_keyword,
+    against: [:primary_keywords, :secondary_keywords],
+
+    using: {
+      tsearch: { prefix: true },
+      trigram: {}
+    }
+
+  def self.search_by_keyword(query)
+    where("primary_keywords ILIKE :query OR secondary_keywords ILIKE :query", query: "%#{query}%")
+  end
 end
