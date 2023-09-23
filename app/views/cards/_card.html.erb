@@ -7,6 +7,7 @@
             <a href="<%= card_path(card) %>" class="card-link">
               <div class="card-body">
                 <div class="card-title"><%= card.primary_keywords %></div>
+                <div class="card-subtitle"><%= card.secondary_keywords %></div>
                 <p>Created by: <%= card.user.first_name %></p>
                 <% card.categories.each do |category| %>
                   <%= button_tag class: "icon-button" do %>

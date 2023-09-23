@@ -12,7 +12,7 @@ class CardsController < ApplicationController
 
     if params[:query].present?
       keyword_search = base_query.search_by_keyword(params[:query])
-      @cards = keyword_search.distinct  # Remove duplicates in case a card matches in both category and keyword search
+      @cards = keyword_search
     else
       @cards = base_query
     end

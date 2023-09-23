@@ -14,7 +14,7 @@ class Card < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_keyword,
-    against: [:primary_keywords],
+    against: [:primary_keywords, :secondary_keywords],
 
     using: {
       tsearch: { prefix: true },
@@ -22,6 +22,6 @@ class Card < ApplicationRecord
     }
 
   def self.search_by_keyword(query)
-    where("primary_keywords ILIKE :query", query: "%#{query}%")
+    where("primary_keywords ILIKE :query OR secondary_keywords ILIKE :query", query: "%#{query}%")
   end
 end
