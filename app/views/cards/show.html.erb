@@ -58,5 +58,9 @@
 
   <hr>
   <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <%#= link_to "", whatsapp_share_url, class: "fab fa-whatsapp" %>
+  <%= link_to whatsapp_share_url do %>
+    <i class="fa-brands fa-whatsapp fa-2xl" style="color: #075e54;"></i>
+  <% end %>
 
 </div>
