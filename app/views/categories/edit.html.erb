@@ -3,9 +3,9 @@
     <img src="<%= asset_path('infogenie-logofavicon-black 3.png') %>" alt="logo" style="width: 120px;">
     <h2>Please Select Your Topic!</h2>
   </div>
-  <div class="category-container" data-controller="selected-topics" >
-    <%= form_for(current_user, url: category_path, method: :put, data: { action: "submit->selected-topics#validate"}) do |f| %>
 
+    <%= form_for(current_user, url: category_path, method: :put) do |f| %>
+    <div class="category-container" data-controller="selected-topics" >
       <div class="category-grid"  data-selected-topics-target="container">
         <% @categories.each do |category| %>
 
@@ -16,7 +16,7 @@
           </div>
         <% end %>
       </div>
-  </div>
+    </div>
       <div class="form-group mt-4 text-center">
         <%= f.submit 'Save Preference', class: 'btn btn-dark rounded' %>
       </div>
