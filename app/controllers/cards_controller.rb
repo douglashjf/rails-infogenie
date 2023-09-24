@@ -49,7 +49,11 @@ class CardsController < ApplicationController
       summary.card = @card
       summary.save!
 
-      NewsArticle.fetch_and_save(primary_keywords, @card)
+
+      news_articles = NewsArticle.fetch_articles(primary_keywords)
+      raise
+      @card.news_articles = news_articles
+
 
       redirect_to card_path(@card)
     else
