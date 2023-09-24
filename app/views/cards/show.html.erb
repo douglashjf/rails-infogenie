@@ -56,10 +56,25 @@
     <% end %>
   </ul>
 
+    <div class="news-centre m-2">
+      <h5><strong>News Center</strong></h5>
+      <% if @news_articles.present? %>
+        <% @news_articles.each do |article| %>
+          <h6><%= article['title'] %></h6>
+          <!-- You can add more information about each article here if needed -->
+        <% end %>
+      <% else %>
+        <p>No news articles available.</p>
+        <button class="btn btn-primary">+ Follow</button>
+      <% end %>
+    </div>
+
   <hr>
+  <h4>Comments (0)</h4>
+
   <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <%#= link_to "", whatsapp_share_url, class: "fab fa-whatsapp" %>
-  <%= link_to whatsapp_share_url do %>
+  <%= link_to whatsapp_share_url, target: "_blank" do %>
     <i class="fa-brands fa-whatsapp fa-2xl" style="color: #075e54;"></i>
   <% end %>
 

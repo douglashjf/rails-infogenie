@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsInfogenie</title>
+    <title>Infogenie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag "infogenie-logofavicon-black 3.png", rel: "icon", type: "image/png" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
@@ -15,7 +16,7 @@
     <%= render 'shared/side_navbar' %>
 
     <%= render "shared/flashes" %>
-    <div class="pb-6 mb-6">
+    <div class="pb-5 mb-5">
       <%= yield %>
     </div>
   </body>
