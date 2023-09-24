@@ -1,5 +1,4 @@
 require 'json'
-require 'open-uri'
 
 class CardsController < ApplicationController
   before_action :set_cards, only: %i[show toggle_favourites destroy]
@@ -38,18 +37,30 @@ class CardsController < ApplicationController
       # call the API with the params
       key_points = call_api(primary_keywords, secondary_keywords, "key points")
       key_questions = call_api(primary_keywords, secondary_keywords, "key questions")
-      news_articles = get_news(primary_keywords)
       # Extract the selected categories from the API response
       selected_categories = call_api(primary_keywords, secondary_keywords, "selected categories")
       # Save the selected categories to the card
       # @card.update(categories: selected_categories)
       @card.categories = Category.where(tag: selected_categories)
-
-
       # save the results in a new instance of Summary
       summary = Summary.new(key_points:, key_questions:)
       summary.card = @card
       summary.save!
+
+      news_api_service = NewsApiService.new(ENV.fetch('NEWSAPI_ACCESS_TOKEN'))
+      news_articles = news_api_service.get_news(primary_keywords)
+      news_articles.each do |article_data|
+        news_article = News.new(
+          source_name: article_data["source_name"],
+          title: article_data["title"],
+          description: article_data["description"],
+          url: article_data["url"],
+          published_at: article_data["publishedAt"]
+        )
+        news_article.card = @card
+        news_article.save!
+      end
+
       redirect_to card_path(@card)
     else
       render :new, status: :unprocessable_entity
@@ -93,27 +104,5 @@ class CardsController < ApplicationController
     return parsed_response["key_points"] if query == "key points"
     return parsed_response["key_questions"] if query == "key questions"
     return parsed_response["selected_categories"] if query == "selected categories"
-  end
-
-  # Refactor to service file later
-  def get_news(primary_keywords)
-    # API key from .env
-    news_api_token = ENV.fetch('NEWSAPI_ACCESS_TOKEN')
-
-    # Replace spaces in primary keywords with '+' to form a valid query string
-    query = primary_keywords.gsub(' ', '+')
-
-    # Construct the URL with the query
-    url = "https://newsapi.org/v2/everything?q=#{query}&from=2023-09-20&sortBy=popularity&apiKey=#{news_api_token}"
-
-    # Make the API request
-    req = open(url)
-    response_body = req.read
-
-    # You can parse the response_body as needed and use it in your application
-    parsed_response = JSON.parse(response_body)
-
-    # For example, you can return the articles from the response
-    return parsed_response["articles"]
   end
 end

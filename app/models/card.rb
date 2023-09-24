@@ -1,6 +1,7 @@
 class Card < ApplicationRecord
   belongs_to :user
   has_many :summaries
+  has_many :news
   has_many :favourites
   has_many :card_categories
   has_many :categories, through: :card_categories

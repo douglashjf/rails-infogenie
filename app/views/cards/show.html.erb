@@ -55,17 +55,22 @@
 
   <div class="news-centre m-2">
     <h5><strong>News Center</strong></h5>
-     <% if @news_articles.present? %>
-      <% @news_articles.each do |article| %>
-        <h6><%= article['title'] %></h6>
-        <!-- You can add more information about each article here if needed -->
-      <% end %>
+     <% if @card.news_article.present? %>
+      <ul>
+        <% @card.news_article.each do |article| %>
+          <li>
+            <h6><%= article.title %></h6>
+            <p><strong>Source:</strong> <%= article.source_name %></p>
+            <p><strong>Description:</strong> <%= article.description %></p>
+            <p><strong>Published At:</strong> <%= article.publishedAt %></p>
+            <p><strong>URL:</strong> <%= link_to article.url, article.url, target: "_blank" %></p>
+          </li>
+        <% end %>
+      </ul>
     <% else %>
       <p>No news articles available.</p>
     <% end %>
   </div>
-
-
 
   <hr>
   <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
