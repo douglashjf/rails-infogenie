@@ -6,7 +6,7 @@ class NewsArticle < ApplicationRecord
   # Class method to fetch news articles from NewsAPI
   def self.fetch_articles(primary_keywords)
     # 1) create - api key
-    newsapi = News.new(ENV.fetch('NEWSAPI_API_KEY'))
+    newsapi = News.new(ENV.fetch('API_KEY'))
 
 
     # 2 Fetch news articles from NewsAPI with my params

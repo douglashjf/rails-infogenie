@@ -6,7 +6,7 @@ class CreateNewsArticles < ActiveRecord::Migration[7.0]
       t.text :url
       t.datetime :published_at
       t.string :name
-
+      t.references :card, null: false, foreign_key: true
       t.timestamps
     end
   end
