@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     member do
       post :toggle_favourites
     end
-    resources :comments, only: [:create]
+    resources :comments
   end
 
   resources :favourites, only: :index

@@ -10,6 +10,9 @@ application.register("favourites-button", FavouritesButtonController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InsertInCommentController from "./insert_in_comment_controller"
+application.register("insert-in-comment", InsertInCommentController)
+
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)
 

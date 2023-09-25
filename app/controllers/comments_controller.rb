@@ -9,10 +9,14 @@ class CommentsController < ApplicationController
     # 4) link created comment with card that was commented on
     @comment.card = @card
 
-    if @comment.save!
-      redirect_to @card
-    else
-      render 'card/show'
+    respond_to do |format|
+      if @comment.save!
+        format.html { redirect_to @card }
+        format.json
+      else
+        format.html { render 'card/show', status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 
