@@ -69,8 +69,21 @@
       <% end %>
     </div>
 
-  <hr>
-  <h4>Comments (0)</h4>
+    <div class="comments m-2">
+      <h5><strong>Comments</strong></h5>
+      <ul>
+        <% @card.comments.each do |comment| %>
+          <li>
+            <strong><%= comment.user.first_name %>:</strong>
+            <%= comment.content %>
+          </li>
+          <% end %>
+      </ul>
+
+        <%= render partial: 'comments/commentform', locals: { card: @card } %>
+
+    </div>
+
 
   <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <%#= link_to "", whatsapp_share_url, class: "fab fa-whatsapp" %>
