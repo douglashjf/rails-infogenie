@@ -49,6 +49,12 @@ class CardsController < ApplicationController
       summary = Summary.new(key_points:, key_questions:)
       summary.card = @card
       summary.save!
+
+
+      news_articles = NewsArticle.fetch_articles(primary_keywords)
+      @card.news_articles = news_articles
+
+
       redirect_to card_path(@card)
     else
       render :new, status: :unprocessable_entity
