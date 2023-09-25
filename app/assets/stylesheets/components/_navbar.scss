@@ -23,18 +23,17 @@
   border-top-right-radius: 12px; /* Adjust the radius as needed */
 }
 
-.bottom-navbar {
-  background: #131417 ;
-  padding-top: 35px;
-  padding-bottom: 0px;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+.navbar {
+  padding-bottom: 0;
 }
 
 .navbar-rectangle {
   background-color: #1D1F24;
-  padding: 25px 25px;
+  margin-top: 20px;
+  padding: 20px 25px;
   width: 100%;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 .nav-button {
