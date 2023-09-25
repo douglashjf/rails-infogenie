@@ -58,11 +58,16 @@
 
     <div class="news-centre m-2">
       <h5><strong>News Center</strong></h5>
-      <% if @news_articles.present? %>
-        <% @news_articles.each do |article| %>
-          <h6><%= article['title'] %></h6>
-          <!-- You can add more information about each article here if needed -->
-        <% end %>
+      <% if @card.news_articles.present? %>
+        <ul>
+          <% @card.news_articles.each do |article| %>
+            <li>
+              <a href="<%= article.url %>" target="_blank"><%= article.title %></a>
+              <p><%= article.description %></p>
+              <p><%= article.published_at %></p>
+            </li>
+          <% end %>
+        </ul>
       <% else %>
         <p>No news articles available.</p>
         <button class="btn btn-primary">+ Follow</button>
