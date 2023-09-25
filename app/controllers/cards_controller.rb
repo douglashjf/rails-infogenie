@@ -51,7 +51,6 @@ class CardsController < ApplicationController
 
 
       news_articles = NewsArticle.fetch_articles(primary_keywords)
-      raise
       @card.news_articles = news_articles
 
 
