@@ -1,4 +1,4 @@
-import { Controller, fetch } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="insert-in-comment"
 export default class extends Controller {
