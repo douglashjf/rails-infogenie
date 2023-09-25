@@ -5,6 +5,7 @@ class Card < ApplicationRecord
   has_many :favourites
   has_many :card_categories
   has_many :categories, through: :card_categories
+  has_many :news_articles
   CATEGORIES = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
 
   scope :active, -> { where(deleted_at: nil) }

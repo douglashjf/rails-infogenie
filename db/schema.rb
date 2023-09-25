@@ -64,9 +64,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_030450) do
     t.text "url"
     t.datetime "published_at"
     t.string "name"
+    t.bigint "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "card_id", null: false
     t.index ["card_id"], name: "index_news_articles_on_card_id"
   end
 
