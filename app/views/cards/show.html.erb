@@ -50,7 +50,7 @@
       <% end %>
       <br>
       <strong>Key Questions</strong>
-       <% @card.summaries.last.key_questions.each do |key_question| %>
+      <% @card.summaries.last.key_questions.each do |key_question| %>
         <li><%= key_question %></li>
       <% end %>
     <% end %>
@@ -77,5 +77,4 @@
   <%= link_to whatsapp_share_url, target: "_blank" do %>
     <i class="fa-brands fa-whatsapp fa-2xl" style="color: #075e54;"></i>
   <% end %>
-
 </div>

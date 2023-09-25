@@ -1,6 +1,10 @@
 .card-container {
-  padding-bottom: 80px;
+  max-height: 100dvh;
+  padding-top: 20px;
+  overflow: auto;
+  padding-bottom: 120px;
 }
+
 
 .show-container{
   padding-bottom: 100px;
@@ -58,4 +62,9 @@
 
 .delete-button {
   font-weight: bold;
+}
+
+.icon-button {
+  background-color: white;
+  color: black
 }
