@@ -14,7 +14,7 @@ class NewsArticle < ApplicationRecord
       q: "#{primary_keywords}",
       language: 'en',
       sortBy: 'publishedAt',
-      pageSize: 3
+      pageSize: 30
     )
 
     articles.map do |article_data|

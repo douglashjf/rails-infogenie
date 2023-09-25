@@ -43,8 +43,6 @@ class CardsController < ApplicationController
       # @card.update(categories: selected_categories)
       @card.categories = Category.where(tag: selected_categories)
 
-
-
       # save the results in a new instance of Summary
       summary = Summary.new(key_points:, key_questions:)
       summary.card = @card
@@ -52,6 +50,7 @@ class CardsController < ApplicationController
 
 
       news_articles = NewsArticle.fetch_articles(primary_keywords)
+      news_articles = news_articles.sample(3)
       @card.news_articles = news_articles
 
 
@@ -59,6 +58,10 @@ class CardsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def refresh_articles
+    @articles = @card.news_articles
   end
 
   def toggle_favourites

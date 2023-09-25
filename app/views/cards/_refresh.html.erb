@@ -1,0 +1,13 @@
+<% if @card.news_articles.present? %>
+  <ul>
+    <% @card.news_articles.sample(3).each do |article| %>
+      <li>
+        <p><%= article.description %></p>
+        <a href="<%= article.url %>" target="_blank"><%= article.title %></a>
+        <p><%= article.published_at %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No news articles available.</p>
+<% end %>
