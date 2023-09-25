@@ -1,11 +1,13 @@
+<div data-controller="loading-page">
+<%= render "shared/loading" %>
 <div class="container">
  <div>
     <%= link_to :back, class: "btn" do %>
         <i class="fas fa-arrow-left"></i>
       <% end %>
   </div>
-
-  <%= render 'form', card: @card %>
-
-
+  <div >
+    <%= render 'form', card: @card %>
+  </div>
+</div>
 </div>

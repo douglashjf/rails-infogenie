@@ -1,4 +1,4 @@
-<%= simple_form_for(card) do |f| %>
+<%= simple_form_for(card, data: { loading_page_target:"form" , action: "submit->loading-page#toggleLoadingPage"}) do |f| %>
   <%= f.input :primary_keywords, label: "What is the topic you want to learn today?", placeholder: "Ex: Genie", input_html: { class: "italic-placeholder" } %>
   <%= f.input :secondary_keywords, label: "Give up to 3 additional keywords for more context", placeholder: "Lamps Arabia", input_html: { class: "italic-placeholder" } %>
   <%= f.button :submit, class: "btn btn-success" %>
