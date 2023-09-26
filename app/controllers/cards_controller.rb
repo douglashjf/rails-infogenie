@@ -19,7 +19,7 @@ class CardsController < ApplicationController
   end
 
   def show
-    @articles = @card.news_articles.sample(3)
+    @articles = @card.news_articles.uniq.slice(@card.news_articles.length - 3, @card.news_articles.length)
   end
 
   def new
@@ -61,7 +61,10 @@ class CardsController < ApplicationController
   end
 
   def refresh_articles
-    @articles = @card.news_articles.sample(3)
+    news_articles = NewsArticle.fetch_articles(@card.primary_keywords)
+
+    @card.news_articles << news_articles
+    @articles = @card.news_articles.uniq.slice(@card.news_articles.length - 3, @card.news_articles.length)
 
     respond_to do |format|
       format.html

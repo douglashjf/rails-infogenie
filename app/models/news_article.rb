@@ -17,7 +17,7 @@ class NewsArticle < ApplicationRecord
       pageSize: 30
     )
 
-    articles.reject { |article| article.title == "[Removed]" }.map do |article_data|
+    articles.sample(3).reject { |article| article.title == "[Removed]" }.map do |article_data|
       NewsArticle.new(
         title: article_data.title,
         description: article_data.description,
