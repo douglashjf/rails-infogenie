@@ -1,7 +1,7 @@
 require 'json'
 
 class CardsController < ApplicationController
-  before_action :set_cards, only: %i[show toggle_favourites destroy]
+  before_action :set_cards, only: %i[show toggle_favourites destroy refresh_articles]
 
   def index
     if user_signed_in? && current_user.categories.present?
@@ -19,6 +19,7 @@ class CardsController < ApplicationController
   end
 
   def show
+    @articles = @card.news_articles.sample(3)
   end
 
   def new
@@ -50,7 +51,6 @@ class CardsController < ApplicationController
 
 
       news_articles = NewsArticle.fetch_articles(primary_keywords)
-      news_articles = news_articles.sample(3)
       @card.news_articles = news_articles
 
 
@@ -61,7 +61,12 @@ class CardsController < ApplicationController
   end
 
   def refresh_articles
-    @articles = @card.news_articles
+    @articles = @card.news_articles.sample(3)
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "refresh", locals: { articles: @articles }, formats: [:html] }
+    end
   end
 
   def toggle_favourites

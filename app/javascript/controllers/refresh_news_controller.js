@@ -3,19 +3,20 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="refresh-news"
 export default class extends Controller {
   static values = { cardId: Number };
+  static targets = ["renderNews"]
 
   connect() {
     }
 
   // create refreshArticles action - which finds a card based on id (stimulus values)
   refreshArticles() {
-    const url = `cards/${this.cardIdValue}/refresh_articles`
+    const url = `http://localhost:3000/cards/${this.cardIdValue}/refresh_articles`
     fetch(url, {headers: {"Accept": "text/plain"}})
       // send via AJAX: pass the response as text, with data we get back we will look for target we gave to partial
       .then(response => response.text())
       .then((data) => {
         // this.target.outerHTML = data we get back (the 3 new articles we've fetched) -- as we want to replace entire partial
-        this.listTarget.outerHTML = data
+        this.renderNewsTarget.outerHTML = data
       })
     }
 }
