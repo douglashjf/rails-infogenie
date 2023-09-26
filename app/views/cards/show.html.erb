@@ -77,17 +77,12 @@
     <div class="comments m-2" data-controller="insert-in-comment">
       <h5><strong>Comments</strong></h5>
       <div data-insert-in-comment-target="items">
-        <ul>
-          <% @card.comments.each do |comment| %>
-            <li>
-              <strong><%= comment.user.first_name %>:</strong>
-              <%= render 'cards/comment', comment: comment %>
-            </li>
-            <% end %>
-        </ul>
+        <% @card.comments.each do |comment| %>
+          <%= render 'cards/comment', comment: comment %>
+        <% end %>
       </div>
 
-        <%= render partial: 'commentform', locals: { card: @card } %>
+        <%= render partial: 'commentform', locals: { card: @card, comment: Comment.new} %>
 
     </div>
 

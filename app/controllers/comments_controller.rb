@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save!
-        format.html { redirect_to @card }
+        format.html { redirect_to card_path(@card) }
         format.json
       else
         format.html { render 'card/show', status: :unprocessable_entity }
