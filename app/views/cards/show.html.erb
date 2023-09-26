@@ -56,7 +56,7 @@
     <% end %>
   </ul>
 
-    <div class="news-centre m-2" data-controller="refresh-news" data-refresh-news-card-id-value="<%= @card.id %>">
+    <div class="news-centre m-2" data-controller="refresh-news" data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
       <h5><strong>News Center</strong></h5>
       <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="btn btn-primary">Refresh</button>
       <%= render 'refresh' %>

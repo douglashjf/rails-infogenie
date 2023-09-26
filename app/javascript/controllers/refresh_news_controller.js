@@ -3,14 +3,14 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="refresh-news"
 export default class extends Controller {
   static values = { cardId: Number };
-  static targets = ["renderNews"]
+  static targets = ["renderNews", "link"]
 
   connect() {
     }
 
   // create refreshArticles action - which finds a card based on id (stimulus values)
   refreshArticles() {
-    const url = `http://localhost:3000/cards/${this.cardIdValue}/refresh_articles`
+    const url = this.linkTarget.getAttribute("data-url")
     fetch(url, {headers: {"Accept": "text/plain"}})
       // send via AJAX: pass the response as text, with data we get back we will look for target we gave to partial
       .then(response => response.text())
