@@ -1,14 +1,15 @@
-<div data-refresh-news-target="renderNews">
+<div data-refresh-news-target="renderNews" >
   <% if @articles.present? %>
-    <ul>
+
       <% @articles.each do |article| %>
-        <li>
-          <p><%= article.description %></p>
-          <a href="<%= article.url %>" target="_blank"><%= article.title %></a>
-          <p><%= article.published_at %></p>
-        </li>
+        <hr>
+        <p><%= article.published_at.in_time_zone('Asia/Singapore').strftime('%d %b %l:%M%P') %></p>
+        <p><%= article.description %></p>
+        <a href="<%= article.url %>" target="_blank"><%= article.title %></a>
+
+
       <% end %>
-    </ul>
+
   <% else %>
     <p>No news articles available.</p>
   <% end %>
