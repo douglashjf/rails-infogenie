@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :cards, except: %i[edit update] do
     member do
       post :toggle_favourites
+      get :refresh_articles
     end
     resources :comments
     resources :news_articles, only: %i[index show]
