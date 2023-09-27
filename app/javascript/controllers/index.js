@@ -13,6 +13,9 @@ application.register("fun-fact", FunFactController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InsertInCommentController from "./insert_in_comment_controller"
+application.register("insert-in-comment", InsertInCommentController)
+
 import LoadingPageController from "./loading_page_controller"
 application.register("loading-page", LoadingPageController)
 

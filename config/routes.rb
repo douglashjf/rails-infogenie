@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post :toggle_favourites
       get :refresh_articles
     end
+    resources :comments
     resources :news_articles, only: %i[index show]
   end
 

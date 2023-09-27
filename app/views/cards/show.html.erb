@@ -1,4 +1,4 @@
-<div class="container show-container">
+<div class="container show-container" >
   <div>
     <%= link_to :back, class: "btn" do %>
         <i class="fas fa-arrow-left"></i>
@@ -62,8 +62,18 @@
       <%= render 'refresh' %>
     </div>
 
-  <hr>
-  <h4>Comments (0)</h4>
+    <div class="comments m-2" data-controller="insert-in-comment">
+      <h5><strong>Comments</strong></h5>
+      <div data-insert-in-comment-target="items">
+        <% @card.comments.each do |comment| %>
+          <%= render 'cards/comment', comment: comment %>
+        <% end %>
+      </div>
+
+        <%= render partial: 'commentform', locals: { card: @card, comment: Comment.new} %>
+
+    </div>
+
 
   <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
   <%#= link_to "", whatsapp_share_url, class: "fab fa-whatsapp" %>
