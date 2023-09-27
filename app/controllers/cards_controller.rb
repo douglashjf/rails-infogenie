@@ -1,7 +1,7 @@
 require 'json'
 
 class CardsController < ApplicationController
-  before_action :set_cards, only: %i[show toggle_favourites destroy]
+  before_action :set_cards, only: %i[show toggle_favourites destroy refresh_articles]
 
   def index
     if user_signed_in? && current_user.categories.present?
@@ -19,6 +19,7 @@ class CardsController < ApplicationController
   end
 
   def show
+    @articles = @card.news_articles.uniq.slice(@card.news_articles.length - 3, @card.news_articles.length)
   end
 
   def new
@@ -43,8 +44,6 @@ class CardsController < ApplicationController
       # @card.update(categories: selected_categories)
       @card.categories = Category.where(tag: selected_categories)
 
-
-
       # save the results in a new instance of Summary
       summary = Summary.new(key_points:, key_questions:)
       summary.card = @card
@@ -58,6 +57,18 @@ class CardsController < ApplicationController
       redirect_to card_path(@card)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def refresh_articles
+    news_articles = NewsArticle.fetch_articles(@card.primary_keywords)
+
+    @card.news_articles << news_articles
+    @articles = @card.news_articles.uniq.slice(@card.news_articles.length - 3, @card.news_articles.length)
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "refresh", locals: { articles: @articles }, formats: [:html] }
     end
   end
 

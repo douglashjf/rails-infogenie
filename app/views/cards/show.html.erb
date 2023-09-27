@@ -56,22 +56,10 @@
     <% end %>
   </ul>
 
-    <div class="news-centre m-2">
+    <div class="news-centre m-2 position-relative" data-controller="refresh-news" data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
       <h5><strong>News Center</strong></h5>
-      <% if @card.news_articles.present? %>
-        <ul>
-          <% @card.news_articles.each do |article| %>
-            <li>
-              <a href="<%= article.url %>" target="_blank"><%= article.title %></a>
-              <p><%= article.description %></p>
-              <p><%= article.published_at %></p>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No news articles available.</p>
-        <button class="btn btn-primary">+ Follow</button>
-      <% end %>
+      <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="refresh-button">Refresh</button>
+      <%= render 'refresh' %>
     </div>
 
   <hr>
