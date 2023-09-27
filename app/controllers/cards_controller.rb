@@ -49,6 +49,8 @@ class CardsController < ApplicationController
       summary.card = @card
       summary.save!
 
+      # generate image
+      create_image = generate(primary_keywords)
 
       news_articles = NewsArticle.fetch_articles(primary_keywords)
       @card.news_articles = news_articles
@@ -109,5 +111,16 @@ class CardsController < ApplicationController
     return parsed_response["key_points"] if query == "key points"
     return parsed_response["key_questions"] if query == "key questions"
     return parsed_response["selected_categories"] if query == "selected categories"
+  end
+
+  def generate(primary_keywords)
+    # construct the prompt
+    prompt = "Oil painting of #{primary_keywords}"
+
+    # Call the API with the params
+    image_url = OpenaiService.new(prompt).generate_dalle_image
+    # API will return results
+
+    # save URL as string in the card
   end
 end
