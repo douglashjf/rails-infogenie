@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :favourites, only: :index
   resources :categories, only: %i[edit update]
+  get "/cron", to: "alert_articles#cron"
+
   # Defines the root path route ("/")
   # root "articles#index"
 end
