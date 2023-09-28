@@ -11,11 +11,8 @@ class AlertArticlesController < ApplicationController
         # favouritesarray = favourites_array_of_array.flatten
     # which cards are favourites
 
+    # list of fav users
     favourite_users = Favourite.all.map(&:user)
-    favourite_users.each do |user|
-      NewsMailer.with(user:, email: user.email).news_alert.deliver_later
-    end
-
     # list of favourite cards
     favourite_cards = Card.where(user_id: favourite_users.pluck(:id))
     # iterate over favourite cards, and call api and add refreshed news to array
@@ -23,5 +20,11 @@ class AlertArticlesController < ApplicationController
       news_articles = NewsArticle.fetch_articles(card.primary_keywords)
       card.news_articles << news_articles
     end
+
+
+    favourite_users.each do |user|
+      NewsMailer.with(user:, email: user.email).news_alert.deliver_later
+    end
+
   end
 end
