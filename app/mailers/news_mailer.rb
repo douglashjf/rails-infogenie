@@ -9,7 +9,6 @@ class NewsMailer < ApplicationMailer
     @user = params[:user]
     @email = params[:email]
 
-
     @greeting = "Hi"
 
     mail(
