@@ -15,7 +15,8 @@ module RailsInfogenie
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-
+    # Letting Rails app know that the active_job queue will be using sidekiq
+    config.active_job.queue_adapter = :sidekiq
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -23,5 +24,7 @@ module RailsInfogenie
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+
   end
 end
