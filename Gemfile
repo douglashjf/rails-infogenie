@@ -82,3 +82,6 @@ gem "ruby-openai"
 gem "pg_search"
 
 gem "news-api"
+
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
