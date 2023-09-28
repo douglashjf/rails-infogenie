@@ -10,8 +10,10 @@ class AlertArticlesController < ApplicationController
     end
     favouritesarray = favourites_array_of_array.flatten
     # which cards are favourites
-    favorite_users = Favorite.all.map(&:user)
-    favorite_cards = Card.where(user_id: favorite_users.pluck(:id))
+    favourite_users = Favourite.all.map(&:user)
+    favourite_cards = Card.where(user_id: favourite_users.pluck(:id))
     # list of favourite cards
+
+    NewsMailer.with(user: favourite_users[0].first_name, emails: User.all.pluck(:email)).news_alert.deliver_later
   end
 end
