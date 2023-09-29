@@ -9,10 +9,9 @@ class NewsMailer < ApplicationMailer
     @user = params[:user]
     @email = params[:email]
 
-    @greeting = "Hi"
 
     mail(
-      from: "Jason <support@infogenie.com>",
+      from: "Natasha <support@infogenie.com>",
       to: email_address_with_name(@email, @user.first_name),
       subject: "#{DateTime.now.strftime('%d-%b-%Y')} News"
     )
