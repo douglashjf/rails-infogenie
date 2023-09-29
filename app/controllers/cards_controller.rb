@@ -99,7 +99,7 @@ class CardsController < ApplicationController
   end
 
   def params_cards
-    params.require(:card).permit(:primary_keywords, :secondary_keywords)
+    params.require(:card).permit(:primary_keywords, :secondary_keywords, :image_url)
   end
 
   def call_api(primary_keywords, secondary_keywords, query)
@@ -118,7 +118,7 @@ class CardsController < ApplicationController
 
   def generate_image_url(primary_keywords)
     # construct the prompt
-    prompt = "Pixel art of #{primary_keywords}"
+    prompt = "Picasso style painting of #{primary_keywords}"
 
     # Call the API with the params
     image_url = OpenaiService.new(prompt).generate_dalle_image

@@ -5,7 +5,7 @@
       <% end %>
   </div>
 
-  <div class="d-flex justify-content-start align-items-center">
+  <div class="d-flex justify-content-between align-items-center mb-3">
     <div >
       <div class="card-title">
         <%= @card.primary_keywords %>
@@ -57,8 +57,10 @@
   </ul>
 
   <%# Image generated from Dall-E %>
-  <% if @card.image_url.present?  %>
-    <%= image_tag @card.image_url %>
+  <% if @card.image_url.present? %>
+    <div class="text-center mb-3">
+      <%= image_tag @card.image_url, class: "img-fluid", style: "max-width: 70%;" %>
+    </div>
   <% end %>
 
     <div class="news-centre m-2 position-relative" data-controller="refresh-news" data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">

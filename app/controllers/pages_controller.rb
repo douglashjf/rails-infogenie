@@ -4,6 +4,5 @@ class PagesController < ApplicationController
 
 
   def home
-    response = OpenaiService.new("").generate_dalle_image
   end
 end

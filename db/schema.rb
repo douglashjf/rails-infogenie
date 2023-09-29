@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_25_030450) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_034536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_030450) do
     t.string "primary_keywords"
     t.string "secondary_keywords"
     t.datetime "deleted_at"
+    t.string "image_url"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
