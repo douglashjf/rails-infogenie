@@ -118,7 +118,7 @@ class CardsController < ApplicationController
 
   def generate_image_url(primary_keywords)
     # construct the prompt
-    prompt = "Picasso style painting of #{primary_keywords}"
+    prompt = "Mondrian-style realistic painting of #{primary_keywords}"
 
     # Call the API with the params
     image_url = OpenaiService.new(prompt).generate_dalle_image

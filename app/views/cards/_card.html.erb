@@ -8,6 +8,11 @@
               <div class="card-body">
                 <div class="card-title"><%= card.primary_keywords %></div>
                 <div class="card-subtitle"><%= card.secondary_keywords %></div>
+                <% if card.image_url.present? %>
+                  <div class="card-image">
+                    <%= image_tag card.image_url, class: "img-fluid" %>
+                  </div>
+                <% end %>
                 <p>Created by: <%= card.user.first_name %></p>
                 <% card.categories.each do |category| %>
                   <%= button_tag class: "icon-button" do %>
