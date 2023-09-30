@@ -83,5 +83,5 @@ gem "pg_search"
 
 gem "news-api"
 
-gem "sidekiq"
+gem "sidekiq", "~> 6.5", ">= 6.5.9"
 gem "sidekiq-failures", "~> 1.0"
