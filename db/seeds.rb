@@ -1,5 +1,7 @@
 puts "Clearing old data"
 
+Comment.destroy_all
+NewsArticle.destroy_all
 UserCategory.destroy_all
 CardCategory.destroy_all
 Category.destroy_all
@@ -14,9 +16,9 @@ puts "Creating new data"
 
 # Create all users
 user_doug = User.create!(
-  first_name: "Doug",
-  last_name: "Hsu",
-  email: "doug@gmail.com",
+  first_name: "Jack",
+  last_name: "Khong",
+  email: "jackinfogenie@gmail.com",
   password: "password"
 )
 puts "Created Doug 2 cards 2 favourites (1 card deleted by Jacob)"
