@@ -16,9 +16,9 @@ puts "Creating new data"
 
 # Create all users
 user_doug = User.create!(
-  first_name: "JacobBOSS",
+  first_name: "Jack",
   last_name: "Khong",
-  email: "jacobkhong93@gmail.com",
+  email: "jackinfogenie@gmail.com",
   password: "password"
 )
 puts "Created Doug 2 cards 2 favourites (1 card deleted by Jacob)"
