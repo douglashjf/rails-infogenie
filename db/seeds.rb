@@ -1,5 +1,7 @@
 puts "Clearing old data"
 
+Comment.destroy_all
+NewsArticle.destroy_all
 UserCategory.destroy_all
 CardCategory.destroy_all
 Category.destroy_all
