@@ -10,6 +10,6 @@ if url
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = { url: url, protocol: 2 }
+    config.redis = { url: url }
   end
 end
