@@ -1,4 +1,4 @@
-class NewsRefreshJob < ApplicationJob
+class NewsAlertJob < ApplicationJob
   queue_as :default
 
   def perform

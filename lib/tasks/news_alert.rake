@@ -1,7 +1,6 @@
-namespace :news_refresh do
+namespace :news_alerts do
   desc "refresh favourite news article"
-  task refresh: :environment do
+  task alert: :environment do
     NewsRefreshJob.perform_now
   end
-
 end
