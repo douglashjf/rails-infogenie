@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'herokuapp.com', protocol: "https" }
+  config.action_mailer.default_url_options = { host: 'rails-infogenie-doug-371c6ea6a02e.herokuapp.com', protocol: "https" }
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
