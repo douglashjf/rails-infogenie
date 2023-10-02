@@ -25,7 +25,7 @@
 
   <%# Section below is code pertaining to drawer/offcanvas %>
 
-  <div class="offcanvas offcanvas-start text-bg-dark rounded-top-right" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel" style="width: 200px;">
+  <div class="offcanvas offcanvas-start text-bg-primary rounded-top-right" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel" style="width: 200px;">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title mt-3" id="offcanvasDarkLabel">InfoGenie</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -38,25 +38,18 @@
           </div>
 
           <div class="mb-3 offcanvas-options">
-            Analytics
-          </div>
-
-          <div class="mb-3 offcanvas-options">
-            Reports
-          </div>
-
-          <div class="mb-3 offcanvas-options">
             Alerts
           </div>
 
           <div class="mb-3 offcanvas-options">
-            Help
+            FAQ
           </div>
           <% if user_signed_in? %>
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item navbar-topics-link" %>
           <% end %>
-          <div class="mt-auto offcanvas-options">
-            <i class="fa-solid fa-gear"></i> Profile Settings
+
+          <div class="mt-auto navbar-topics-link">
+            <i class="fa-solid fa-gear navbar-topics-link"></i> <%= link_to 'Profile Settings', edit_user_registration_path, class: "navbar-topics-link" %>
           </div>
 
         </div>

@@ -11,30 +11,30 @@
 
 
   <nav class="navbar fixed-bottom">
-    <div class="navbar-rectangle">
+    <div class="navbar-rectangle bg-primary">
       <div class="container-fluid d-flex justify-content-between" data-controller="navbar-active" >
         <div>
-          <%= link_to cards_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "home" } do %>
-            <i class="fa-solid fa-house-user nav-icon"></i>
+          <%= link_to cards_path, class: "nav-button d-flex flex-column align-items-center text-secondary", data: { navbar_active_target: "home" } do %>
+            <i class="fa-solid fa-house-user nav-icon "></i>
             Home
           <% end %>
         </div>
         <div>
-          <%= link_to new_card_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "create" } do %>
-            <i class="fa-solid fa-circle-plus nav-icon"></i>
+          <%= link_to new_card_path, class: "nav-button d-flex flex-column align-items-center text-secondary", data: { navbar_active_target: "create" } do %>
+            <i class="fa-solid fa-circle-plus nav-icon "></i>
             Create
           <% end %>
         </div>
 
         <div>
-          <%= link_to favourites_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "favourite" } do %>
-            <i class="fa-solid fa-heart nav-icon"></i>
+          <%= link_to favourites_path, class: "nav-button d-flex flex-column align-items-center text-secondary", data: { navbar_active_target: "favourite" } do %>
+            <i class="fa-solid fa-heart nav-icon "></i>
             Favourite
           <% end %>
         </div>
         <div>
-          <%= link_to edit_user_registration_path, class: "nav-button d-flex flex-column align-items-center", data: { navbar_active_target: "profile" } do %>
-            <i class="fa-regular fa-user nav-icon"></i>
+          <%= link_to edit_user_registration_path, class: "nav-button d-flex flex-column align-items-center text-secondary", data: { navbar_active_target: "profile" } do %>
+            <i class="fa-regular fa-user nav-icon "></i>
             Profile
           <% end %>
         </div>
