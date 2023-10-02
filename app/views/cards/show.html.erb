@@ -1,26 +1,50 @@
 <div class="container show-container" >
   <div class="d-flex justify-content-between align-items-center" data-controller="ellipsis-options">
     <%= link_to :back, class: "btn" do %>
-        <i class="fa-solid fa-chevron-left text-primary fs-3"></i>
+        <i class="fa-solid fa-chevron-left text-primary fs-3 px-2"></i>
     <% end %>
-    <i class="fa-solid fa-ellipsis-vertical text-primary fs-2 px-3 mx-1" data-action="click->ellipsis-options#openDropdown" ></i>
-    <div class="options-dropdown bg-primary d-none" data-ellipsis-options-target="dropdown" ></div>
+
+    <!-- modal for sharing to whatsapp and twitter -->
+    <i class="fa-solid fa-ellipsis-vertical text-primary fs-2 px-3 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content options-dropdown bg-primary">
+
+          <div class="modal-body d-flex flex-column justify-content-center align-items-left px-0 py-0 ps-3 ">
+            <div class="d-flex">
+              <%= link_to whatsapp_share_url, target: "_blank", class:"d-flex align-items-center" do %>
+                <p class="text-white my-0">Share on Whatsapp</p>
+                <i class="fa-brands fa-whatsapp fs-5 ms-2" style="color: white;"></i>
+              <% end %>
+            </div>
+            <div class="d-flex text-white"> Share to Twitter <i class="fa-brands fa-twitter fs-5 ms-2"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="d-flex justify-content-start align-items-center">
-    <div >
+  <!-- need to add midjourney banner over here -->
+  <div class="py-3 bg-primary mt-2">Midjourney image</div>
+
+  <div class="d-flex justify-content-start align-items-center mt-3">
+    <div class="d-flex justify-content-equally">
       <div class="card-title">
         <%= @card.primary_keywords %>
       </div>
-    </div>
-    <div >
-      <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
+      <div class="d-flex align-items-center ms-3">
+        <%= link_to card_path(@card), class: "text-primary fs-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+      </div>
+      <div class="d-flex align-items-center ms-3" data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
         <% if current_user.favourites.exists?(card: @card) %>
-          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button px-0", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
             <i class="fa-solid fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
           <% end %>
         <% else %>
-          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button px-0", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
             <i class="fa-regular fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
             <% end %>
         <% end %>
@@ -28,18 +52,20 @@
     </div>
   </div>
 
+  <div class="card-poster text-start text-secondary">
+      <div class="text-right">Posted by: <%= @card.user.first_name %></div>
+    </div>
+
   <div class="row">
     <div class="category-posters d-flex justify-content-between">
       <div class="category">
         <% @card.categories.each do |category| %>
-          <div class="category-tag">
+          <%= button_tag class: "icon-button" do %>
+            <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
             <%= category.tag %>
-          </div>
+          <% end %>
         <% end %>
       </div>
-    </div>
-    <div class="card-poster">
-      <div class="text-right">Posted by: <%= @card.user.first_name %></div>
     </div>
   </div>
   <hr>
@@ -77,9 +103,7 @@
     </div>
 
 
-  <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
   <%#= link_to "", whatsapp_share_url, class: "fab fa-whatsapp" %>
-  <%= link_to whatsapp_share_url, target: "_blank" do %>
-    <i class="fa-brands fa-whatsapp fa-2xl" style="color: #075e54;"></i>
-  <% end %>
+
 </div>

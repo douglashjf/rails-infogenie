@@ -55,7 +55,6 @@
 .card-poster {
   font-style: italic;
   font-size: 15px;
-  text-align: right;
 }
 
 
@@ -66,5 +65,7 @@
 
 .icon-button {
   background-color: white;
-  color: black
+  color: black;
+  border-radius: 5px;
+  border: 1px solid;
 }
