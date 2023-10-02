@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   openDropdown() {
-    console.log('click working?');
+
     this.dropdownTarget.classList.remove('d-none');
   }
 }
