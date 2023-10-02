@@ -1,8 +1,10 @@
 <div class="container show-container" >
-  <div>
+  <div class="d-flex justify-content-between align-items-center" data-controller="ellipsis-options">
     <%= link_to :back, class: "btn" do %>
-        <i class="fas fa-arrow-left"></i>
-      <% end %>
+        <i class="fa-solid fa-chevron-left text-primary fs-3"></i>
+    <% end %>
+    <i class="fa-solid fa-ellipsis-vertical text-primary fs-2 px-3 mx-1" data-action="click->ellipsis-options#openDropdown" ></i>
+    <div class="options-dropdown bg-primary d-none" data-ellipsis-options-target="dropdown" ></div>
   </div>
 
   <div class="d-flex justify-content-start align-items-center">

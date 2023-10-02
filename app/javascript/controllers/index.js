@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import EllipsisOptionsController from "./ellipsis_options_controller"
+application.register("ellipsis-options", EllipsisOptionsController)
+
 import EmailTestController from "./email_test_controller"
 application.register("email-test", EmailTestController)
 
