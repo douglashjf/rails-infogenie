@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -82,3 +82,6 @@ gem "ruby-openai"
 gem "pg_search"
 
 gem "news-api"
+
+gem "sidekiq", "~> 6.5", ">= 6.5.9"
+gem "sidekiq-failures", "~> 1.0"

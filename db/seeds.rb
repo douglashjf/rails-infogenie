@@ -1,5 +1,7 @@
 puts "Clearing old data"
 
+Comment.destroy_all
+NewsArticle.destroy_all
 UserCategory.destroy_all
 CardCategory.destroy_all
 Category.destroy_all
@@ -13,13 +15,13 @@ User.destroy_all
 puts "Creating new data"
 
 # Create all users
-user_doug = User.create!(
-  first_name: "Doug",
-  last_name: "Hsu",
-  email: "doug@gmail.com",
+user_jack = User.create!(
+  first_name: "Jack",
+  last_name: "Khong",
+  email: "jackinfogenie@gmail.com",
   password: "password"
 )
-puts "Created Doug 2 cards 2 favourites (1 card deleted by Jacob)"
+puts "Created jack 2 cards 2 favourites (1 card deleted by Jacob)"
 
 user_jacob = User.create!(
   first_name: "Jacob",
@@ -64,7 +66,7 @@ end
 
 # Card 1
 card_1 = Card.create!(
-  user_id: user_doug.id,
+  user_id: user_jack.id,
   primary_keywords: "Cryptocurrency",
   secondary_keywords: "Trading",
   categories: [categories_for_card[8], categories_for_card[9]]
@@ -87,7 +89,7 @@ puts "Created summary 1"
 
 # Second Card
 card_2 = Card.create!(
-  user_id: user_doug.id,
+  user_id: user_jack.id,
   primary_keywords: "Music",
   secondary_keywords: "Theory",
   categories: [categories_for_card[13], categories_for_card[19]]
@@ -216,16 +218,16 @@ Summary.create!(
 )
 puts "Created summary 7"
 
-# Create favourites for Doug (1x existing, 1x deleted)
+# Create favourites for jack (1x existing, 1x deleted)
 
 # Existing
 Favourite.create!(
-  user_id: user_doug.id,
+  user_id: user_jack.id,
   card_id: card_3.id
 )
 
 # deleted card
 Favourite.create!(
-  user_id: user_doug.id,
+  user_id: user_jack.id,
   card_id: card_4.id
 )

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import EmailTestController from "./email_test_controller"
+application.register("email-test", EmailTestController)
+
 import FavouritesButtonController from "./favourites_button_controller"
 application.register("favourites-button", FavouritesButtonController)
 
