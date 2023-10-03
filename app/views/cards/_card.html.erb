@@ -1,57 +1,119 @@
 <div class="container">
-  <div class="row">
-    <div class="d-flex justify-content-center flex-wrap align-items-center">
-      <% if @cards.present? %>
-        <% @cards.each do |card| %>
-          <div class="card col-12 mb-3 rounded-lg" style="overflow: hidden;">
-            <a href="<%= card_path(card) %>" class="card-link" style="text-decoration: none; color: inherit;">
-              <% if card.image_url.present? %>
-                <div class="card-img-top" style="background-image: url(<%= card.image_url %>); height: 150px; background-size: cover; background-position: center;"></div>
-              <% end %>
-              <div class="card-body" style="padding: 0.5rem 1rem;">
-                <div class="row align-items-start">
-                  <div class="col-8">
-                    <h5 class="card-title mb-1 text-start"><%= card.primary_keywords.capitalize %></h5>
+  <% if @categories.present? %>
+    <% @categories.each do |category| %>
+      <% if @cards_by_category[category].present? %>
+        <div class="category-heading">
+          <h1><%= category.tag %></h1>
+        </div>
+      <div class="row">
+        <div class="d-flex justify-content-center flex-wrap align-items-center">
+            <% @cards_by_category[category].each do |card| %>
+              <div class="card col-12 mb-3 rounded-lg" style="overflow: hidden;">
+                <a href="<%= card_path(card) %>" class="card-link" style="text-decoration: none; color: inherit;">
+                  <% if card.image_url.present? %>
+                    <div class="card-img-top" style="background-image: url(<%= card.image_url %>); height: 150px; background-size: cover; background-position: center;"></div>
+                  <% end %>
+                  <div class="card-body" style="padding: 0.5rem 1rem;">
+                    <div class="row align-items-start">
+                      <div class="col-8">
+                        <h5 class="card-title mb-1 text-start"><%= card.primary_keywords.capitalize %></h5>
+                      </div>
+                      <div class="col-4 text-end">
+                        <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
+                          <% if current_user.favourites.exists?(card: card) %>
+                            <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+                              <i class="fa-solid fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+                            <% end %>
+                          <% else %>
+                            <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+                              <i class="fa-regular fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8">
+                        <h6 class="card-subtitle mb-2 text-muted text-start"><%= card.secondary_keywords.capitalize %></h6>
+                      </div>
+                      <div class="col-4 text-end">
+                        <p class="card-text"><small class="text-muted">Created on <%= card.created_at.strftime("%d/%m/%Y") %></small></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-8 text-start">
+                        <p class="card-text mb-1 text-start">
+                          <% card.categories.each do |category| %>
+                            <span class="badge bg-primary"><%= category.tag %></span>
+                          <% end %>
+                        </p>
+                        <p class="card-text text-start"><small><%= card.comments.count %> comments</small></p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-4 text-end">
-                    <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
-                      <% if current_user.favourites.exists?(card: card) %>
-                        <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
-                          <i class="fa-solid fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+                </a>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <% if @cards_by_category_all.present? %>
+      <h1>All Categories</h1>
+      <div class="row">
+        <div class="d-flex justify-content-center flex-wrap align-items-center">
+          <% @cards_by_category_all.each do |card| %>
+            <div class="card col-12 mb-3 rounded-lg" style="overflow: hidden;">
+              <a href="<%= card_path(card) %>" class="card-link" style="text-decoration: none; color: inherit;">
+                <% if card.image_url.present? %>
+                  <div class="card-img-top" style="background-image: url(<%= card.image_url %>); height: 150px; background-size: cover; background-position: center;"></div>
+                <% end %>
+                <div class="card-body" style="padding: 0.5rem 1rem;">
+                  <div class="row align-items-start">
+                    <div class="col-8">
+                      <h5 class="card-title mb-1 text-start"><%= card.primary_keywords.capitalize %></h5>
+                    </div>
+                    <div class="col-4 text-end">
+                      <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
+                        <% if current_user.favourites.exists?(card: card) %>
+                          <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+                            <i class="fa-solid fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+                          <% end %>
+                        <% else %>
+                          <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+                            <i class="fa-regular fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+                          <% end %>
                         <% end %>
-                      <% else %>
-                        <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
-                          <i class="fa-regular fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8">
+                      <h6 class="card-subtitle mb-2 text-muted text-start"><%= card.secondary_keywords.capitalize %></h6>
+                    </div>
+                    <div class="col-4 text-end">
+                      <p class="card-text"><small class="text-muted">Created on <%= card.created_at.strftime("%d/%m/%Y") %></small></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8 text-start">
+                      <p class="card-text mb-1 text-start">
+                        <% card.categories.each do |category| %>
+                          <span class="badge bg-primary"><%= category.tag %></span>
                         <% end %>
-                      <% end %>
+                      </p>
+                      <p class="card-text text-start"><small><%= card.comments.count %> comments</small></p>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-8">
-                    <h6 class="card-subtitle mb-2 text-muted text-start"><%= card.secondary_keywords.capitalize %></h6>
-                  </div>
-                  <div class="col-4 text-end">
-                    <p class="card-text"><small class="text-muted">Created on <%= card.created_at.strftime("%d/%m/%Y") %></small></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8 text-start">
-                    <p class="card-text mb-1 text-start">
-                      <% card.categories.each do |category| %>
-                        <span class="badge bg-primary"><%= category.tag %></span>
-                      <% end %>
-                    </p>
-                    <p class="card-text text-start"><small><%= card.comments.count %> comments</small></p>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        <% end %>
-      <% else %>
-        <p>No cards found.</p>
-      <% end %>
-    </div>
-  </div>
+              </a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <p>No cards found.</p>
+    <% end %>
+  <% end %>
 </div>

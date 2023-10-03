@@ -4,18 +4,37 @@ class CardsController < ApplicationController
   before_action :set_cards, only: %i[show toggle_favourites destroy refresh_articles]
 
   def index
-    if user_signed_in? && current_user.categories.present?
-      base_query = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
+    @categories = current_user.categories if user_signed_in? && current_user.categories.present?
+
+    if params[:query].present?
+      base_query = Card.active.search_by_keyword(params[:query])
     else
       base_query = Card.active
     end
 
-    if params[:query].present?
-      keyword_search = base_query.search_by_keyword(params[:query])
-      @cards = keyword_search
+    @cards_by_category = {}
+
+    if @categories.present?
+      @categories.each do |category|
+        cards_for_category = base_query.joins(:categories).where(categories: { id: category.id })
+        @cards_by_category[category] = cards_for_category
+      end
     else
-      @cards = base_query
+      @cards_by_category_all = base_query
     end
+    # if user_signed_in? && current_user.categories.present?
+    #   base_query = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
+    #   raise
+    # else
+    #   base_query = Card.active
+    # end
+
+    # if params[:query].present?
+    #   keyword_search = base_query.search_by_keyword(params[:query])
+    #   @cards = keyword_search
+    # else
+    #   @cards = base_query
+    # end
   end
 
   def show
