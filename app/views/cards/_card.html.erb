@@ -11,7 +11,7 @@
               <div class="card col-12 mb-3 rounded-lg" style="overflow: hidden;">
                 <a href="<%= card_path(card) %>" class="card-link" style="text-decoration: none; color: inherit;">
                   <% if card.image_url.present? %>
-                    <div class="card-img-top" style="background-image: url(<%= card.image_url %>); height: 150px; background-size: cover; background-position: center;"></div>
+                    <%= image_tag card.image_url, class: "card-img-top" %>
                   <% end %>
                   <div class="card-body" style="padding: 0.5rem 1rem;">
                     <div class="row align-items-start">
