@@ -36,3 +36,6 @@ application.register("selected-topics", SelectedTopicsController)
 
 import ShowSliderController from "./show_slider_controller"
 application.register("show-slider", ShowSliderController)
+
+import SwiperJsController from "./swiper_js_controller"
+application.register("swiper-js", SwiperJsController)

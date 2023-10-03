@@ -71,23 +71,47 @@
     </div>
   </div>
 
+  <% if @card.summaries.last.present?  %>
+    <strong>Key Points</strong>
+    <div class="swiper mySwiper" data-controller="swiper-js">
+      <div class="swiper-wrapper">
+          <% @card.summaries.last.key_points.each do |key_point| %>
+            <div class="swiper-slide">
+              <ul>
+                <li><%= key_point %></li>
+              </ul>
+            </div>
+          <% end %>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  <% end %>
+
+
+
+
+
 
   <%# Card content   %>
-
+  <!--
   <% if @card.summaries.last.present?  %>
     <div>
       <strong>Key Points</strong>
 
-      <div  data-controller="show-slider">
-        <div class="slider">
+      <div data-controller="show-slider">
+        <div class="slider swiper"  >
         <ul>
-          <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
+          <div class="swiper-wrapper" >
+            <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
 
-            <div class="slide slide-<%= i %>" style="transform: translateX(<%= i * 110 %>%) " data-show-slider-target="slides">
-              <li><%= key_point %></li>
-            </div>
+              <div class="slide slide-<%= i %> " style="transform: translateX(<%= i * 110 %>%) " data-show-slider-target="slides">
+                <li><%= key_point %></li>
+              </div>
 
-          <% end %>
+            <% end %>
+          </div>
         </ul>
         </div>
         <div class="slide-buttons">
@@ -102,6 +126,7 @@
       </div>
     </div>
     <div>
+    -->
     <!-- This is for Key Questions segment + slider -->
       <strong>Key Questions</strong>
       <div  data-controller="question-slider">
