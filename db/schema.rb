@@ -87,17 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_135116) do
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
-  create_table "news", force: :cascade do |t|
-    t.string "source_name"
-    t.string "title"
-    t.text "description"
-    t.string "url"
-    t.datetime "published_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "card_id"
-  end
-
   create_table "news_articles", force: :cascade do |t|
     t.text "title"
     t.text "description"
@@ -150,7 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_135116) do
   add_foreign_key "comments", "users"
   add_foreign_key "favourites", "cards"
   add_foreign_key "favourites", "users"
-  add_foreign_key "news", "cards"
+  add_foreign_key "news_articles", "cards"
   add_foreign_key "summaries", "cards"
   add_foreign_key "user_categories", "categories"
   add_foreign_key "user_categories", "users"
