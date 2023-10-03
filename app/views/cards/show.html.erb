@@ -71,9 +71,11 @@
     </div>
   </div>
 
+
+  <!--
   <% if @card.summaries.last.present?  %>
     <strong>Key Points</strong>
-    <div class="swiper mySwiper" data-controller="swiper-js">
+    <div class="swiper mySwiper" data-controller="swiper-js" >
       <div class="swiper-wrapper">
           <% @card.summaries.last.key_points.each do |key_point| %>
             <div class="swiper-slide">
@@ -88,31 +90,27 @@
       <div class="swiper-pagination"></div>
     </div>
   <% end %>
-
-
-
-
+  -->
 
 
   <%# Card content   %>
-  <!--
+
+
   <% if @card.summaries.last.present?  %>
     <div>
       <strong>Key Points</strong>
 
-      <div data-controller="show-slider">
-        <div class="slider swiper"  >
-        <ul>
-          <div class="swiper-wrapper" >
-            <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
-
-              <div class="slide slide-<%= i %> " style="transform: translateX(<%= i * 110 %>%) " data-show-slider-target="slides">
-                <li><%= key_point %></li>
-              </div>
-
-            <% end %>
-          </div>
-        </ul>
+      <div data-controller="show-slider" data-action="swipe->show-slider#swipe" data-swiper-delta-x-value="50" data-swiper-delta-y-value="0" data-swiper-direction-value="horizontal">
+        <div class="slider" data-show-slider-target="slider">
+          <ul>
+            <div >
+              <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
+                <div class="slide slide-<%= i %> " style="transform: translateX(<%= i * 110 %>%) " data-show-slider-target="slides">
+                  <li><%= key_point %></li>
+                </div>
+              <% end %>
+            </div>
+          </ul>
         </div>
         <div class="slide-buttons">
           <button class="slider_btn slider_btn-left text-center" data-action="click->show-slider#slideLeft"><</button>
@@ -126,8 +124,11 @@
       </div>
     </div>
     <div>
-    -->
+
+
+
     <!-- This is for Key Questions segment + slider -->
+
       <strong>Key Questions</strong>
       <div  data-controller="question-slider">
         <div class="q-slider">
@@ -155,7 +156,7 @@
 
 
     <div class="news-centre m-2 position-relative" data-controller="refresh-news" data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
-      <h5><strong>News Center</strong></h5>
+      <h2><strong>News Center</strong></h2>
       <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="refresh-button">Refresh</button>
       <%= render 'refresh' %>
     </div>
