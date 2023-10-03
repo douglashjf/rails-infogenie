@@ -1,5 +1,5 @@
-<div class="container show-container" >
-  <div class="d-flex justify-content-between align-items-center" data-controller="ellipsis-options">
+<div class="container show-container bg-white" >
+  <div class="d-flex justify-content-between align-items-center" >
     <%= link_to :back, class: "btn" do %>
         <i class="fa-solid fa-chevron-left text-primary fs-3 px-2"></i>
     <% end %>
@@ -33,11 +33,13 @@
       <div class="card-title">
         <%= @card.primary_keywords %>
       </div>
-      <div class="d-flex align-items-center ms-3">
-        <%= link_to card_path(@card), class: "text-primary fs-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-          <i class="fa-regular fa-trash-can"></i>
-        <% end %>
-      </div>
+      <% if @card.user == current_user %>
+        <div class="d-flex align-items-center ms-3">
+          <%= link_to card_path(@card), class: "text-primary fs-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      <% end %>
       <div class="d-flex align-items-center ms-3" data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
         <% if current_user.favourites.exists?(card: @card) %>
           <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button px-0", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
@@ -57,7 +59,7 @@
     </div>
 
   <div class="row">
-    <div class="category-posters d-flex justify-content-between">
+    <div class="category-posters d-flex justify-content-between mt-2 mb-4">
       <div class="category">
         <% @card.categories.each do |category| %>
           <%= button_tag class: "icon-button" do %>
@@ -68,21 +70,64 @@
       </div>
     </div>
   </div>
-  <hr>
+
+
   <%# Card content   %>
-    <ul>
-    <% if @card.summaries.last.present?  %>
+
+  <% if @card.summaries.last.present?  %>
+    <div>
       <strong>Key Points</strong>
-      <% @card.summaries.last.key_points.each do |key_point| %>
-        <li><%= key_point %></li>
-      <% end %>
-      <br>
+
+      <div  data-controller="show-slider" data-controller="points-swipe">
+        <div class="slider" data-action="touchstart->points-swipe#handleTouchStart">
+        <ul>
+          <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
+
+            <div class="slide slide-<%= i %>" style="transform: translateX(<%= i * 110 %>%) " data-show-slider-target="slides" >
+              <li><%= key_point %></li>
+            </div>
+
+          <% end %>
+        </ul>
+        </div>
+        <div class="slide-buttons">
+          <button class="slider_btn slider_btn-left text-center" data-action="click->show-slider#slideLeft"><</button>
+          <button class="slider_btn slider_btn-right text-center" data-action="click->show-slider#slideRight">></button>
+          <div class="dots">
+            <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
+              <button class="dots_dot" data-slide="<%= i %>" data-show-slider-target="dots" ></button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+    <!-- This is for Key Questions segment + slider -->
       <strong>Key Questions</strong>
-      <% @card.summaries.last.key_questions.each do |key_question| %>
-        <li><%= key_question %></li>
-      <% end %>
-    <% end %>
-  </ul>
+      <div  data-controller="question-slider">
+        <div class="q-slider">
+        <ul>
+          <% @card.summaries.last.key_questions.each_with_index do |key_question, i| %>
+
+            <div class="slide slide-<%= i %>" style="transform: translateX(<%= i * 110 %>%) " data-question-slider-target="qSlides" >
+              <li><%= key_question %></li>
+            </div>
+          <% end %>
+        </ul>
+        </div>
+        <div class="q-slide-buttons">
+          <button class="slider_btn slider_btn-left text-center" data-action="click->question-slider#slideLeft"><</button>
+          <button class="slider_btn slider_btn-right text-center" data-action="click->question-slider#slideRight">></button>
+          <div class="dots">
+            <% @card.summaries.last.key_questions.each_with_index do |key_point, i| %>
+              <button class="qdots_dot" data-slide="<%= i %>" data-question-slider-target="qDots" ></button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
 
     <div class="news-centre m-2 position-relative" data-controller="refresh-news" data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
       <h5><strong>News Center</strong></h5>

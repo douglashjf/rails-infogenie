@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import EllipsisOptionsController from "./ellipsis_options_controller"
-application.register("ellipsis-options", EllipsisOptionsController)
-
 import EmailTestController from "./email_test_controller"
 application.register("email-test", EmailTestController)
 
@@ -28,8 +25,17 @@ application.register("loading-page", LoadingPageController)
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)
 
+import PointsSwipeController from "./points_swipe_controller"
+application.register("points-swipe", PointsSwipeController)
+
+import QuestionSliderController from "./question_slider_controller"
+application.register("question-slider", QuestionSliderController)
+
 import RefreshNewsController from "./refresh_news_controller"
 application.register("refresh-news", RefreshNewsController)
 
 import SelectedTopicsController from "./selected_topics_controller"
 application.register("selected-topics", SelectedTopicsController)
+
+import ShowSliderController from "./show_slider_controller"
+application.register("show-slider", ShowSliderController)
