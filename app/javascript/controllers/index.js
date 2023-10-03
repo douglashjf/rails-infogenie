@@ -39,3 +39,6 @@ application.register("show-slider", ShowSliderController)
 
 import SwiperJsController from "./swiper_js_controller"
 application.register("swiper-js", SwiperJsController)
+
+import SwiperQuestionsController from "./swiper_questions_controller"
+application.register("swiper-questions", SwiperQuestionsController)

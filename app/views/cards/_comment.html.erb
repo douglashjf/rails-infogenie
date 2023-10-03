@@ -1,1 +1,5 @@
-<p><strong><%= comment.user.first_name %>:</strong><%= comment.content %></p>
+<div class="posted-comment py-2 px-2 mt-3">
+  <strong><%= comment.user.first_name %></strong>
+  <%= comment.created_at %>
+  <p class="mb-0 mt-1"><%= comment.content %></p>
+</div>

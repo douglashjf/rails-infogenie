@@ -4,7 +4,7 @@
       <% @articles.each do |article| %>
         <hr>
         <strong><p class="my-0"><%= article.title %></p></strong>
-        <a href="<%= article.url %>" target="_blank" class="text-decoration-none"><%= "#{URI.parse(article.url).host}"  %>
+        <a href="<%= article.url %>" target="_blank" class="text-decoration-none"><%= "#{URI.parse(article.url).host}"  %></a>
         <p class="text-secondary time"><%= article.published_at.in_time_zone('Asia/Singapore').strftime('%d %b %l:%M%P') %></p>
 
 

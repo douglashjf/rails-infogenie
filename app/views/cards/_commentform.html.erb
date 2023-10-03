@@ -1,6 +1,9 @@
-<%= simple_form_for([card, comment], data: { insert_in_comment_target: "form", action: "submit->insert-in-comment#send" } )do |f| %>
-    <%= f.input :content, input_html: { "data-target" => "insert-in-comment.hello" }, label: false,  as: :text, placeholder: 'Add a comment'%>
-    <%= f.submit' Post Comment' %>
+<%= simple_form_for([card, comment], data: { insert_in_comment_target: "form", action: "submit->insert-in-comment#send" }, class:"comment-form" )do |f| %>
+    <%= f.input :content,
+      input_html: { "data-target" => "insert-in-comment.hello", class: "comment"},
+      label: false,  as: :text, placeholder: 'Write your comment...' %>
+
+    <%= f.submit 'Add Comment', class:"btn btn-success text-white " %>
 <% end %>
 
 <%# data: { insert_in_comment_target: "form", action: "submit->insert-in-comment#send" } %>

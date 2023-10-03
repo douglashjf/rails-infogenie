@@ -6,7 +6,7 @@ import Swiper from 'swiper/bundle'
 export default class extends Controller {
 
   connect() {
-    new Swiper(this.element, {
+    new Swiper(".swiper-container", {
       slidesperView: 1,
       spaceBetween: 30,
       loop: true,
