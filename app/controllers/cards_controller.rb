@@ -49,6 +49,11 @@ class CardsController < ApplicationController
       summary.card = @card
       summary.save!
 
+      # generate image
+      image_url = generate_image_url(primary_keywords, secondary_keywords)
+
+      @card.image_url = image_url
+      @card.save!
 
       news_articles = NewsArticle.fetch_articles(primary_keywords)
       @card.news_articles = news_articles
@@ -94,7 +99,7 @@ class CardsController < ApplicationController
   end
 
   def params_cards
-    params.require(:card).permit(:primary_keywords, :secondary_keywords)
+    params.require(:card).permit(:primary_keywords, :secondary_keywords, :image_url)
   end
 
   def call_api(primary_keywords, secondary_keywords, query)
@@ -109,5 +114,21 @@ class CardsController < ApplicationController
     return parsed_response["key_points"] if query == "key points"
     return parsed_response["key_questions"] if query == "key questions"
     return parsed_response["selected_categories"] if query == "selected categories"
+  end
+
+  def generate_image_url(primary_keywords, secondary_keywords)
+    # construct the prompt
+    prompt = "Mondrian-style realistic painting of #{primary_keywords} with additional context of #{secondary_keywords}"
+
+    # Call the API with the params
+    image_url = OpenaiService.new(prompt).generate_dalle_image
+    # Download and upload the image to Cloudinary, and retrieve the new URL.
+    uploaded_image = Cloudinary::Uploader.upload(image_url)
+
+    # Use the 'secure_url' attribute from the Cloudinary upload response as your image_url.
+    cloudinary_url = uploaded_image['secure_url']
+
+    # save URL as string in the card
+    return cloudinary_url
   end
 end

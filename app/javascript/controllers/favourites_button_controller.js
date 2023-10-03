@@ -6,7 +6,8 @@ export default class extends Controller {
   connect() {
   }
 
-  toggle() {
+  toggle(event) {
+    event.stopPropagation();
     const flashAdd = document.createElement('div');
     flashAdd.className = 'flash-message';
     flashAdd.innerText = 'Added to Favourites'

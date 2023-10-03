@@ -78,7 +78,7 @@ group :test do
 end
 
 gem "ruby-openai"
-
+gem "cloudinary"
 gem "pg_search"
 
 gem "news-api"

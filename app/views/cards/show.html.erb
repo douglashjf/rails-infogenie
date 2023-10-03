@@ -26,12 +26,15 @@
   </div>
 
   <!-- need to add midjourney banner over here -->
-  <div class="py-3 bg-primary mt-2">Midjourney image</div>
+  <% if @card.image_url.present? %>
+    <div class="image-header" style="background-image: url('<%= @card.image_url %>')">
+    </div>
+  <% end %>
 
   <div class="d-flex justify-content-start align-items-center mt-3">
     <div class="d-flex justify-content-equally">
       <div class="card-title">
-        <%= @card.primary_keywords %>
+       <strong><%= @card.primary_keywords.capitalize %></strong>
       </div>
       <% if @card.user == current_user %>
         <div class="d-flex align-items-center ms-3">
