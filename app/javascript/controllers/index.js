@@ -25,9 +25,6 @@ application.register("loading-page", LoadingPageController)
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)
 
-import PointsSwipeController from "./points_swipe_controller"
-application.register("points-swipe", PointsSwipeController)
-
 import QuestionSliderController from "./question_slider_controller"
 application.register("question-slider", QuestionSliderController)
 

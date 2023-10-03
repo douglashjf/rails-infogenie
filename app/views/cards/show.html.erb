@@ -78,12 +78,12 @@
     <div>
       <strong>Key Points</strong>
 
-      <div  data-controller="show-slider" data-controller="points-swipe">
-        <div class="slider" data-action="touchstart->points-swipe#handleTouchStart">
+      <div  data-controller="show-slider">
+        <div class="slider">
         <ul>
           <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
 
-            <div class="slide slide-<%= i %>" style="transform: translateX(<%= i * 110 %>%) " data-show-slider-target="slides" >
+            <div class="slide slide-<%= i %>" style="transform: translateX(<%= i * 110 %>%) " data-show-slider-target="slides">
               <li><%= key_point %></li>
             </div>
 
@@ -95,7 +95,7 @@
           <button class="slider_btn slider_btn-right text-center" data-action="click->show-slider#slideRight">></button>
           <div class="dots">
             <% @card.summaries.last.key_points.each_with_index do |key_point, i| %>
-              <button class="dots_dot" data-slide="<%= i %>" data-show-slider-target="dots" ></button>
+              <button class="dots_dot" data-slide="<%= i %>" data-show-slider-target="dots"></button>
             <% end %>
           </div>
         </div>

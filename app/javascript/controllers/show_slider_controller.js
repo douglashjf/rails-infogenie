@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["slides","dots"]
   connect() {
-    console.log(this.slidesTargets, this.dotsTarget);
+
     this.dotsTarget.classList.add("active")
   }
 

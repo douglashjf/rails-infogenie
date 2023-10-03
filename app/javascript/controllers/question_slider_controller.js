@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["qSlides","qDots"]
   connect() {
-    console.log(this.qSlidesTargets, this.qDotsTarget);
+
     this.qDotsTarget.classList.add("active")
   }
 
