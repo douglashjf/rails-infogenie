@@ -2,10 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="show-slider"
 export default class extends Controller {
-  static targets = ["slides","dots"]
+  static targets = ["slides","dots","slider"]
   connect() {
+    console.log('slider loaded');
+    this.dotsTarget.classList.add("active");
     this.sliderTarget.style.transform = `translateX(0)`;
-    this.dotsTarget.classList.add("active")
   }
 
   _curSlide = 0;

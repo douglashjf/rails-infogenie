@@ -34,7 +34,7 @@
   <div class="d-flex justify-content-start align-items-center mt-3">
     <div class="d-flex justify-content-equally">
       <div class="card-title">
-       <strong><%= @card.primary_keywords.capitalize %></strong>
+       <h1><strong><%= @card.primary_keywords.capitalize %></strong></h1>
       </div>
       <% if @card.user == current_user %>
         <div class="d-flex align-items-center ms-3">
@@ -101,9 +101,9 @@
 
   <% if @card.summaries.last.present?  %>
     <div>
-      <strong>Key Points</strong>
+      <h5><strong>Key Points</strong></h5>
 
-      <div data-controller="show-slider" data-action="swipe->show-slider#swipe" data-swiper-delta-x-value="50" data-swiper-delta-y-value="0" data-swiper-direction-value="horizontal">
+      <div data-controller="show-slider" data-action="swipe->show-slider#swipe" >
         <div class="slider" data-show-slider-target="slider">
           <ul>
             <div >
@@ -132,7 +132,7 @@
 
     <!-- This is for Key Questions segment + slider -->
 
-      <strong>Key Questions</strong>
+      <h5><strong>Key Questions</strong></h5>
       <div  data-controller="question-slider">
         <div class="q-slider">
         <ul>
@@ -157,12 +157,15 @@
     </div>
   <% end %>
 
-
-    <div class="news-centre m-2 position-relative" data-controller="refresh-news" data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
-      <h2><strong>News Center</strong></h2>
-      <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="refresh-button">Refresh</button>
+  <div data-controller="refresh-news">
+    <div class="news-header position-relative">
+      <h5 class="mt-1"><strong>News Center</strong></h5>
+      <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="refresh-button"><i class="fa-solid fa-rotate-left"></i></button>
+    </div>
+    <div class="news-centre m-2 "  data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
       <%= render 'refresh' %>
     </div>
+  </div>
 
     <div class="comments m-2" data-controller="insert-in-comment">
       <h5><strong>Comments</strong></h5>

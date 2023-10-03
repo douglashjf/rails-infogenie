@@ -1,6 +1,11 @@
 .refresh-button {
   position: absolute;
-  top: 0;
+  top: -5.5%;
   right: 5%;
-  background-color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.time {
+  font-size: 14px;
 }
