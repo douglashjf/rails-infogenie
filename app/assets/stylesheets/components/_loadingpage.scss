@@ -1,11 +1,30 @@
+.new-page {
+  height: 100vh;
+}
+
+.genie-new {
+  margin-left: 70px;
+  height: 220px;
+}
+
+.button-shadowed {
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.2)
+}
+
 .lamp-container {
-  margin-top: 60px;
+  margin-top: 100px;
+}
+
+.lamp-gold {
+  margin-left: 37px;
 }
 
 .spinner {
   position: absolute;
   left: 8%;
-  top: 6%;
+  top: 10%;
 
 }
 
