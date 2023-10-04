@@ -23,7 +23,7 @@
           </div>
       <% end %>
       <div class="wish-button-container">
-            <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
+            <%= link_to new_card_path(search_keyword: @search_keyword), class: "wish-custom-button" do %>
               Wish for a new card!
               <%= image_tag "lamp.png", class: "lamp-icon" %>
             <% end %>

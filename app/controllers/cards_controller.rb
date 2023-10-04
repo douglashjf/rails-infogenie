@@ -10,6 +10,7 @@ class CardsController < ApplicationController
       base_query = Card.active
     end
 
+    @search_keyword = params[:query]
     if params[:query].present?
       keyword_search = base_query.search_by_keyword(params[:query])
       @cards = keyword_search
