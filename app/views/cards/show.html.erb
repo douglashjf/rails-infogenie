@@ -112,7 +112,8 @@
 
   <div data-controller="refresh-news">
     <div class="news-header position-relative">
-      <h5 class="mt-1"><strong>News Center</strong></h5>
+      <h5 class="mt-1 mb-0"><strong>News Center</strong></h5>
+        <span class="text-secondary last-refresh">Last Refreshed: <%= (@card.news_articles.last.updated_at.in_time_zone('Asia/Singapore').strftime('%d %b %l:%M%P')) %></span>
       <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="text-primary fs-3 refresh-button"><i class="fa-solid fa-rotate-left"></i></button>
     </div>
     <div class="news-centre m-2 "  data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
