@@ -22,8 +22,14 @@
             <% end %>
           </div>
       <% end %>
-      <div class="wish-button-container" data-controller = "modal-new-card" >
-        <%= link_to 'Wish for new card!', new_card_path, class: "wish-custom-button text-decoration-none" %>
+
+      <div class="wish-button-container">
+            <%= link_to new_card_path(search_keyword: @search_keyword), class: "wish-custom-button" do %>
+              Wish for a new card!
+              <%= image_tag "lamp.png", class: "lamp-icon" %>
+            <% end %>
+
+     
 
         <!--   modal if we want to use it in future
         <button class="wish-custom-button"  data-modal-new-card-target="button" data-bs-toggle="modal" data-action="click->modal-new-card#fetch" data-bs-target="#newCard" data-href="<%= new_card_path %>"> Wish for new card! </button>
@@ -35,6 +41,7 @@
                 check this out!
               </div>
             </div>
+
           </div>
         </div>
       </div>
