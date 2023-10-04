@@ -1,3 +1,9 @@
+<%# Image generated from Dall-E %>
+<% if @card.image_url.present? %>
+  <div class="image-header" style="background-image: url('<%= @card.image_url %>')">
+  </div>
+<% end %>
+
 <div class="container show-container" >
   <div>
     <%= link_to :back, class: "btn" do %>
@@ -5,10 +11,10 @@
       <% end %>
   </div>
 
-  <div class="d-flex justify-content-start align-items-center">
+  <div class="d-flex justify-content-between align-items-center mb-3">
     <div >
       <div class="card-title">
-        <%= @card.primary_keywords %>
+       <strong><%= @card.primary_keywords.capitalize %></strong>
       </div>
     </div>
     <div >

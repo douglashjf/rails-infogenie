@@ -30,4 +30,11 @@ class OpenaiService
     response_content = response["choices"][0]["message"]["content"]
 
   end
+
+  def generate_dalle_image
+    response = client.images.generate(
+      parameters: {
+        prompt: @prompt, size: "512x512" })
+    return response.dig("data", 0, "url")
+  end
 end
