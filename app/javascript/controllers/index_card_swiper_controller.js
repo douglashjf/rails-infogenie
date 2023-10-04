@@ -6,6 +6,7 @@ export default class extends Controller {
     // Initialize Swiper here
     const swiper = new Swiper(this.element, {
       slidesPerView: 1,
+      centeredSlides: true,
       spaceBetween: 30,
       loop: true,
       effect: "coverflow",
