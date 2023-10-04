@@ -2,9 +2,9 @@
     <% @categories.each do |category| %>
       <% if @cards_by_category[category].present? %>
         <div class="category-heading">
-          <h1><%= category.tag %></h1>
+          <h1><u><%= category.tag %></u></h1>
         </div>
-        <div class="swiper" data-controller="index-card-swiper">
+        <div class="swiper px-3" data-controller="index-card-swiper">
           <div class="swiper-wrapper">
             <% @cards_by_category[category].each do |card| %>
               <%= render 'individual_card', card: card, category: category %>
