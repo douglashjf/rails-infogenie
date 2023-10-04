@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   before_action :set_cards, only: %i[show toggle_favourites destroy refresh_articles]
 
   def index
+
     if user_signed_in? && current_user.categories.present?
       base_query = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
     else
@@ -25,6 +26,12 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.new
+
+    # for modal use in future
+    # respond_to do |format|
+    #   format.html
+    #   format.text { render "cards/new", :layout => false, formats: [:html] }
+    # end
   end
 
   def create

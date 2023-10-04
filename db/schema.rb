@@ -93,9 +93,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_02_135116) do
     t.text "url"
     t.datetime "published_at"
     t.string "name"
+    t.bigint "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "card_id", null: false
+    t.index ["card_id"], name: "index_news_articles_on_card_id"
   end
 
   create_table "summaries", force: :cascade do |t|
