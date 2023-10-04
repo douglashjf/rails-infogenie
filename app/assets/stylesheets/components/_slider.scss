@@ -1,6 +1,13 @@
 .swiper-pagination-bullet {
   background-color: #C3C5D2;
+}
 
+.mySwiper .swiper-pagination-bullets{
+  bottom: -5px;
+}
+
+.swiper-container .swiper-pagination-bullets{
+  bottom: -5px;
 }
 
 .swiper-pagination-bullet-active {
