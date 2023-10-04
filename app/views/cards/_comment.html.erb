@@ -1,5 +1,5 @@
 <div class="posted-comment py-2 px-2 mt-3">
-  <strong><%= comment.user.first_name %></strong>
-  <%= comment.created_at %>
-  <p class="mb-0 mt-1"><%= comment.content %></p>
+  <p class="comment-name"><strong><%= comment.user.first_name %></strong></p>
+  <p class="comment-time"><%= comment.created_at.in_time_zone('Asia/Singapore').strftime('%^b %d') %> </p>
+  <p class="mb-0 mt-1 comment-content"><%= comment.content %></p>
 </div>
