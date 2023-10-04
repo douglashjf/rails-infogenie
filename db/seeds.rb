@@ -69,6 +69,7 @@ card_1 = Card.create!(
   user_id: user_jack.id,
   primary_keywords: "Cryptocurrency",
   secondary_keywords: "Trading",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.53.02_-_Mondrian-style_realistic_painting_of_cryptocurrency_with_additional_context_of_trading._vvnppu.png",
   categories: [categories_for_card[8], categories_for_card[9]]
 )
 puts "Created card 1"
@@ -92,6 +93,7 @@ card_2 = Card.create!(
   user_id: user_jack.id,
   primary_keywords: "Music",
   secondary_keywords: "Theory",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.52.09_-_Mondrian-style_realistic_painting_of_music_with_additional_context_of_theory._Make_this_fit_a_screen_height_of_180px_bdmeul.png",
   categories: [categories_for_card[13], categories_for_card[19]]
 )
 puts "Created card 2"
@@ -115,6 +117,7 @@ card_3 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Running",
   secondary_keywords: "Marathon Diet",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.54.04_-_Mondrian-style_realistic_painting_of_running_with_additional_context_of_marathon_diet_whlb0s.png",
   categories: [categories_for_card[1], categories_for_card[2]]
 )
 puts "Created card 3"
@@ -136,6 +139,7 @@ card_4 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Karaoke",
   secondary_keywords: "Singing",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.54.47_-_Mondrian-style_realistic_painting_of_karaoke_with_additional_context_of_singing_flmpwn.png",
   categories: [categories_for_card[19], categories_for_card[23]],
   deleted_at: Time.current
 )
@@ -159,6 +163,7 @@ card_5 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Coding",
   secondary_keywords: "Bootcamp",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301798/DALL_E_2023-10-03_10.55.23_-_Mondrian-style_realistic_painting_of_coding_with_additional_context_of_bootcamp_vmloc8.png",
   categories: [categories_for_card[11], categories_for_card[7]]
 )
 puts "Created card 5"
@@ -180,6 +185,7 @@ card_6 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Artificial Intelligence",
   secondary_keywords: "Machine Learning",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301969/DALL_E_2023-10-03_10.57.50_-_Mondrian-style_realistic_painting_of_artificial_intelligence_with_additional_context_of_machine_learning_p9sweq.png",
   categories: [categories_for_card[8], categories_for_card[10]]
 )
 puts "Created card 5"
@@ -201,6 +207,7 @@ card_7 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Data Science",
   secondary_keywords: "Big Data",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301798/DALL_E_2023-10-03_10.56.04_-_Mondrian-style_realistic_painting_of_data_science_with_additional_context_of_big_data_yp1h7h.png",
   categories: [categories_for_card[10], categories_for_card[8]]
 )
 puts "Created card 7"

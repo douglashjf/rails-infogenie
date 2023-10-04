@@ -1,0 +1,7 @@
+.accordion-button:not(.collapsed)::after {
+  padding-left: 24px;
+}
+
+.accordion-button.collapsed::after {
+  padding-left: 24px;
+}
