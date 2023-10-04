@@ -22,9 +22,6 @@ application.register("insert-in-comment", InsertInCommentController)
 import LoadingPageController from "./loading_page_controller"
 application.register("loading-page", LoadingPageController)
 
-import ModalNewCardController from "./modal_new_card_controller"
-application.register("modal-new-card", ModalNewCardController)
-
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)
 
