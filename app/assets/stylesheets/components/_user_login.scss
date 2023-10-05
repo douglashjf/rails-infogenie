@@ -2,7 +2,7 @@
   text-align: center;
   border-radius: 15px;
   width: 80%;
-  background: linear-gradient(to right, #0056b3, #007bff);
+  background: $success;
   padding: 12px 20px;
   color: white;
 }
@@ -24,19 +24,23 @@
   padding: 12px;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+.not-a-user {
+  color: $secondary;
 }
 
 
-
 .signup-header {
-  padding-top: 65px;
+  padding-top: 40px;
   font-weight: 800;
   font-size: 35px;
 }
 
 .page-container {
   background-color: white;
-  height: 100vh;
+  padding-bottom: 100px;
   color: $primary;
 }
 
@@ -61,6 +65,11 @@
   margin-bottom: 2px;
 }
 
+.signin-label {
+  color: $primary;
+  font-weight: bold;
+}
+
 .custom-signup-wrap {
   margin-bottom: 12px !important;
 }
@@ -69,29 +78,40 @@
   margin-bottom: 3px !important;
 }
 
+.form-check-label {
+  color: $primary;
+  font-weight: bold;
+}
+
+.form-check-input {
+  border-color: $primary;
+  background-color: white;
+}
+
 .forgotpw-link {
   font-size: 16px;
   text-decoration: none;
-  color: black;
+  font-weight: bold;
 }
 
 .external-sign {
+  color: $success;
   padding: 10px 20px;
   border-radius: 8px;
-  background: linear-gradient(to right, #b6b5b5, #efefef);
+  background: linear-gradient(36deg, $light 0%, rgba(255,255,255,1) 30%);
   border: none;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .rectangle-right {
-  background: linear-gradient(to right, #313131, #D9D9D9);
+  background: linear-gradient(to right, $success, #D9D9D9);
   padding: 1px 30px;
   border: none;
   box-shadow: none;
 }
 
 .rectangle-left {
-  background: linear-gradient(to left, #313131, #D9D9D9);
+  background: linear-gradient(to left, $success, #D9D9D9);
   padding: 1px 30px;
   border: none;
   box-shadow: none;
