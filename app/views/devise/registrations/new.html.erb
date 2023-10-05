@@ -2,10 +2,9 @@
 
 <div class="page-container">
   <div class="image-container">
-    <img src="<%= asset_path('Sign_Up_Graphics.png') %>" alt="Sign Up" class="overlay-image">
+    <img src="<%= asset_path('signup-updated.png') %>" alt="Sign Up" class="overlay-image">
   </div>
-  <div class="grey-container">
-    <div class="container px-4">
+  <div class="container signup-container">
       <h1 class="text-center mb-2 signup-header">Get Started Now</h1>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
@@ -20,6 +19,7 @@
                             autofocus: true,
                             input_html: { autocomplete: "first_name", class: "signup-rounded-input" },
                             label_html: { class: "custom-label" },
+                            placeholder: "Firstname",
                             wrapper_html: { class: "custom-signup-wrap" }  %>
               </div>
               <div class="col">
@@ -28,6 +28,7 @@
                             autofocus: true,
                             input_html: { autocomplete: "last_name", class: "signup-rounded-input" },
                             label_html: { class: "custom-label"  },
+                            placeholder: "Lastname",
                             wrapper_html: { class: "custom-signup-wrap" } %>
               </div>
             </div>
@@ -36,21 +37,22 @@
                         autofocus: true,
                         input_html: { autocomplete: "email", class: "signup-rounded-input" },
                         label_html: { class: "custom-label" },
+                        placeholder: "📧 example@email.com",
                         wrapper_html: { class: "custom-signup-wrap" } %>
             <div class="row">
               <div class="col">
                 <%= f.input :password,
                             required: true,
-
                             input_html: { autocomplete: "new-password", class: "signup-rounded-input" },
                             label_html: { class: "custom-label" },
-                            placeholder: "🔑" %>
+                            placeholder: "🔑 Password" %>
               </div>
               <div class="col">
                 <%= f.input :password_confirmation,
                         required: true,
                         input_html: { autocomplete: "new-password", class: "signup-rounded-input" },
                         label: "Retype Password",
+                        placeholder: "🔑 Re-type Password",
                         label_html: { class: "custom-label" } %>
               </div>
             </div>
@@ -79,6 +81,5 @@
       <button class="me-3 external-sign"><i class="fa-brands fa-apple"></i></button>
       <button class="external-sign"><i class="fa-brands fa-facebook"></i></button>
       </div>
-    </div>
   </div>
 </div>

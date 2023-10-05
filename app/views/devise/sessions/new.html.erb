@@ -2,8 +2,7 @@
   <div class="image-container">
     <img src="<%= asset_path('sign-in.png') %>" alt="Sign Up" class="overlay-image">
   </div>
-  <div class="grey-container">
-    <div class="container px-4">
+    <div class="container px-5 bg-white">
       <h1 class="text-center mb-2 signup-header">Welcome Back!</h1>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
@@ -11,10 +10,14 @@
             <%= f.input :email,
                         required: false,
                         autofocus: true,
+                        placeholder: "📧 example@email.com",
+                        label_html: { class: "signin-label" },
                         input_html: { autocomplete: "email", class: "signin-rounded-inputs" } %>
             <%= f.input :password,
                         required: false,
+                        label_html: { class: "signin-label" },
                         input_html: { autocomplete: "current-password", class: "signin-rounded-inputs" },
+                        placeholder: "🔑 Password",
                         wrapper_html: { class: "custom-signin-wrap" } %>
             <div class="d-flex justify-content-between mb-2">
               <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
@@ -46,11 +49,10 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center pb-3">
       <button class="me-3 external-sign"><i class="fa-brands fa-google"></i></button>
       <button class="me-3 external-sign"><i class="fa-brands fa-apple"></i></button>
       <button class="external-sign"><i class="fa-brands fa-facebook"></i></button>
       </div>
     </div>
-  </div>
 </div>
