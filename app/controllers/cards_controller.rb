@@ -22,19 +22,6 @@ class CardsController < ApplicationController
     else
       @cards_by_category_all = base_query
     end
-    # if user_signed_in? && current_user.categories.present?
-    #   base_query = Card.active.joins(:categories).where(categories: { id: current_user.categories.pluck(:id) })
-    #   raise
-    # else
-    #   base_query = Card.active
-    # end
-
-    # if params[:query].present?
-    #   keyword_search = base_query.search_by_keyword(params[:query])
-    #   @cards = keyword_search
-    # else
-    #   @cards = base_query
-    # end
   end
 
   def show
