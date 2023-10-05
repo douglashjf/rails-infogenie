@@ -10,10 +10,10 @@ export default class extends Controller {
     event.stopPropagation();
     const flashAdd = document.createElement('div');
     flashAdd.className = 'flash-message';
-    flashAdd.innerText = 'Added to Favourites'
+    flashAdd.innerText = 'Favourited! Receiving Daily Updates'
     const flashRem = document.createElement('div');
     flashRem.className = 'flash-message';
-    flashRem.innerText = 'Removed from Favourites'
+    flashRem.innerText = 'Unfavourited! Stopped Daily Updates'
 
     if (this.favouriteIconTarget.classList.contains('fa-solid')){
       console.log('Button Works')

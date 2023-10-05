@@ -18,8 +18,10 @@
                 <i class="fa-brands fa-whatsapp fs-5 ms-2" style="color: white;"></i>
               <% end %>
             </div>
-            <div class="d-flex text-white"> Share to Twitter <i class="fa-brands fa-twitter fs-5 ms-2"></i></div>
-          </div>
+              <%= link_to  twitter_share_url(@card.primary_keywords,@card.secondary_keywords), target: "_blank", class:"d-flex align-items-center" do %>
+              <div class="d-flex text-white"> Share to Twitter <i class="fa-brands fa-twitter fs-5 ms-2"></i></div>
+              <% end %>
+              </div>
         </div>
       </div>
     </div>
