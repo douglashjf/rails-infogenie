@@ -24,7 +24,7 @@ class CardsController < ApplicationController
       @cards = @cards.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
     end
 
-    @cards = @cards.any? ? @cards : Card.active
+    @cards = Card.active
   end
 
   def show

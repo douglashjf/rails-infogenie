@@ -6,7 +6,10 @@
   <div class="container px-4">
     <h1 class="text-center mb-2 profile-header">Edit Profile or Avatar</h1>
 
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <% if resource.photo.attached? %>
+        <%= cl_image_tag resource.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: {turbo: false}) do |f| %>
 
         <%= f.error_notification %>
 

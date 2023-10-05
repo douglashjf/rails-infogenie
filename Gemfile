@@ -80,3 +80,4 @@ end
 gem "ruby-openai"
 
 gem "pg_search"
+gem "cloudinary"
