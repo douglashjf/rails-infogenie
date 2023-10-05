@@ -7,10 +7,22 @@
   color: white;
 }
 
+.signup-container {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+input::placeholder { /* Modern browsers */
+  font-size: 10px;
+  color: #ECEDF3;
+  font-family: $body-font;
+}
+
 .signup-rounded-input {
+  font-family: $headers-font;
   background-color: white !important;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 0.5px solid $primary !important;
+  border-radius: 8px;
   padding: 6px;
   width: 100%;
   box-sizing: border-box;
@@ -28,6 +40,10 @@
 }
 
 .not-a-user {
+  color: $secondary;
+}
+
+.already-a-user {
   color: $secondary;
 }
 
@@ -63,6 +79,7 @@
 
 .custom-label {
   margin-bottom: 2px;
+  font-weight: bold;
 }
 
 .signin-label {
