@@ -127,7 +127,7 @@
 
     <div class="comment-form-container">
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, height: "50px", width: "50px", crop: :fill, class: "rounded" %>
+        <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar avatar-form" %>
       <% else %>
         <img src="<%= asset_path('empty-avatar') %>" style="width: 50px; height: 50px;" alt="avatar" class="rounded">
       <% end %>

@@ -1,7 +1,7 @@
 <div class="posted-comment py-2 px-2 mt-3">
   <div class="d-flex justify-content-start">
     <% if comment.user.photo.attached? %>
-      <%= cl_image_tag comment.user.photo.key, height: "20px", width: "20px", crop: :fill, class: "rounded" %>
+      <%= cl_image_tag comment.user.photo.key, crop: :fill, class: "avatar avatar-comment" %>
     <% else %>
       <img src="<%= asset_path('empty-avatar') %>" style="width: 20px; height: 20px;" alt="avatar" class="rounded">
     <% end %>

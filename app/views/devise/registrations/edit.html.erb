@@ -1,7 +1,7 @@
 <div class="profile-container bg-white h-100">
   <div class="avatar-container text-center">
     <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, height: "auto", width: "130px", crop: :fill, class: "rounded" %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar avatar-profile" %>
     <% else %>
       <img src="<%= asset_path('empty-avatar') %>" style="width: 130px;" alt="avatar" class="rounded">
     <% end %>
