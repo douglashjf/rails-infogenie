@@ -8,8 +8,10 @@
 
 .main-content {
   .main-heading {
-    padding-top: 100px;
-    padding-left: 28px;
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     h1 {
       font-size: 32px;
@@ -62,6 +64,6 @@
 
 .fa-sliders::before {
   font-size: 25px;
-  margin-left: 32px;
+  padding-left: 50px;  // 25px margin left
   color: $primary;
 }

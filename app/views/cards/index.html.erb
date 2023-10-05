@@ -1,16 +1,16 @@
 <div class="index-page bg-white">
   <%# <div class="pt-5"> %>
-    <div class="d-flex flex-column align-items-start justify-content-end h-100">
+    <div class="d-flex flex-column align-items-center justify-content-end">
       <div class="main-content">
         <div class="main-heading primary"><h1>Hi <%= current_user.first_name %>!</h1></div>
       </div>
-        <div class="d-flex align-items-end text-right">
-            <%= render 'shared/searchbar' %>
-            <%= link_to edit_category_path(1) do %>
-                <i class="fa-solid fa-sliders"></i>
-            <% end %>
-        </div>
     </div>
+    <div class="d-flex align-items-end text-right">
+          <%= render 'shared/searchbar' %>
+          <%= link_to edit_category_path(1) do %>
+            <i class="fa-solid fa-sliders"></i>
+          <% end %>
+        </div>
     <div class="text-center">
       <div class="wish-button-container">
         <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
