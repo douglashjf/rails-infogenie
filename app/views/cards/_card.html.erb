@@ -17,8 +17,10 @@
     <% end %>
   <% else %>
     <% if @cards_by_category_all.present? %>
-      <h1>All Cards</h1>
-      <div class="swiper" data-controller="index-card-swiper">
+      <div class="allcard-heading">
+          <h1>All Cards<h1>
+        </div>
+      <div class="swiper px-3" data-controller="index-card-swiper">
         <div class="swiper-wrapper">
           <% @cards_by_category_all.each do |card| %>
             <%= render 'individual_card', card: card %>
