@@ -1,89 +1,149 @@
-<%# Image generated from Dall-E %>
+<div class="container show-page bg-white" >
+  <div class="d-flex justify-content-between align-items-center" >
+    <%= link_to :back, class: "btn" do %>
+        <i class="fa-solid fa-chevron-left text-primary fs-3 px-2"></i>
+    <% end %>
+
+    <!-- modal for sharing to whatsapp and twitter -->
+    <i class="fa-solid fa-ellipsis-vertical text-primary fs-2 px-3 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content options-dropdown bg-primary">
+
+          <div class="modal-body d-flex flex-column justify-content-center align-items-left px-0 py-0 ps-3 ">
+            <div class="d-flex">
+              <%= link_to whatsapp_share_url, target: "_blank", class:"d-flex align-items-center" do %>
+                <p class="text-white my-0">Share on Whatsapp</p>
+                <i class="fa-brands fa-whatsapp fs-5 ms-2" style="color: white;"></i>
+              <% end %>
+            </div>
+              <%= link_to  twitter_share_url(@card.primary_keywords,@card.secondary_keywords), target: "_blank", class:"d-flex align-items-center" do %>
+              <div class="d-flex text-white"> Share to Twitter <i class="fa-brands fa-twitter fs-5 ms-2"></i></div>
+              <% end %>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- need to add midjourney banner over here -->
 <% if @card.image_url.present? %>
   <div class="image-header" style="background-image: url('<%= @card.image_url %>')">
   </div>
 <% end %>
 
-<div class="container show-container" >
-  <div>
-    <%= link_to :back, class: "btn" do %>
-        <i class="fas fa-arrow-left"></i>
-      <% end %>
-  </div>
-
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div >
+<div class="container show-container bg-white" >
+  <div class="d-flex justify-content-start align-items-center pt-3">
+    <div class="d-flex justify-content-equally">
       <div class="card-title">
-       <strong><%= @card.primary_keywords.capitalize %></strong>
+       <h1><strong><%= @card.primary_keywords.capitalize %></strong></h1>
       </div>
-    </div>
-    <div >
-      <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
+      <% if @card.user == current_user %>
+        <div class="d-flex align-items-center ms-3">
+          <%= link_to card_path(@card), class: "text-primary fs-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="d-flex align-items-center ms-3" data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
         <% if current_user.favourites.exists?(card: @card) %>
-          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
-            <i class="fa-solid fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button px-0", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+            <i class="fa-solid fa-heart" style="color: #1999CE; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
           <% end %>
         <% else %>
-          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
-            <i class="fa-regular fa-heart" style="color: #6d3146; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
+          <%= button_to toggle_favourites_card_path(@card), method: :post, remote: true, class: "favourites-button px-0", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+            <i class="fa-regular fa-heart" style="color: #1999CE; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
             <% end %>
         <% end %>
       </div>
     </div>
   </div>
 
+  <div class="card-poster text-start text-secondary">
+      <div class="text-right">Posted by: <%= @card.user.first_name %></div>
+    </div>
+
   <div class="row">
-    <div class="category-posters d-flex justify-content-between">
+    <div class="category-posters d-flex justify-content-between mt-2 mb-4">
       <div class="category">
         <% @card.categories.each do |category| %>
-          <div class="category-tag">
+          <%= button_tag class: "icon-button" do %>
+            <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #131417;") %>
             <%= category.tag %>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
-    <div class="card-poster">
-      <div class="text-right">Posted by: <%= @card.user.first_name %></div>
+  </div>
+
+
+
+  <% if @card.summaries.last.present?  %>
+    <h5><strong>Key Points</strong></h5>
+    <div class="swiper mySwiper" data-controller="swiper-js" >
+      <div class="swiper-wrapper">
+          <% @card.summaries.last.key_points.each do |key_point| %>
+            <div class="swiper-slide">
+              <ul>
+                <li><%= key_point %></li>
+              </ul>
+            </div>
+          <% end %>
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <h5><strong>Key Questions</strong></h5>
+    <div class="swiper swiper-container" data-controller="swiper-questions" >
+      <div class="swiper-wrapper">
+          <% @card.summaries.last.key_questions.each do |key_question| %>
+            <div class="swiper-slide">
+              <ul>
+                <li><%= key_question %></li>
+              </ul>
+            </div>
+          <% end %>
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+
+
+  <% end %>
+
+  <div data-controller="refresh-news">
+    <div class="news-header position-relative">
+      <h5 class="mt-1 mb-0"><strong>News Center</strong></h5>
+
+      <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="text-primary fs-3 refresh-button"><i class="fa-solid fa-rotate-left"></i></button>
+    </div>
+    <div class="news-centre "  data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
+      <%= render 'refresh' %>
     </div>
   </div>
   <hr>
-  <%# Card content   %>
-    <ul>
-    <% if @card.summaries.last.present?  %>
-      <strong>Key Points</strong>
-      <% @card.summaries.last.key_points.each do |key_point| %>
-        <li><%= key_point %></li>
+  <div class="comments m-2" data-controller="insert-in-comment">
+
+    <div class="comment-form-container">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar avatar-form" %>
+      <% else %>
+        <img src="<%= asset_path('empty-avatar') %>" style="width: 50px; height: 50px;" alt="avatar" class="rounded">
       <% end %>
-      <br>
-      <strong>Key Questions</strong>
-      <% @card.summaries.last.key_questions.each do |key_question| %>
-        <li><%= key_question %></li>
+      <%= render partial: 'commentform', locals: { card: @card, comment: Comment.new} %>
+    </div>
+    <div data-insert-in-comment-target="items">
+      <% @card.comments.each do |comment| %>
+        <%= render 'cards/comment', comment: comment %>
       <% end %>
-    <% end %>
-  </ul>
-
-    <div class="news-centre m-2 position-relative" data-controller="refresh-news" data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
-      <h5><strong>News Center</strong></h5>
-      <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="refresh-button">Refresh</button>
-      <%= render 'refresh' %>
     </div>
-
-    <div class="comments m-2" data-controller="insert-in-comment">
-      <h5><strong>Comments</strong></h5>
-      <div data-insert-in-comment-target="items">
-        <% @card.comments.each do |comment| %>
-          <%= render 'cards/comment', comment: comment %>
-        <% end %>
-      </div>
-
-        <%= render partial: 'commentform', locals: { card: @card, comment: Comment.new} %>
-
-    </div>
+  </div>
 
 
-  <%= link_to 'Delete', card_path(@card), class: "btn btn-warning btn-sm m-3", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
   <%#= link_to "", whatsapp_share_url, class: "fab fa-whatsapp" %>
-  <%= link_to whatsapp_share_url, target: "_blank" do %>
-    <i class="fa-brands fa-whatsapp fa-2xl" style="color: #075e54;"></i>
-  <% end %>
+
 </div>

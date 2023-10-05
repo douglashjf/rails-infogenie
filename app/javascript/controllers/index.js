@@ -33,3 +33,9 @@ application.register("refresh-news", RefreshNewsController)
 
 import SelectedTopicsController from "./selected_topics_controller"
 application.register("selected-topics", SelectedTopicsController)
+
+import SwiperJsController from "./swiper_js_controller"
+application.register("swiper-js", SwiperJsController)
+
+import SwiperQuestionsController from "./swiper_questions_controller"
+application.register("swiper-questions", SwiperQuestionsController)

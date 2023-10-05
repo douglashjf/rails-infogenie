@@ -1,0 +1,22 @@
+.options-dropdown {
+  height: 70px;
+  width: 220px;
+  position: absolute;
+  top: 34px;
+  right: 20px;
+  border-radius: 5px;
+  z-index: 2;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+
+}
+
+.options-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -28%;
+  right: -3%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #14172C transparent;
+}

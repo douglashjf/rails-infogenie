@@ -1,7 +1,7 @@
 <div class="page-container">
-  <div class="logo-container text-center pt-5">
-    <img src="<%= asset_path('infogenie-logofavicon-black 3.png') %>" alt="logo" style="width: 120px;">
-    <h2>Please Select Your Topic!</h2>
+  <div class="logo-container text-center pt-3">
+    <img src="<%= asset_path('logopurple') %>" alt="logo" style="width: 200px;">
+    <h2 class="text-primary">Please Select Your Topic!</h2>
   </div>
 
     <%= form_for(current_user, url: category_path, method: :put) do |f| %>
@@ -11,14 +11,14 @@
 
           <div class="category-card <%= "category-selected" if current_user.categories.include?(category) %>" data-action="click->selected-topics#toggleCategory", data-selected-topics-target="card", data-category-id="<%= category.id %>">
 
-              <%= category.tag %>
-              <input type="hidden" id="category_selected_<%= category.id %>" name="user[category_ids][]"  value="<%= category.id %>">
+            <%= category.tag %>
+            <input type="hidden" id="category_selected_<%= category.id %>" name="user[category_ids][]"  value="<%= category.id %>">
           </div>
         <% end %>
       </div>
     </div>
       <div class="form-group mt-4 text-center">
-        <%= f.submit 'Save Preference', class: 'btn btn-dark rounded' %>
+        <%= f.submit 'Submit', class: 'btn btn-success button-shadowed' %>
       </div>
     <% end %>
 

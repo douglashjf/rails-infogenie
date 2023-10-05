@@ -1,0 +1,12 @@
+.accordion-button:not(.collapsed)::after {
+  padding-left: 24px;
+}
+
+.accordion-button.collapsed::after {
+  padding-left: 24px;
+}
+
+.landing-content {
+  height: 100vh;
+  background-color: white !important;
+}

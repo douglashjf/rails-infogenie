@@ -4,6 +4,7 @@
       <div class="main-content">
         <div class="main-heading primary"><h1>Hi <%= current_user.first_name %>!</h1></div>
       </div>
+
     </div>
     <div class="d-flex align-items-end text-right">
           <%= render 'shared/searchbar' %>
@@ -13,10 +14,32 @@
         </div>
     <div class="text-center">
       <div class="wish-button-container">
-        <%= button_to new_card_path, method: :get, class: "wish-custom-button" do %>
-          Wish for a new card!
-        <% end %>
+       <%= link_to new_card_path(search_keyword: @search_keyword), class: "wish-custom-button" do %>
+              Wish for a new card!
+             
+            <% end %>
       </div>
+
+           
+
+     
+
+        <!--   modal if we want to use it in future
+        <button class="wish-custom-button"  data-modal-new-card-target="button" data-bs-toggle="modal" data-action="click->modal-new-card#fetch" data-bs-target="#newCard" data-href="<%= new_card_path %>"> Wish for new card! </button>
+
+        <div class="modal fade" id="newCard" tabindex="-1" aria-labelledby="newCardLabel" aria-hidden="true" data-modal-new-card-target="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body" data-modal-new-card-target="modalContent">
+                check this out!
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      -->
+
     </div>
     <div class="card-container">
       <%= render 'card', locals: { card: @card } %>

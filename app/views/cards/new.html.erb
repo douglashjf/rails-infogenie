@@ -1,13 +1,19 @@
-<div data-controller="loading-page">
+<div class="bg-white new-page" data-controller="loading-page">
 <%= render "shared/loading" %>
-<div class="container">
+<div class="container px-4">
  <div>
     <%= link_to :back, class: "btn" do %>
-        <i class="fas fa-arrow-left"></i>
+        <i class="fa-solid fa-chevron-left text-primary fs-3 px-2"></i>
       <% end %>
   </div>
-  <div >
+  <div>
+    <img class="genie-new" src="<%= asset_path('wishes-animate') %>"  alt="genie" >
+  </div>
+  <div class="mt-2">
     <%= render 'form', card: @card %>
   </div>
 </div>
 </div>
+
+<script type='text/javascript'>document.addEventListener('DOMContentLoaded', function () {window.setTimeout(document.querySelector('svg').classList.add('animated'),3000);})</script>
+<!-- animation attributed to <a href="https://storyset.com/people">People illustrations by Storyset</a> -->

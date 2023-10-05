@@ -15,29 +15,39 @@ User.destroy_all
 puts "Creating new data"
 
 # Create all users
+jack_avatar = URI.open("https://i.seadn.io/gcs/files/ea1a6648d854220815cf1425079e915b.png?w=500&auto=format")
 user_jack = User.create!(
   first_name: "Jack",
   last_name: "Khong",
   email: "jackinfogenie@gmail.com",
   password: "password"
 )
-puts "Created jack 2 cards 2 favourites (1 card deleted by Jacob)"
+user_jack.photo.attach(io: jack_avatar, filename: "jack_avatar.jpg", content_type: "image/jpg")
+user_jack.save!
 
+puts "Created jack (with avatar) 2 cards 2 favourites (1 card deleted by Jacob)"
+
+jacob_avatar = URI.open("https://pbs.twimg.com/media/Ftq4k41WIAYadtY?format=jpg&name=large")
 user_jacob = User.create!(
   first_name: "Jacob",
   last_name: "Khong",
   email: "jacob@gmail.com",
   password: "password"
 )
-puts "Created Jacob 2 cards (deleted his own marathon card)"
+user_jacob.photo.attach(io: jacob_avatar, filename: "jacob_avatar.png", content_type: "image/png")
+user_jacob.save!
+puts "Created Jacob (with avatar) 2 cards (deleted his own marathon card)"
 
+sean_avatar = URI.open("https://i.seadn.io/gcs/files/26d28aa6f8cb427f538ab98cd538d137.png?auto=format&dpr=1&w=1000")
 user_sean = User.create(
   first_name: 'Sean',
   last_name: 'Seanson',
   email: 'sean@gmail.com',
   password: 'password'
 )
-puts 'Created Sean user, 1 card'
+user_sean.photo.attach(io: sean_avatar, filename: "sean_avatar.png", content_type: "image/png")
+user_sean.save!
+puts 'Created Sean (with avatar) user, 1 card'
 
 # Create Fixed Categories based on list
 TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
@@ -69,6 +79,7 @@ card_1 = Card.create!(
   user_id: user_jack.id,
   primary_keywords: "Cryptocurrency",
   secondary_keywords: "Trading",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.53.02_-_Mondrian-style_realistic_painting_of_cryptocurrency_with_additional_context_of_trading._vvnppu.png",
   categories: [categories_for_card[8], categories_for_card[9]]
 )
 puts "Created card 1"
@@ -92,6 +103,7 @@ card_2 = Card.create!(
   user_id: user_jack.id,
   primary_keywords: "Music",
   secondary_keywords: "Theory",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.52.09_-_Mondrian-style_realistic_painting_of_music_with_additional_context_of_theory._Make_this_fit_a_screen_height_of_180px_bdmeul.png",
   categories: [categories_for_card[13], categories_for_card[19]]
 )
 puts "Created card 2"
@@ -115,6 +127,7 @@ card_3 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Running",
   secondary_keywords: "Marathon Diet",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.54.04_-_Mondrian-style_realistic_painting_of_running_with_additional_context_of_marathon_diet_whlb0s.png",
   categories: [categories_for_card[1], categories_for_card[2]]
 )
 puts "Created card 3"
@@ -136,6 +149,7 @@ card_4 = Card.create!(
   user_id: user_jacob.id,
   primary_keywords: "Karaoke",
   secondary_keywords: "Singing",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.54.47_-_Mondrian-style_realistic_painting_of_karaoke_with_additional_context_of_singing_flmpwn.png",
   categories: [categories_for_card[19], categories_for_card[23]],
   deleted_at: Time.current
 )
@@ -159,6 +173,7 @@ card_5 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Coding",
   secondary_keywords: "Bootcamp",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301798/DALL_E_2023-10-03_10.55.23_-_Mondrian-style_realistic_painting_of_coding_with_additional_context_of_bootcamp_vmloc8.png",
   categories: [categories_for_card[11], categories_for_card[7]]
 )
 puts "Created card 5"
@@ -180,6 +195,7 @@ card_6 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Artificial Intelligence",
   secondary_keywords: "Machine Learning",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301969/DALL_E_2023-10-03_10.57.50_-_Mondrian-style_realistic_painting_of_artificial_intelligence_with_additional_context_of_machine_learning_p9sweq.png",
   categories: [categories_for_card[8], categories_for_card[10]]
 )
 puts "Created card 5"
@@ -201,6 +217,7 @@ card_7 = Card.create!(
   user_id: user_sean.id,
   primary_keywords: "Data Science",
   secondary_keywords: "Big Data",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301798/DALL_E_2023-10-03_10.56.04_-_Mondrian-style_realistic_painting_of_data_science_with_additional_context_of_big_data_yp1h7h.png",
   categories: [categories_for_card[10], categories_for_card[8]]
 )
 puts "Created card 7"

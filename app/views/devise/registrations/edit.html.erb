@@ -1,12 +1,16 @@
-<div class="profile-container">
-  <div class="avatar-container">
-    <%#= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill, class: "avatar" %>
+<div class="profile-container bg-white h-100">
+  <div class="avatar-container text-center">
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar avatar-profile" %>
+    <% else %>
+      <img src="<%= asset_path('empty-avatar') %>" style="width: 130px;" alt="avatar" class="rounded">
+    <% end %>
   </div>
 
   <div class="container px-4">
     <h1 class="text-center mb-2 profile-header">Edit Profile or Avatar</h1>
 
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: {turbo: false}) do |f| %>
 
         <%= f.error_notification %>
 
@@ -16,15 +20,15 @@
               <%= f.input :first_name,
                           required: true,
                           autofocus: true,
-                          input_html: { autocomplete: "first_name", class: "signup-rounded-input" },
-                          label_html: { class: "custom-label" },
+                          input_html: { autocomplete: "first_name", class: "signup-rounded-input border border-secondary" },
+                          label_html: { class: "custom-label " },
                           wrapper_html: { class: "custom-signup-wrap" }  %>
             </div>
             <div class="col">
               <%= f.input :last_name,
                           required: true,
                           autofocus: true,
-                          input_html: { autocomplete: "last_name", class: "signup-rounded-input" },
+                          input_html: { autocomplete: "last_name", class: "signup-rounded-input border border-secondary" },
                           label_html: { class: "custom-label"  },
                           wrapper_html: { class: "custom-signup-wrap" } %>
             </div>
@@ -35,7 +39,7 @@
           <%= f.input :email,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "email", class: "signup-rounded-input" },
+                      input_html: { autocomplete: "email", class: "signup-rounded-input border border-secondary" },
                       label_html: { class: "custom-label" },
                       wrapper_html: { class: "custom-signup-wrap" } %>
 
@@ -43,14 +47,14 @@
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
 
-          <%= f.input :photo, as: :file%>
+          <%= f.input :photo, as: :file , input_html: { class: "border border-secondary" } %>
 
           <div class="row">
             <div class="col">
               <%= f.input :password,
                           label: "New Password",
                           required: false,
-                          input_html: { autocomplete: "new-password", class: "signup-rounded-input" },
+                          input_html: { autocomplete: "new-password", class: "signup-rounded-input border border-secondary" },
                           label_html: { class: "custom-label" },
                           wrapper_html: { class: "custom-profile-wrap" },
                           placeholder: "🔑" %>
@@ -59,7 +63,7 @@
               <%= f.input :password_confirmation,
                       label: "Retype Password",
                       required: false,
-                      input_html: { autocomplete: "new-password", class: "signup-rounded-input" },
+                      input_html: { autocomplete: "new-password", class: "signup-rounded-input border border-secondary" },
                       label_html: { class: "custom-label" },
                       wrapper_html: { class: "custom-profile-wrap" } %>
             </div>
@@ -69,7 +73,7 @@
           <%= f.input :current_password,
                 hint: "Confirm your changes with your current password",
                 required: true,
-                input_html: { autocomplete: "current-password", class: "signup-rounded-input" },
+                input_html: { autocomplete: "current-password", class: "signup-rounded-input border border-secondary" },
                 label_html: { class: "custom-label" } %>
 
         </div>
@@ -78,6 +82,7 @@
           </div>
 
       <% end %>
+
 
     <%# <div class="text-center">
       <%= button_to "Delete Account", registration_path(resource_name), class:"button-delete-profile", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>

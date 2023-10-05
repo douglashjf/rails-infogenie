@@ -1,1 +1,12 @@
-<p><strong><%= comment.user.first_name %>:</strong><%= comment.content %></p>
+<div class="posted-comment py-2 px-2 mt-3">
+  <div class="d-flex justify-content-start">
+    <% if comment.user.photo.attached? %>
+      <%= cl_image_tag comment.user.photo.key, crop: :fill, class: "avatar avatar-comment" %>
+    <% else %>
+      <img src="<%= asset_path('empty-avatar') %>" style="width: 20px; height: 20px;" alt="avatar" class="rounded">
+    <% end %>
+    <p class="comment-name ms-2"><strong><%= comment.user.first_name %></strong></p>
+  </div>
+  <p class="comment-time "><%= comment.created_at.in_time_zone('Asia/Singapore').strftime('%^b %d') %> </p>
+  <p class="mb-0  comment-content "><%= comment.content %></p>
+</div>
