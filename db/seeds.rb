@@ -15,29 +15,39 @@ User.destroy_all
 puts "Creating new data"
 
 # Create all users
+jack_avatar = URI.open("https://i.seadn.io/gcs/files/ea1a6648d854220815cf1425079e915b.png?w=500&auto=format")
 user_jack = User.create!(
   first_name: "Jack",
   last_name: "Khong",
   email: "jackinfogenie@gmail.com",
   password: "password"
 )
-puts "Created jack 2 cards 2 favourites (1 card deleted by Jacob)"
+user_jack.photo.attach(io: jack_avatar, filename: "jack_avatar.jpg", content_type: "image/jpg")
+user_jack.save!
 
+puts "Created jack (with avatar) 2 cards 2 favourites (1 card deleted by Jacob)"
+
+jacob_avatar = URI.open("https://pbs.twimg.com/media/Ftq4k41WIAYadtY?format=jpg&name=large")
 user_jacob = User.create!(
   first_name: "Jacob",
   last_name: "Khong",
   email: "jacob@gmail.com",
   password: "password"
 )
-puts "Created Jacob 2 cards (deleted his own marathon card)"
+user_jacob.photo.attach(io: jacob_avatar, filename: "jacob_avatar.png", content_type: "image/png")
+user_jacob.save!
+puts "Created Jacob (with avatar) 2 cards (deleted his own marathon card)"
 
+sean_avatar = URI.open("https://i.seadn.io/gcs/files/26d28aa6f8cb427f538ab98cd538d137.png?auto=format&dpr=1&w=1000")
 user_sean = User.create(
   first_name: 'Sean',
   last_name: 'Seanson',
   email: 'sean@gmail.com',
   password: 'password'
 )
-puts 'Created Sean user, 1 card'
+user_sean.photo.attach(io: sean_avatar, filename: "sean_avatar.png", content_type: "image/png")
+user_sean.save!
+puts 'Created Sean (with avatar) user, 1 card'
 
 # Create Fixed Categories based on list
 TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
