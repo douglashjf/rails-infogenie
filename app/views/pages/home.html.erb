@@ -1,5 +1,36 @@
 <div class="landing-content text-center">
-  <div class="h2">Your Network is Your Net-Worth!</div>
-  <%= image_tag "landingpagepic.jpg", class: "landingpageimg my-4", alt: "landing page" %>
-  <%= link_to 'Try For Free Now!', cards_path, class: 'btn btn-dark tryforfree' %>
+  <div class="img-container ">
+    <div>
+      <h1 class="text-primary">Knowledge is Power.</h1>
+      <img src="<%= asset_path('logotransparent') %>" width="180px" class="my-img mt-3" alt="">
+      <img src="<%= asset_path('logo-no-words') %>" width="180px" class="stationary-img mt-3" alt="">
+    </div>
+  </div>
+
+  <div class="landing-container mt-3 pt-3">
+    <div class="row ">
+      <div class="pitch col-8" >
+        <h5 style="text-align:left;">The World's Information At Your Fingertips</h5>
+        <p style="line-height: 18px; margin-top: 10px; margin-bottom: 0px; text-align:left;">Heading to an interview or a networking event? Don't fret.</p>
+        <p style="line-height: 18px; text-align:left;"> InfoGenie grants your wishes so that you can be equipped to get that dream job. </p>
+      </div>
+      <div class="demo-image col-4">
+        <img src="<%= asset_path('sample') %>" width="100px" class="" alt="sample">
+      </div>
+    </div>
+  </div>
+  <%= link_to 'Start now >', cards_path, class: 'btn btn-primary tryforfree' %>
+  <div>
+    <video width="390" autoplay loop muted class="background-clip">
+      <source src="<%= asset_path('Background.mp4') %>" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<div class="mt-5 d-flex flex-column align-items-center mb-4" style="height: 550px;">
+  <h4 class="text-white p-1"> <span class="text-light"><strong>Discover</strong></span> Knowledge</h4>
+  <h4 class="text-white p-1"><span class="text-light"><strong>Learn</strong></span> Effortlessly</h4>
+  <h4 class="text-white p-1"><span class="text-light"><strong>Share</strong></span> Wisdom</h4>
+  <h4 class="text-white mt-auto p-2"></h4>
+  <%= link_to 'Start Investing in Yourself!', cards_path, class: 'btn btn-primary tryforfree text-white' %>
 </div>

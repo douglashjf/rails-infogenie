@@ -1,19 +1,75 @@
 // Specific CSS for your home-page
 .landing-content{
-  // max-height: 100vh;
-  margin-top: 150px;
-  // overflow: auto;
-  padding-bottom: 100px;
 
+  padding-top: 30px;
+  padding-bottom: 10px;
+
+  background-color: white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.landing-container {
+  margin-left: 35px;
+  margin-right: 35px;
 }
 
 .tryforfree {
-  border-radius: 10px
+  border-radius: 6px;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.2)
 }
 
 .landingpageimg {
   width: 294px;
-  height: 294px;
+  height: 304px;
   border-radius: 10px;
   filter: drop-shadow(0 0 0.75rem grey);
+}
+
+.gradient-background {
+  background: linear-gradient(34deg,#14172c,#787b8d,#c3c5d2);
+  background-size: 180% 180%;
+  animation: gradient-animation 12s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.background-clip {
+  position: absolute;
+  top: 70%;
+  left: 0;
+  z-index: -1;
+}
+
+.img-container {
+  position: relative;
+}
+
+.stationary-img {
+  z-index: 2;
+  position: absolute;
+  top: 17.3%;
+  left: 26.7%;
+}
+
+.my-img {
+  animation: rotateImg 10s linear infinite;
+}
+@keyframes rotateImg{
+  from {
+   transform: rotate(0deg);
+  }
+ to {
+  transform: rotate(359deg);
+ }
 }
