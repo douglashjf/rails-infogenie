@@ -83,6 +83,10 @@ class CardsController < ApplicationController
     end
   end
 
+  def favorite_count
+    @favorites.count
+  end
+
   def toggle_favourites
     if current_user.favourites.exists?(card: @card)
       current_user.favourites.where(card: @card).destroy_all

@@ -11,6 +11,11 @@
   padding-left: 15px;
 }
 
+.favorite-count {
+  font-size: 20px;
+  color: $success;
+}
+
 .card-img-top {
   height: 170px;
   width: 100%;
@@ -26,8 +31,9 @@
 }
 .card-title {
   font-size: 20px;
+  color: $primary;
   font-weight: bold;
-  margin-top: 5px;
+  // margin-top: 5px;
   width: max-content;
 }
 
