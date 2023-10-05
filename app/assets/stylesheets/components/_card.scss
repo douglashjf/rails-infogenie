@@ -21,10 +21,14 @@
 //   padding-bottom: 100px;
 // }
 
+.card-body{
+  background-color: white;
+}
 .card-title {
   font-size: 20px;
   font-weight: bold;
   margin-top: 5px;
+  width: max-content;
 }
 
 .card-subtitle {
@@ -33,10 +37,10 @@
   font-weight: 400;
 }
 
-.card-link {
-  text-decoration: none;
-  color: inherit;
-}
+// .card-link {
+//   text-decoration: none;
+//   color: inherit;
+// }
 
 .card {
   border: 0.5px solid $secondary;
@@ -46,6 +50,8 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   height: 350px;
   width: 300px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .card-date {
@@ -57,6 +63,7 @@
 
 .card-categories {
   font-size: 15px;
+  width: max-content;
 }
 
 .card-menu {
@@ -67,17 +74,20 @@
   .comment-count {
     font-size: 20px;
   }
-
-  .fa-share {
-    font-size: 20px;
-    margin-right: 10px;
-  }
 }
 
-// .spacer {
-//   height: 160px;
-// }
+.fa-whatsapp {
+  font-size: 25px;
+  font-weight: bold;
+  color: $primary;
+  margin-right: 20px
+}
 
+.fa-x-twitter {
+  font-size: 25px;
+  font-weight: bold;
+  color: $primary;
+}
 
 // .card-icons {
 //   position: absolute;

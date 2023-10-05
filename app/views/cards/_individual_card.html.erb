@@ -1,74 +1,60 @@
-<div class="swiper-slide card">
-  <a href="<%= card_path(card) %>" class="card-link">
-    <% if card.image_url.present? %>
-      <%= image_tag card.image_url, class: "card-img-top" %>
-    <% end %>
-    <div class="card-body" style="padding: 0.5rem 1rem;">
-      <div class="row align-items-start">
-        <div class="col-8">
-          <h5 class="card-title mb-1 text-start"><%= card.primary_keywords.capitalize %></h5>
-        </div>
-        <div class="col-4 text-end">
-          <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
-            <% if current_user.favourites.exists?(card: card) %>
-              <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
-                <i class="fa-solid fa-heart" style="color: #1999CE; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
-              <% end %>
-            <% else %>
-              <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
-                <i class="fa-regular fa-heart" style="color: #1999CE; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
-              <% end %>
+<div class="swiper-slide card" onclick="window.location='<%= card_path(card) %>'">
+  <% if card.image_url.present? %>
+    <%= image_tag card.image_url, class: "card-img-top" %>
+  <% end %>
+  <div class="card-body" style="padding: 0.5rem 1rem;">
+    <div class="row align-items-start">
+      <div class="col-8">
+        <h5 class="card-title mb-1 text-start"><%= card.primary_keywords.capitalize %></h5>
+      </div>
+      <div class="col-4 text-end">
+        <div data-controller="favourites-button" data-favourites-button-target="favouritesContainer">
+          <% if current_user.favourites.exists?(card: card) %>
+            <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+              <i class="fa-solid fa-heart" style="color: #1999CE; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
             <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-8">
-          <p class="card-subtitle mb-2 text-start"><%= card.secondary_keywords.capitalize %></p>
-        </div>
-        <div class="col-4 text-end">
-          <p class="card-date"><%= card.created_at.strftime("%-d %^b %y") %></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-8 text-start">
-          <p class="card-categories pb-3 text-start">
-            <% card.categories.each do |category| %>
-              <%= button_tag class: "icon-button" do %>
-                <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #14172C;") %>
-                <%= category.tag %>
-              <% end %>
+          <% else %>
+            <%= button_to toggle_favourites_card_path(card), method: :post, remote: true, class: "favourites-button", data: { action: 'click->favourites-button#toggle', favourites_button_target: 'favourites'} do %>
+              <i class="fa-regular fa-heart" style="color: #1999CE; font-size: 30px" data-favourites-button-target="favouriteIcon"></i>
             <% end %>
-          </p>
-        </div>
-      </div>
-      <div class="row card-menu">
-        <div class="col-6 text-start">
-          <%= content_tag :i, nil, class: 'fa-solid fa-comment-dots', style: 'color: #14172c;' %>
-          <%= content_tag :span, card.comments.count, class: 'comment-count' %>
-        </div>
-        <div class="col-6 text-end align-self-end">
-            <i class="fa-solid fa-share" style="color: #14172c;" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+          <% end %>
         </div>
       </div>
     </div>
-  </a>
-</div>
-
-<%# Modal %>
-<div class="modal" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog ">
-        <div class="modal-content options-dropdown bg-primary">
-
-          <div class="modal-body d-flex flex-column justify-content-center align-items-left px-0 py-0 ps-3 ">
-            <div class="d-flex">
-              <%= link_to whatsapp_share_url, target: "_blank", class:"d-flex align-items-center" do %>
-                <p class="text-white my-0">Share on Whatsapp</p>
-                <i class="fa-brands fa-whatsapp fs-5 ms-2" style="color: white;"></i>
-              <% end %>
-            </div>
-            <div class="d-flex text-white"> Share to Twitter <i class="fa-brands fa-twitter fs-5 ms-2"></i></div>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-8">
+        <p class="card-subtitle mb-2 text-start"><%= card.secondary_keywords.capitalize %></p>
       </div>
+      <div class="col-4 text-end">
+        <p class="card-date"><%= card.created_at.strftime("%-d %^b %y") %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 text-start">
+        <p class="card-categories pb-3 text-start">
+          <% card.categories.each do |category| %>
+            <%= button_tag class: "icon-button" do %>
+              <%= content_tag(:i, "", class: "fa-solid fa-tag", style: "color: #14172C;") %>
+              <%= category.tag %>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="row card-menu">
+      <div class="col-6 text-start">
+        <%= content_tag :i, nil, class: 'fa-solid fa-comment-dots', style: 'color: #14172c;' %>
+        <%= content_tag :span, card.comments.count, class: 'comment-count' %>
+      </div>
+      <div class="col-6 text-end align-self-end">
+        <% whatsapp_share_url = "https://api.whatsapp.com/send?text=#{encoded_url(card_url(card))}" %>
+        <%= link_to whatsapp_share_url, class: "text-decoration-none" do %>
+          <i class="fa-brands fa-whatsapp" style="color: #14172c;"></i>
+        <% end %>
+        <%= link_to whatsapp_share_url, class: "text-decoration-none" do %>
+          <i class="fa-brands fa-x-twitter" style="color: #14172c;"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -7,4 +7,7 @@ module ApplicationHelper
     "https://api.whatsapp.com/send?text=#{encoded_url}"
   end
 
+  def encoded_url(url)
+    URI.encode_www_form_component(url)
+  end
 end

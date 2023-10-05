@@ -2,7 +2,7 @@
     <% @categories.each do |category| %>
       <% if @cards_by_category[category].present? %>
         <div class="category-heading">
-          <h1><u><%= category.tag %></u></h1>
+          <h1><%= category.tag %></h1>
         </div>
         <div class="swiper px-3" data-controller="index-card-swiper">
           <div class="swiper-wrapper">
@@ -12,11 +12,12 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
+        <hr>
       <% end %>
     <% end %>
   <% else %>
     <% if @cards_by_category_all.present? %>
-      <h1>All Categories</h1>
+      <h1>All Cards</h1>
       <div class="swiper" data-controller="index-card-swiper">
         <div class="swiper-wrapper">
           <% @cards_by_category_all.each do |card| %>
