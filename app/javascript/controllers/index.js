@@ -16,6 +16,9 @@ application.register("fun-fact", FunFactController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import IndexCardSwiperController from "./index_card_swiper_controller"
+application.register("index-card-swiper", IndexCardSwiperController)
+
 import InsertInCommentController from "./insert_in_comment_controller"
 application.register("insert-in-comment", InsertInCommentController)
 
