@@ -11,6 +11,7 @@
 .signup-container {
   padding-left: 28px;
   padding-right: 28px;
+  background-color: white;
 }
 
 input::placeholder { /* Modern browsers */
@@ -57,25 +58,27 @@ input::placeholder { /* Modern browsers */
 
 .page-container {
   background-color: white;
-  padding-bottom: 100px;
+  padding-bottom: 30px;
   color: $primary;
 }
 
 .overlay-image {
   position: absolute;
-  top: 0;
-  left: 12%;
+  top: 2%;
+  left: 25%;
   z-index: 1;
+  width: 200px;
+  height: 200px;
 }
 
-.grey-container {
-  background-color: #D9D9D9;
-  height: 100vh;
-  border-radius: 20px;
-}
+// .grey-container {
+//   background-color: #D9D9D9;
+//   height: 100vh;
+//   border-radius: 20px;
+// }
 
 .image-container{
-  padding: 130px;
+  padding: 90px;
 }
 
 .custom-label {
@@ -114,7 +117,7 @@ input::placeholder { /* Modern browsers */
 
 .external-sign {
   color: $success;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-radius: 8px;
   background: linear-gradient(36deg, $light 0%, rgba(255,255,255,1) 30%);
   border: none;
