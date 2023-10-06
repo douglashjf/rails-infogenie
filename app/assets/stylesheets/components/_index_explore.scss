@@ -47,8 +47,11 @@
   box-shadow: 0px 4px 4px 0px $success;
   font-family: $headers-font;
   font-size: 17px;
-  // font-style: normal;
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 // .lamp-icon {
@@ -63,14 +66,8 @@
   border-color: #333;
 }
 
-// .fa-slider {
-//   font-size: 25px;
-//   margin-left: 40px;
-//   color: $primary;
-// }
 
 .fa-sliders::before {
   font-size: 25px;
-  padding-left: 50px;  // 25px margin left
   color: $primary;
 }
