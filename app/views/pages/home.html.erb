@@ -31,16 +31,16 @@
   </video>
 </div>
 
-<div class="landing-container" >
+<div class="landing-container" data-controller="scroll-lamp" >
   <div class=" d-flex flex-column align-items-center mb-4 landing-wish" style="height: 550px;">
     <h5 class="text-center text-white mb-auto p-2">Make a wish by giving us a keyword and let us do the rest...</h5>
     <h4 class="text-white text-center  p-2 landing-call"><i class="fa-solid fa-arrow-up" style="color: #ffffff;"></i></h4>
-    <h4 class="text-white text-center  p-2 landing-message">  Rub the <strong>LAMP</strong> and make your wish!</h4>
+    <h4 class="text-white text-center  p-2 landing-message" data-scroll-lamp-target="message">Rub the <strong>LAMP</strong> and make your wish!</h4>
   </div>
 
-  <div data-controller="scroll-lamp">
+  <div >
     <%= link_to cards_path do %>
-      <img src="<%=asset_path('cutlamp') %>" alt="vidlamp" class="landing-lamp" data-scroll-lamp-target="lamp" >
+      <img src="<%=asset_path('cutlamper') %>" alt="vidlamp" class="landing-lamp" data-scroll-lamp-target="lamp" >
     <% end %>
   </div>
 

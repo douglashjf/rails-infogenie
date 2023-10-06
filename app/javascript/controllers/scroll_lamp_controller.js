@@ -2,16 +2,25 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="scroll-lamp"
 export default class extends Controller {
-  static targets = ["lamp"]
+  static targets = ["lamp","message"]
   connect() {
     console.log("scroll loaded");
+    console.log(this.lampTarget);
+    console.log(this.messageTarget);
 
-    const obsCallback = function (entries, observer) {
-    const [entry] = entries;
-    console.log(entry);
-    const lamp = document.querySelector('.landing-lamp')
-    const call = document.querySelector('.landing-call')
-    const message = document.querySelector('.landing-message')
+    const obsOptions = {
+      root: null,
+      threshold: 0.9,
+    }
+
+
+
+    const obsCallback = function (entries) {
+      const [entry] = entries;
+      console.log(entry);
+      const lamp = document.querySelector('.landing-lamp')
+      const call = document.querySelector('.landing-call')
+      const message = document.querySelector('.landing-message')
       if (!entry.isIntersecting) {
         lamp.classList.add('opacity-0')
         call.classList.add('opacity-0')
@@ -27,16 +36,8 @@ export default class extends Controller {
       }
     }
 
-    const obsOptions = {
-      root: null,
-      threshold: 0.8,
-    }
-
     const observer = new IntersectionObserver(obsCallback, obsOptions);
-    observer.observe(this.lampTarget)
-
-
-
+    observer.observe(this.messageTarget)
   }
 
 
