@@ -7,6 +7,10 @@
   z-index: 100;
 }
 
+.navbar-brand {
+  margin-right: 0px;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -31,7 +35,7 @@
 .navbar-rectangle {
   // background-color: #1D1F24;
 
-  padding: 20px 25px;
+  padding: 10px 15px;
   width: 100%;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
@@ -39,7 +43,7 @@
 
 .nav-button {
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.625rem;
   color: #676D75;
 }
 

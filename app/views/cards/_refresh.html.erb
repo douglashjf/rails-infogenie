@@ -1,4 +1,7 @@
 <div data-refresh-news-target="renderNews" >
+  <% if @card.news_articles.present? %>
+    <span class="text-secondary last-refresh">Last Refreshed: <%= (@card.news_articles.last.updated_at.in_time_zone('Asia/Singapore').strftime('%d %b %l:%M%P')) %></span>
+  <% end %>
   <% if @articles.present? %>
 
       <% @articles.each do |article| %>

@@ -2,18 +2,19 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="favourites-button"
 export default class extends Controller {
-  static targets = ['favourites', 'favouritesContainer', 'favouriteIcon']
+  static targets = ['favourites', 'favouritesContainer', 'favouriteIcon', 'favouriteCounter']
   connect() {
+    console.log("testtest")
   }
 
   toggle(event) {
     event.stopPropagation();
     const flashAdd = document.createElement('div');
     flashAdd.className = 'flash-message';
-    flashAdd.innerText = 'Added to Favourites'
+    flashAdd.innerText = 'Favourited! Receiving Daily Updates'
     const flashRem = document.createElement('div');
     flashRem.className = 'flash-message';
-    flashRem.innerText = 'Removed from Favourites'
+    flashRem.innerText = 'Unfavourited! Stopped Daily Updates'
 
     if (this.favouriteIconTarget.classList.contains('fa-solid')){
       console.log('Button Works')
@@ -23,6 +24,9 @@ export default class extends Controller {
       setTimeout(() => {
         this.favouritesContainerTarget.removeChild(flashRem);
       }, 1500);
+      if (parseInt(this.favouriteCounterTarget.innerText) > 0) {
+        this.favouriteCounterTarget.innerText = (parseInt(this.favouriteCounterTarget.innerText) - 1).toString();
+      };
     } else {
       console.log('button works');
       this.favouriteIconTarget.classList.remove('fa-regular');
@@ -32,6 +36,7 @@ export default class extends Controller {
       setTimeout(() => {
         this.favouritesContainerTarget.removeChild(flashAdd);
       }, 1500);
+      this.favouriteCounterTarget.innerText = (parseInt(this.favouriteCounterTarget.innerText) + 1).toString();
     }
   }
 }

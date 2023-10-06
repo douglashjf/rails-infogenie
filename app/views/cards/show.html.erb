@@ -1,4 +1,4 @@
-<div class="container show-container bg-white" >
+<div class="container show-page bg-white" >
   <div class="d-flex justify-content-between align-items-center" >
     <%= link_to :back, class: "btn" do %>
         <i class="fa-solid fa-chevron-left text-primary fs-3 px-2"></i>
@@ -18,20 +18,24 @@
                 <i class="fa-brands fa-whatsapp fs-5 ms-2" style="color: white;"></i>
               <% end %>
             </div>
-            <div class="d-flex text-white"> Share to Twitter <i class="fa-brands fa-twitter fs-5 ms-2"></i></div>
-          </div>
+              <%= link_to  twitter_share_url(@card.primary_keywords,@card.secondary_keywords), target: "_blank", class:"d-flex align-items-center" do %>
+              <div class="d-flex text-white"> Share to Twitter <i class="fa-brands fa-twitter fs-5 ms-2"></i></div>
+              <% end %>
+              </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- need to add midjourney banner over here -->
-  <% if @card.image_url.present? %>
-    <div class="image-header" style="background-image: url('<%= @card.image_url %>')">
-    </div>
-  <% end %>
+<% if @card.image_url.present? %>
+  <div class="image-header" style="background-image: url('<%= @card.image_url %>')">
+  </div>
+<% end %>
 
-  <div class="d-flex justify-content-start align-items-center mt-3">
+<div class="container show-container bg-white" >
+  <div class="d-flex justify-content-start align-items-center pt-3">
     <div class="d-flex justify-content-equally">
       <div class="card-title">
        <h1><strong><%= @card.primary_keywords.capitalize %></strong></h1>
@@ -113,10 +117,10 @@
   <div data-controller="refresh-news">
     <div class="news-header position-relative">
       <h5 class="mt-1 mb-0"><strong>News Center</strong></h5>
-        <span class="text-secondary last-refresh">Last Refreshed: <%= (@card.news_articles.last.updated_at.in_time_zone('Asia/Singapore').strftime('%d %b %l:%M%P')) %></span>
+
       <button id="refresh-news" data-action="click->refresh-news#refreshArticles" class="text-primary fs-3 refresh-button"><i class="fa-solid fa-rotate-left"></i></button>
     </div>
-    <div class="news-centre m-2 "  data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
+    <div class="news-centre "  data-url="<%= refresh_articles_card_path(@card) %>" data-refresh-news-card-id-value="<%= @card.id %>" data-refresh-news-target="link">
       <%= render 'refresh' %>
     </div>
   </div>
@@ -125,7 +129,7 @@
 
     <div class="comment-form-container">
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, height: "50px", width: "50px", crop: :fill, class: "rounded" %>
+        <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar avatar-form" %>
       <% else %>
         <img src="<%= asset_path('empty-avatar') %>" style="width: 50px; height: 50px;" alt="avatar" class="rounded">
       <% end %>

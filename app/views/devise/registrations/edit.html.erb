@@ -1,7 +1,7 @@
 <div class="profile-container bg-white h-100">
   <div class="avatar-container text-center">
     <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, height: "auto", width: "130px", crop: :fill, class: "rounded" %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar avatar-profile" %>
     <% else %>
       <img src="<%= asset_path('empty-avatar') %>" style="width: 130px;" alt="avatar" class="rounded">
     <% end %>
@@ -10,7 +10,7 @@
   <div class="container px-4">
     <h1 class="text-center mb-2 profile-header">Edit Profile or Avatar</h1>
 
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: {turbo: false}) do |f| %>
 
         <%= f.error_notification %>
 

@@ -16,6 +16,9 @@ application.register("fun-fact", FunFactController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import IndexCardSwiperController from "./index_card_swiper_controller"
+application.register("index-card-swiper", IndexCardSwiperController)
+
 import InsertInCommentController from "./insert_in_comment_controller"
 application.register("insert-in-comment", InsertInCommentController)
 
@@ -31,9 +34,6 @@ application.register("modal-new-card", ModalNewCardController)
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)
 
-import QuestionSliderController from "./question_slider_controller"
-application.register("question-slider", QuestionSliderController)
-
 import RefreshNewsController from "./refresh_news_controller"
 application.register("refresh-news", RefreshNewsController)
 
@@ -42,9 +42,6 @@ application.register("scroll-lamp", ScrollLampController)
 
 import SelectedTopicsController from "./selected_topics_controller"
 application.register("selected-topics", SelectedTopicsController)
-
-import ShowSliderController from "./show_slider_controller"
-application.register("show-slider", ShowSliderController)
 
 import SwiperJsController from "./swiper_js_controller"
 application.register("swiper-js", SwiperJsController)

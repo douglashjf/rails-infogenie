@@ -1,12 +1,27 @@
-.card {
-  border-radius: 25px;
+.card-container {
+  padding-top: 20px;
+  padding-bottom: 160px;
 }
 
-.card-container {
-  max-height: 100dvh;
-  padding-top: 20px;
-  overflow: auto;
-  padding-bottom: 120px;
+.category-heading h1{
+  color: $primary;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  padding-left: 15px;
+}
+
+
+.favourite-counter {
+  font-size: 20px;
+  color: $success;
+}
+
+.card-img-top {
+  height: 170px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 
@@ -14,35 +29,78 @@
   padding-bottom: 120px;
 }
 
-// .card-title {
-//   font-size: 30px;
-//   font-weight: bold;
-// }
+.show-page {
+  background-color: white;
+}
+
+.card-body{
+  background-color: white;
+}
+.card-title {
+  font-size: 20px;
+  color: $primary;
+  font-weight: bold;
+  // margin-top: 5px;
+  width: max-content;
+}
+
+.card-subtitle {
+  font-size: 17px;
+  color: $secondary;
+  font-weight: 400;
+}
 
 // .card-link {
 //   text-decoration: none;
+//   color: inherit;
 // }
 
-// .card {
-//   border: none;
-//   border-radius:20px;
-//   margin-bottom: 30px;
-//   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-//   width: 307px;
-//   height: 200px;
-//   position: relative;
-// }
+.card {
+  border: 0.5px solid $secondary;
+  overflow: hidden;
+  border-radius:20px;
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  height: 350px;
+  width: 300px;
+  text-decoration: none;
+  color: inherit;
+}
 
-// .card-body {
-//   color: black;
-//   text-align: center;
-//   position: absolute;
-//   width: 100%;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   overflow: hidden;
-// }
+.card-date {
+  color: $secondary;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.card-categories {
+  font-size: 15px;
+  width: max-content;
+}
+
+.card-menu {
+  .fa-comment-dots {
+    font-size: 20px;
+  }
+
+  .comment-count {
+    font-size: 20px;
+  }
+}
+
+.fa-whatsapp {
+  font-size: 25px;
+  font-weight: bold;
+  color: $primary;
+  margin-right: 15px
+}
+
+.fa-x-twitter {
+  font-size: 25px;
+  font-weight: bold;
+  color: $primary;
+}
 
 // .card-icons {
 //   position: absolute;
@@ -55,6 +113,11 @@
 //     margin-left: 10px;
 //   }
 // }
+
+.sliders {
+  padding-top: 23px;
+  padding-right: 20px;
+}
 
 .card-poster {
   font-style: italic;
