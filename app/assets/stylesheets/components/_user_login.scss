@@ -71,11 +71,11 @@ input::placeholder { /* Modern browsers */
   height: 200px;
 }
 
-// .grey-container {
-//   background-color: #D9D9D9;
-//   height: 100vh;
-//   border-radius: 20px;
-// }
+.create-label {
+  margin-bottom: 2px;
+  font-weight: bold;
+  color: $primary;
+}
 
 .image-container{
   padding: 90px;
@@ -84,6 +84,7 @@ input::placeholder { /* Modern browsers */
 .custom-label {
   margin-bottom: 2px;
   font-weight: bold;
+  color: $primary;
 }
 
 .signin-label {

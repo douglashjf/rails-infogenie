@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="favourites-button"
 export default class extends Controller {
-  static targets = ['favourites', 'favouritesContainer', 'favouriteIcon', 'favoriteCounter']
+  static targets = ['favourites', 'favouritesContainer', 'favouriteIcon', 'favouriteCounter']
   connect() {
     console.log("testtest")
   }
@@ -24,8 +24,8 @@ export default class extends Controller {
       setTimeout(() => {
         this.favouritesContainerTarget.removeChild(flashRem);
       }, 1500);
-      if (parseInt(this.favoriteCounterTarget.innerText) > 0) {
-        this.favoriteCounterTarget.innerText = (parseInt(this.favoriteCounterTarget.innerText) - 1).toString();
+      if (parseInt(this.favouriteCounterTarget.innerText) > 0) {
+        this.favouriteCounterTarget.innerText = (parseInt(this.favouriteCounterTarget.innerText) - 1).toString();
       };
     } else {
       console.log('button works');
@@ -36,7 +36,7 @@ export default class extends Controller {
       setTimeout(() => {
         this.favouritesContainerTarget.removeChild(flashAdd);
       }, 1500);
-      this.favoriteCounterTarget.innerText = (parseInt(this.favoriteCounterTarget.innerText) + 1).toString();
+      this.favouriteCounterTarget.innerText = (parseInt(this.favouriteCounterTarget.innerText) + 1).toString();
     }
   }
 }
