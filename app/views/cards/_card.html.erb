@@ -1,34 +1,34 @@
 <% if @categories.present? %>
-    <% @categories.each do |category| %>
-      <% if @cards_by_category[category].present? %>
-        <div class="category-heading">
+  <% @categories.each do |category| %>
+    <% if @cards_by_category[category].present? %>
+      <div class="category-heading">
           <h1><%= category.tag %></h1>
-        </div>
-        <div class="swiper px-3" data-controller="index-card-swiper">
-          <div class="swiper-wrapper">
-            <% @cards_by_category[category].each do |card| %>
-              <%= render 'individual_card', card: card, category: category %>
-            <% end %>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-        <hr>
-      <% end %>
-    <% end %>
-  <% else %>
-    <% if @cards_by_category_all.present? %>
-      <div class="allcard-heading">
-          <h1>All Cards<h1>
-        </div>
+      </div>
       <div class="swiper px-3" data-controller="index-card-swiper">
         <div class="swiper-wrapper">
-          <% @cards_by_category_all.each do |card| %>
-            <%= render 'individual_card', card: card %>
+          <% @cards_by_category[category].each do |card| %>
+            <%= render 'individual_card', card: card, category: category %>
           <% end %>
         </div>
         <div class="swiper-pagination"></div>
       </div>
-    <% else %>
-      <p>No cards found.</p>
+      <hr>
     <% end %>
   <% end %>
+<% else %>
+  <% if @cards_by_category_all.present? %>
+    <div class="allcard-heading">
+      <h1>All Cards<h1>
+    </div>
+    <div class="swiper px-3" data-controller="index-card-swiper">
+      <div class="swiper-wrapper">
+        <% @cards_by_category_all.each do |card| %>
+          <%= render 'individual_card', card: card %>
+        <% end %>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  <% else %>
+    <p>No cards found.</p>
+  <% end %>
+<% end %>
