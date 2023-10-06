@@ -1,4 +1,4 @@
-
+<!--
 <h1><%= DateTime.now.strftime('%d-%B-%Y') %> News Update</h1>
 
 <% @user.favourites.each do |favourite|  %>
@@ -12,3 +12,34 @@
       </ul>
   </div>
 <% end %>
+-->
+
+<body class="bg-light">
+  <div class="container">
+    <div style="text-align: center;">
+      <img class="ax-center my-10 w-24" src="https://static-00.iconduck.com/assets.00/camera-circle-icon-2048x2048-aggqa7eg.png" alt="Image Description" style="width: 120px; height: 120px; ">
+    </div>
+    <div class="card p-6 p-lg-10 space-y-4">
+      <h1 class="h3 fw-700" style="color: #14172c;">
+        <%= DateTime.now.strftime('%-d %b %y') %> News Update
+      </h1>
+      <h3 style="font-size: 20px; color:#14172C; ">Hey <%= @user.first_name %>, just wanted to give you a heads up that the cards you've favourited has the Freshest news! Check it out below!
+      </h3>
+      <br>
+
+      <% @user.favourites.each do |favourite|  %>
+          <div style="max-width: 300px; margin: 0 auto; background-color: white; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); text-align: center; padding: 16px;">
+            <img src="<%= favourite.card.image_url %>" alt="Banner Image" style="width: max-content; height: 150px; object-fit: cover;">
+            <h2 style="font-size: 32px; color: #14172c; font-weight: bold; margin: 8px 0;"><%= favourite.card.primary_keywords.capitalize %></h2>
+          </div>
+          <div style="text-align: left;">
+            <ul style="font-size: 15px; opacity: .7 font-weight: bold; padding: 0; color: #14172C; ">
+              <li style=" color:#14172C; "><%= link_to favourite.card.news_articles.uniq[favourite.card.news_articles.length - 3].title, card_url(favourite.card) %></li>
+              <li style=" color:#14172C; "><%= link_to favourite.card.news_articles.uniq[favourite.card.news_articles.length - 2].title, card_url(favourite.card) %></li>
+              <li style=" color:#14172C; "><%= link_to favourite.card.news_articles.uniq[favourite.card.news_articles.length - 1].title, card_url(favourite.card) %></li>
+            </ul>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</body>
