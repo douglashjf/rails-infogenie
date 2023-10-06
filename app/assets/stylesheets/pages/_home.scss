@@ -10,13 +10,28 @@
 }
 
 .landing-container {
+  position: relative;
   margin-left: 35px;
   margin-right: 35px;
+  padding-bottom: 20px;
+}
+
+.demo-image {
+  padding-top: 30px;
 }
 
 .tryforfree {
   border-radius: 6px;
   box-shadow: 0px 2px 3px rgba(0,0,0,0.2)
+}
+
+.landing-lamp {
+  width: 336px;
+
+  position: absolute;
+  bottom: -8%;
+  left: -2.5%;
+
 }
 
 .landingpageimg {
@@ -26,25 +41,8 @@
   filter: drop-shadow(0 0 0.75rem grey);
 }
 
-.gradient-background {
-  background: linear-gradient(34deg,#14172c,#787b8d,#c3c5d2);
-  background-size: 180% 180%;
-  animation: gradient-animation 12s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .background-clip {
+  pointer-events: none;
   position: absolute;
   top: 70%;
   left: 0;
@@ -52,19 +50,32 @@
 }
 
 .img-container {
-  position: relative;
+  position: absolute;
+  z-index: 2;
+  background: white;
+  height: 100vh;
+  padding: 584px 195px;
 }
 
 .stationary-img {
-  z-index: 2;
   position: absolute;
-  top: 17.3%;
-  left: 26.7%;
+  z-index: 3;
+  top: 2%;
+  left: 27%;
 }
 
 .my-img {
-  animation: rotateImg 10s linear infinite;
+  position: absolute;
+  z-index: 2;
+  animation: rotateImg 12s linear infinite;
+  top: 0.65%;
+  left: 27%;
 }
+
+.landing-wish {
+  margin-top: 50px;
+}
+
 @keyframes rotateImg{
   from {
    transform: rotate(0deg);
@@ -74,9 +85,32 @@
  }
 }
 
-.fade-in {
-  animation: fadeIn 5s;
+
+.fade-out {
+  animation: fadeOut 3s forwards;
 }
+
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fade-in {
+  animation: fadeIn 3s forwards;
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.fade-in1 {
+  animation: fadeIn 5s forwards;
+}
+
 
 @keyframes fadeIn {
   0% { opacity: 0; }
