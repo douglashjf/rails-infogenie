@@ -1,12 +1,10 @@
 // Specific CSS for your home-page
-.landing-content{
-
+.landing-content {
   padding-top: 30px;
-  padding-bottom: 10px;
-
   background-color: white;
   margin-top: 0px;
   margin-bottom: 0px;
+  height: 547px;
 }
 
 .landing-container {
@@ -34,12 +32,6 @@
 
 }
 
-.landingpageimg {
-  width: 294px;
-  height: 304px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 0.75rem grey);
-}
 
 .background-clip {
   pointer-events: none;
@@ -53,7 +45,6 @@
   position: absolute;
   z-index: 2;
   background: white;
-  height: 100vh;
   padding: 584px 195px;
 }
 
