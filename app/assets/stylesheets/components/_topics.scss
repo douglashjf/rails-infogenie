@@ -16,6 +16,26 @@
   height: 200px;
 }
 
+.st-img {
+  position: absolute;
+  z-index: 1;
+  left: 32%;
+}
+
+.logo-img {
+  animation: rotateImg 12s linear infinite;
+}
+
+
+@keyframes rotateImg{
+  from {
+   transform: rotate(0deg);
+  }
+ to {
+  transform: rotate(359deg);
+ }
+}
+
 .category-container {
   padding: 10px 19px;
   background-color: white;
