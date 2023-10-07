@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { createConsumer } from "@rails/actioncable";
 
 // Connects to data-controller="loading-page"
 export default class extends Controller {
@@ -20,7 +21,18 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        if (data.id) {
+          this.channel = createConsumer().subscriptions.create(
+            { channel: "CardChannel", id: data.id },
+            {
+              received: (data) => {
+                if (data.message === "done" && data.id)
+                  window.location.href = `/cards/${data.id}`;
+              },
+            }
+          );
+          console.log(`Subscribed to the card channel with the id ${data.id}.`);
+        }
       });
   }
 }

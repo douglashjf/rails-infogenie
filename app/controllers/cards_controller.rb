@@ -52,7 +52,7 @@ class CardsController < ApplicationController
     # validation for card.save
     respond_to do |format|
       if @card.save
-        # GenerateCardInfoJob.perform_later(@card)
+        GenerateCardInfoJob.perform_later(@card)
         format.html { redirect_to card_path(@card) }
         format.json { render json: @card }
       else

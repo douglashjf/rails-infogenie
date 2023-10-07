@@ -10,6 +10,7 @@ class GenerateCardInfoJob < ApplicationJob
     generate_image(card)
     puts "Generate Articles"
     generate_articles(card)
+    CardChannel.broadcast_to(card, message: "done", id: card.id)
   end
 
   private
