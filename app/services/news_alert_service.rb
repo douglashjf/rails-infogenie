@@ -8,7 +8,7 @@ class NewsAlertService
     favourite_cards = Favourite.all.map(&:card)
     # iterate over favourite cards, and call api and add refreshed news to array
     favourite_cards.uniq.each do |card|
-      news_articles = NewsArticle.fetch_articles(card.primary_keywords)
+      news_articles = NewsArticle.fetch_articles(card.primary_keywords, card.secondary_keywords)
       card.news_articles << news_articles
     end
 
