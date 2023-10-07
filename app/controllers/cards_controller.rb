@@ -131,8 +131,8 @@ class CardsController < ApplicationController
     (ii) key_questions: 3 bullet points output of key questions and
     (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}.
     Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }.
-    Output should also be within 1500 max_tokens.
-    Please analyze this through the PEST framework (Political, Economic, Social and Technological) implications."  #edit this prompt to refine results
+    Output should also be within 3000 max_tokens.
+    Please analyze this through the PEST framework (Political, Economic, Social and Technological) implications."# edit this prompt to refine results
 
     # Call the API with the params
     response = OpenaiService.new(prompt).call
