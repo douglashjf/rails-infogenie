@@ -73,7 +73,7 @@ class CardsController < ApplicationController
       @card.image_url = image_url
       @card.save!
 
-      news_articles = NewsArticle.fetch_articles(primary_keywords)
+      news_articles = NewsArticle.fetch_articles(primary_keywords, secondary_keywords)
       @card.news_articles = news_articles
 
 
@@ -84,7 +84,7 @@ class CardsController < ApplicationController
   end
 
   def refresh_articles
-    news_articles = NewsArticle.fetch_articles(@card.primary_keywords)
+    news_articles = NewsArticle.fetch_articles(@card.primary_keywords, @card.secondary_keywords)
 
     @card.news_articles << news_articles
     @articles = @card.news_articles.uniq.slice(@card.news_articles.length - 3, @card.news_articles.length)
@@ -126,7 +126,13 @@ class CardsController < ApplicationController
 
   def call_api(primary_keywords, secondary_keywords, query)
     # construct the prompt
-    prompt = "Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is a JSON of 3 arrays: (i) key_points: 2 bullet points summarising this entire primary keyword with the associated keywords, (ii) key_questions: 2 bullet points output of key questions and (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}. Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }. Output should also be within 1000 max_tokens. "  #edit this prompt to refine results
+    prompt = "Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is a JSON of 3 arrays:
+    (i) key_points: 3 bullet points summarising this entire primary keyword with the associated keywords,
+    (ii) key_questions: 3 bullet points output of key questions and
+    (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}.
+    Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }.
+    Output should also be within 1500 max_tokens.
+    Please analyze this through the PEST framework (Political, Economic, Social and Technological) implications."  #edit this prompt to refine results
 
     # Call the API with the params
     response = OpenaiService.new(prompt).call

@@ -3,7 +3,7 @@
     <% if comment.user.photo.attached? %>
       <%= cl_image_tag comment.user.photo.key, crop: :fill, class: "avatar avatar-comment" %>
     <% else %>
-      <img src="<%= asset_path('empty-avatar') %>" style="width: 20px; height: 20px;" alt="avatar" class="rounded">
+      <img src="<%= asset_path('empty-avatar.svg') %>" style="width: 20px; height: 20px;" alt="avatar" class="rounded">
     <% end %>
     <p class="comment-name ms-2"><strong><%= comment.user.first_name %></strong></p>
   </div>
