@@ -1,23 +1,7 @@
-<!--
-<h1><%= DateTime.now.strftime('%d-%B-%Y') %> News Update</h1>
-
-<% @user.favourites.each do |favourite|  %>
-  <div>
-
-    <h2>Topic: <%= favourite.card.primary_keywords.capitalize %></h2>
-      <ul>
-        <li><%= link_to favourite.card.news_articles.uniq[favourite.card.news_articles.length - 3].title, card_url(favourite.card) %></li>
-        <li><%= link_to favourite.card.news_articles.uniq[favourite.card.news_articles.length - 2].title, card_url(favourite.card) %></li>
-        <li><%= link_to favourite.card.news_articles.uniq[favourite.card.news_articles.length - 1].title, card_url(favourite.card) %></li>
-      </ul>
-  </div>
-<% end %>
--->
-
 <body class="bg-light">
   <div class="container">
     <div style="text-align: center;">
-      <img class="ax-center my-10 w-24" src="https://static-00.iconduck.com/assets.00/camera-circle-icon-2048x2048-aggqa7eg.png" alt="Image Description" style="width: 120px; height: 120px; ">
+      <img class="ax-center my-10 w-24" src="https://res.cloudinary.com/ddvj6niez/image/upload/v1696664296/infogenie-high-resolution-color-logo_vbtaun.png" alt="Image Description" style="width: 120px; height: 120px; ">
     </div>
     <div class="card p-6 p-lg-10 space-y-4">
       <h1 class="h3 fw-700" style="color: #14172c;">
