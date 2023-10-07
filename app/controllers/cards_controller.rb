@@ -50,11 +50,15 @@ class CardsController < ApplicationController
     @card.user = current_user
 
     # validation for card.save
-    if @card.save
-      GenerateCardInfoJob.perform_later(@card)
-      # redirect_to card_path(@card)
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @card.save
+        # GenerateCardInfoJob.perform_later(@card)
+        format.html { redirect_to card_path(@card) }
+        format.json { render json: @card }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @card }
+      end
     end
   end
 
