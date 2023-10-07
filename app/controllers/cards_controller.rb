@@ -127,8 +127,8 @@ class CardsController < ApplicationController
   def call_api(primary_keywords, secondary_keywords, query)
     # construct the prompt
     prompt = "Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is a JSON of 3 arrays:
-    (i) key_points: 3 bullet points summarising this entire primary keyword with the associated keywords,
-    (ii) key_questions: 3 bullet points output of key questions and
+    (i) key_points: 1 bullet points summarising this entire primary keyword with the associated keywords,
+    (ii) key_questions: 1 bullet points output of key questions and
     (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}.
     Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }.
     Output should also be within 3000 max_tokens."# edit this prompt to refine results
