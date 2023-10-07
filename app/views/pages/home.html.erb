@@ -1,5 +1,49 @@
 <div class="landing-content text-center">
-  <div class="h2">Your Network is Your Net-Worth!</div>
-  <%= image_tag "landingpagepic.jpg", class: "landingpageimg my-4", alt: "landing page" %>
-  <%= link_to 'Try For Free Now!', cards_path, class: 'btn btn-dark tryforfree' %>
+  <h1 class="text-primary">Knowledge is Power.</h1>
+
+  <div class="img-container" data-controller="logo-fade">
+    <img src="<%= asset_path('logotransparent') %>" width="180px" class="my-img mt-3" alt="">
+    <img src="<%= asset_path('logo-no-words') %>" width="180px" class="stationary-img" data-action="click->logo-fade#fade" alt="">
+  </div>
+
+
+  <div class="landing-container mt-3 pt-3">
+    <div >
+      <div class="pitch" >
+
+        <p style="line-height: 18px; margin-top: 10px; margin-bottom: 0px; text-align:center;"><strong>Heading to an interview or a networking event? <span class="text-success">Don't fret.</span></strong></p>
+        <p style="line-height: 18px; text-align:left; margin-top: 18px;"> InfoGenie is an AI-powered app that provides you with bite-sized info and news bits to prepare you for business situations. </p>
+      </div>
+      <%= link_to 'Get a free account today!', cards_path, class: 'btn btn-primary tryforfree' %>
+      <div class="demo-image" >
+        <img src="<%= asset_path('indexpage') %>" width="110px" class="" alt="index">
+        <img src="<%= asset_path('showpage') %>" width="110px" class="" alt="index">
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<div >
+  <video width="390" autoplay loop muted class="background-clip">
+    <source src="<%= asset_path('Background.mp4') %>" type="video/mp4">
+  </video>
+</div>
+
+<div class="landing-container" data-controller="scroll-lamp" >
+  <div class=" d-flex flex-column align-items-center mb-4 landing-wish" style="height: 550px;">
+    <h5 class="text-center text-white mb-auto p-2">Make a wish by giving us a keyword and let us do the rest...</h5>
+    <h4 class="text-white text-center  p-2 landing-call"><i class="fa-solid fa-arrow-up" style="color: #ffffff;"></i></h4>
+    <h4 class="text-white text-center  p-2 landing-message" data-scroll-lamp-target="message">Rub the <strong>LAMP</strong> and make your wish!</h4>
+  </div>
+
+  <div >
+    <%= link_to cards_path do %>
+      <img src="<%=asset_path('cutlamper') %>" alt="vidlamp" class="landing-lamp" data-scroll-lamp-target="lamp" >
+    <% end %>
+  </div>
+
+
+
 </div>

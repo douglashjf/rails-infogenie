@@ -25,11 +25,20 @@ application.register("insert-in-comment", InsertInCommentController)
 import LoadingPageController from "./loading_page_controller"
 application.register("loading-page", LoadingPageController)
 
+import LogoFadeController from "./logo_fade_controller"
+application.register("logo-fade", LogoFadeController)
+
+import ModalNewCardController from "./modal_new_card_controller"
+application.register("modal-new-card", ModalNewCardController)
+
 import NavbarActiveController from "./navbar_active_controller"
 application.register("navbar-active", NavbarActiveController)
 
 import RefreshNewsController from "./refresh_news_controller"
 application.register("refresh-news", RefreshNewsController)
+
+import ScrollLampController from "./scroll_lamp_controller"
+application.register("scroll-lamp", ScrollLampController)
 
 import SelectedTopicsController from "./selected_topics_controller"
 application.register("selected-topics", SelectedTopicsController)

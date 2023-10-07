@@ -1,19 +1,110 @@
 // Specific CSS for your home-page
-.landing-content{
-  // max-height: 100vh;
-  margin-top: 150px;
-  // overflow: auto;
-  padding-bottom: 100px;
+.landing-content {
+  padding-top: 30px;
+  background-color: white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 547px;
+}
 
+.landing-container {
+  position: relative;
+  margin-left: 35px;
+  margin-right: 35px;
+  padding-bottom: 20px;
+}
+
+.demo-image {
+  padding-top: 30px;
 }
 
 .tryforfree {
-  border-radius: 10px
+  border-radius: 6px;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.2)
 }
 
-.landingpageimg {
-  width: 294px;
-  height: 294px;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 0.75rem grey);
+.landing-lamp {
+  width: 336px;
+
+  position: absolute;
+  bottom: 27%;
+  left: -2.5%;
+
+}
+
+
+.background-clip {
+  pointer-events: none;
+  position: absolute;
+  top: 70%;
+  left: 0;
+  z-index: -1;
+}
+
+.img-container {
+  position: absolute;
+  z-index: 2;
+  background: white;
+  padding: 584px 195px;
+}
+
+.stationary-img {
+  position: absolute;
+  z-index: 3;
+  top: 2%;
+  left: 27%;
+}
+
+.my-img {
+  position: absolute;
+  z-index: 2;
+  animation: rotateImg 12s linear infinite;
+  top: 0.65%;
+  left: 27%;
+}
+
+.landing-wish {
+  margin-top: 50px;
+}
+
+
+@keyframes rotateImg{
+  from {
+   transform: rotate(0deg);
+  }
+ to {
+  transform: rotate(359deg);
+ }
+}
+
+
+.fade-out {
+  animation: fadeOut 3s forwards;
+}
+
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fade-in {
+  animation: fadeIn 3s forwards;
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+.fade-in1 {
+  animation: fadeIn 5s forwards;
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
