@@ -73,7 +73,7 @@ class CardsController < ApplicationController
       @card.image_url = image_url
       @card.save!
 
-      news_articles = NewsArticle.fetch_articles(primary_keywords)
+      news_articles = NewsArticle.fetch_articles(primary_keywords, secondary_keywords)
       @card.news_articles = news_articles
 
 
@@ -84,7 +84,7 @@ class CardsController < ApplicationController
   end
 
   def refresh_articles
-    news_articles = NewsArticle.fetch_articles(@card.primary_keywords)
+    news_articles = NewsArticle.fetch_articles(@card.primary_keywords, @card.secondary_keywords)
 
     @card.news_articles << news_articles
     @articles = @card.news_articles.uniq.slice(@card.news_articles.length - 3, @card.news_articles.length)
