@@ -31,7 +31,7 @@ jacob_avatar = URI.open("https://pbs.twimg.com/media/Ftq4k41WIAYadtY?format=jpg&
 user_jacob = User.create!(
   first_name: "Jacob",
   last_name: "Khong",
-  email: "jacob@gmail.com",
+  email: "jacobkhongdev@gmail.com",
   password: "password"
 )
 user_jacob.photo.attach(io: jacob_avatar, filename: "jacob_avatar.png", content_type: "image/png")
@@ -48,6 +48,17 @@ user_sean = User.create(
 user_sean.photo.attach(io: sean_avatar, filename: "sean_avatar.png", content_type: "image/png")
 user_sean.save!
 puts 'Created Sean (with avatar) user, 1 card'
+
+doug_avatar = URI.open("https://media.licdn.com/dms/image/C4D03AQFdMFIAV-alKQ/profile-displayphoto-shrink_400_400/0/1606904491217?e=1701907200&v=beta&t=2rTcS6JL7DCZS9wWb_2qK1hbJnDiD02HJn9cWTSV2xQ")
+user_doug = User.create(
+  first_name: 'doug',
+  last_name: 'dougson',
+  email: 'dougie@skiff.com',
+  password: 'password'
+)
+user_doug.photo.attach(io: doug_avatar, filename: "doug_avatar.png", content_type: "image/png")
+user_doug.save!
+puts 'Created doug (with avatar) user, 1 card'
 
 # Create Fixed Categories based on list
 TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
