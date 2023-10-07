@@ -12,7 +12,7 @@ class NewsArticle < ApplicationRecord
     # 2 Fetch news articles from NewsAPI with my params
     articles = newsapi.get_everything(
       q: "#{primary_keywords} AND #{secondary_keywords}",
-      domains: "bbc.com,techcrunch.com,cnn.com,bloomberg.com",
+      domains: "bbc.com,techcrunch.com,cnn.com,bloomberg.com,wsj.com,coindesk.com,cointelegraph.com,ledgerinsights.com,wired.com,theverge.com,cnet.com,engadget.com,gizmodo.com",
       language: 'en',
       sortBy: 'publishedAt',
       pageSize: 30
