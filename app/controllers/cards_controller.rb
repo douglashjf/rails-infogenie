@@ -126,7 +126,13 @@ class CardsController < ApplicationController
 
   def call_api(primary_keywords, secondary_keywords, query)
     # construct the prompt
-    prompt = "You are a research analyst. Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is a JSON of 3 arrays: (i) key_points: 5 bullet points summarising this entire primary keyword with the associated keywords, (ii) key_questions: 5 bullet points output of key questions and (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}. Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }. Output should also be within 2000 max_tokens. Please analyze this through Porter's 5 Forces framework (without explicitly mentioning this) and cover the Political, Economic, Social and Technological implications of these keywords."  #edit this prompt to refine results
+    prompt = "Can you explain #{primary_keywords}. Associated keywords include: #{secondary_keywords}. My desired output is a JSON of 3 arrays:
+    (i) key_points: 3 bullet points summarising this entire primary keyword with the associated keywords,
+    (ii) key_questions: 3 bullet points output of key questions and
+    (iii) selected categories: which are selected by you from the following list: #{Card::CATEGORIES.join(', ')}.
+    Return these to me in 1 JSON of 3 Ruby arrays so open and close it with { }.
+    Output should also be within 1500 max_tokens.
+    Please analyze this through the PEST framework (Political, Economic, Social and Technological) implications."  #edit this prompt to refine results
 
     # Call the API with the params
     response = OpenaiService.new(prompt).call
