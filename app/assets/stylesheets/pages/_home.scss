@@ -1,110 +1,109 @@
 // Specific CSS for your home-page
-.landing-content {
-  padding-top: 30px;
-  background-color: white;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  height: 547px;
-}
-
-.landing-container {
-  position: relative;
-  margin-left: 35px;
-  margin-right: 35px;
-  padding-bottom: 20px;
+.homepage-lamp-container {
+  position: absolute;
+  width: 390px;
+  height: 692px;
 }
 
 .demo-image {
   padding-top: 30px;
 }
 
+.landing-call {
+  margin-left: 24px;
+}
+
 .tryforfree {
   border-radius: 6px;
-  box-shadow: 0px 2px 3px rgba(0,0,0,0.2)
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 .landing-lamp {
   width: 336px;
-
   position: absolute;
-  bottom: 27%;
-  left: -2.5%;
-
-}
-
-
-.background-clip {
-  pointer-events: none;
-  position: absolute;
-  top: 70%;
-  left: 0;
-  z-index: -1;
+  left: 28px;
+  bottom: 190px;
 }
 
 .img-container {
+  height: 180px;
+  width: 180px;
+  margin: auto;
+}
+
+.img-overlay {
   position: absolute;
-  z-index: 2;
-  background: white;
-  padding: 584px 195px;
+  z-index: 1;
+  top: 100px;
+  @include media-breakpoint-up(sm) {
+    top: 120px;
+  }
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.moving-img {
+  position: relative;
+  animation: rotateImg 12s linear infinite;
+  top: 0;
+  left: 0;
 }
 
 .stationary-img {
-  position: absolute;
-  z-index: 3;
-  top: 2%;
-  left: 27%;
-}
-
-.my-img {
-  position: absolute;
-  z-index: 2;
-  animation: rotateImg 12s linear infinite;
-  top: 0.65%;
-  left: 27%;
+  position: relative;
+  top: -180px;
+  left: 0;
 }
 
 .landing-wish {
   margin-top: 50px;
 }
 
-
-@keyframes rotateImg{
+@keyframes rotateImg {
   from {
-   transform: rotate(0deg);
+    transform: rotate(0deg);
   }
- to {
-  transform: rotate(359deg);
- }
+  to {
+    transform: rotate(359deg);
+  }
 }
-
 
 .fade-out {
   animation: fadeOut 3s forwards;
 }
 
-
 @keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .fade-in {
   animation: fadeIn 3s forwards;
 }
 
-
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
 
 .fade-in1 {
   animation: fadeIn 5s forwards;
 }
 
-
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
