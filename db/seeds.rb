@@ -17,7 +17,7 @@ puts "Creating new data"
 # Create all users
 jack_avatar = URI.open("https://i.seadn.io/gcs/files/ea1a6648d854220815cf1425079e915b.png?w=500&auto=format")
 user_jack = User.create!(
-  first_name: "Jack",
+  first_name: "Jacob",
   last_name: "Khong",
   email: "jackinfogenie@gmail.com",
   password: "password"
@@ -135,46 +135,47 @@ puts "Created summary 2"
 
 # Third Card
 card_3 = Card.create!(
-  user_id: user_jacob.id,
-  primary_keywords: "Running",
-  secondary_keywords: "Marathon Diet",
-  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.54.04_-_Mondrian-style_realistic_painting_of_running_with_additional_context_of_marathon_diet_whlb0s.png",
-  categories: [categories_for_card[1], categories_for_card[2]]
+  user_id: user_jack.id,
+  primary_keywords: "Machine Learning",
+  secondary_keywords: "Regression",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696661660/rrvwor814kjujjd8rbhe.png",
+  categories: [categories_for_card[8], categories_for_card[10], categories_for_card[12]]
 )
 puts "Created card 3"
 
 Summary.create!(
   card_id: card_3.id,
   key_points: [
-    "Running is a physical activity that involves the movement of the body at a faster pace than walking.",
-    "Marathon diet refers to the nutritional plan followed by runners in preparation for a marathon race."],
+    "Machine Learning is a field of study in data science that focuses on developing algorithms and models to enable computers to learn and make predictions or decisions without being explicitly programmed.",
+    "Regression is a statistical technique used in machine learning to predict numerical values based on input variables.",
+    "Machine learning algorithms analyze large amounts of data to identify patterns and relationships, which can then be used to make accurate predictions or decisions."],
   key_questions: [
-    "What is the definition of running and how does it differ from walking?",
-    "What is a marathon diet and how does it support the training and performance of marathon runners?"
-  ],
+    "What is the role of Machine Learning in data science?",
+    "How does regression help in modeling relationships between variables?",
+    "What are some real-world applications of Machine Learning and Regression?"  ],
 )
 puts "Created summary 3"
 
 # Fourth Card
 card_4 = Card.create!(
-  user_id: user_jacob.id,
-  primary_keywords: "Karaoke",
-  secondary_keywords: "Singing",
-  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.54.47_-_Mondrian-style_realistic_painting_of_karaoke_with_additional_context_of_singing_flmpwn.png",
-  categories: [categories_for_card[19], categories_for_card[23]],
-  deleted_at: Time.current
+  user_id: user_jack.id,
+  primary_keywords: "Startup Funding",
+  secondary_keywords: "Venture Capital",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696662806/trwf1yf06xkh5qlqazs0.png",
+  categories: [categories_for_card[5], categories_for_card[7]]
 )
-puts "Created card 4"
 
 Summary.create!(
   card_id: card_4.id,
   key_points: [
-    "Karaoke is a form of entertainment where people sing along to recorded music without the original vocals.",
-    "Singing is the act of producing musical sounds with the voice, typically with words and melody."
+    "Startup funding is the process of raising capital to finance the growth of a new business.",
+    "Venture capital is a type of investment that provides funding to startups in exchange for equity.",
+    "Pitching to investors is a crucial step in securing startup funding."
   ],
   key_questions: [
-    "What is karaoke and how does it work?",
-    "What is the role of singing in karaoke and how does it enhance the overall experience?"
+    "What are the various sources of startup funding?",
+    "How does venture capital differ from other funding options?",
+    "What should entrepreneurs include in their pitch to attract investors?"
   ]
 )
 puts "Created summary 4"
@@ -245,6 +246,79 @@ Summary.create!(
   ]
 )
 puts "Created summary 7"
+
+card_8 = Card.create!(
+  user_id: user_jack.id,
+  primary_keywords: "Business Strategy",
+  secondary_keywords: "Market Analysis",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696662992/yzfduutfcgsdlno4xnse.png",
+  categories: [categories_for_card[7], categories_for_card[18]]
+)
+
+Summary.create!(
+  card_id: card_8.id,
+  key_points: [
+    "Business strategy involves planning and decision-making to achieve long-term goals and objectives.",
+    "Market analysis is the process of evaluating market trends, competition, and consumer behavior.",
+    "A SWOT analysis is a valuable tool for assessing a company's business strategy."
+  ],
+  key_questions: [
+    "How can a well-defined business strategy contribute to a company's success?",
+    "What steps are involved in conducting effective market analysis?",
+    "What is the purpose of a SWOT analysis in business strategy?"
+  ]
+)
+puts "Created summary 8"
+
+
+card_9 = Card.create!(
+  user_id: user_jack.id,
+  primary_keywords: "Entrepreneurship",
+  secondary_keywords: "Innovation",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696663130/pqarceq60sikxed8bqir.png",
+  categories: [categories_for_card[5], categories_for_card[3], categories_for_card[4]]
+)
+
+Summary.create!(
+  card_id: card_9.id,
+  key_points: [
+    "Entrepreneurship is the activity of starting and managing a new business venture.",
+    "Innovation is the process of introducing new ideas, products, or services.",
+    "Successful entrepreneurs often exhibit traits such as risk-taking and resilience."
+  ],
+  key_questions: [
+    "What are the key characteristics of a successful entrepreneur?",
+    "How does innovation drive entrepreneurship and business growth?",
+    "What are the challenges and rewards of entrepreneurial endeavors?"
+  ]
+)
+
+puts "Created summary 9"
+
+card_10 = Card.create!(
+  user_id: user_sean.id,
+  primary_keywords: "Marketing Strategies",
+  secondary_keywords: "Digital Advertising",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696663386/e6qu6bxs0lljaaycvwoh.png",
+  categories: [categories_for_card[14], categories_for_card[8] ]
+)
+
+Summary.create!(
+  card_id: card_10.id,
+  key_points: [
+    "Marketing strategies are plans and tactics used to promote products or services to target audiences.",
+    "Digital advertising is a form of online marketing that uses digital channels to reach consumers.",
+    "Content marketing is an effective strategy for engaging audiences and building brand loyalty."
+  ],
+  key_questions: [
+    "What are some effective marketing strategies for businesses?",
+    "How does digital advertising impact consumer behavior and purchasing decisions?",
+    "Why is content marketing important in today's marketing landscape?"
+  ]
+)
+
+puts "Created summary 10"
+
 
 # Create favourites for jack (1x existing, 1x deleted)
 
