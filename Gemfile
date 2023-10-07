@@ -85,5 +85,3 @@ gem "news-api"
 
 gem "sidekiq", "~> 6.5", ">= 6.5.9"
 gem "sidekiq-failures", "~> 1.0"
-
-gem "rack-timeout"
