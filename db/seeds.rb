@@ -122,7 +122,7 @@ puts "Created summary 1"
 
 # Second Card
 card_2 = Card.create!(
-  user_id: user_jack.id,
+  user_id: user_sean.id,
   primary_keywords: "Music",
   secondary_keywords: "Theory",
   image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.52.09_-_Mondrian-style_realistic_painting_of_music_with_additional_context_of_theory._Make_this_fit_a_screen_height_of_180px_bdmeul.png",
@@ -193,7 +193,7 @@ puts "Created summary 4"
 
 # Fifth Card
 card_5 = Card.create!(
-  user_id: user_sean.id,
+  user_id: user_sally.id,
   primary_keywords: "Coding",
   secondary_keywords: "Bootcamp",
   image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301798/DALL_E_2023-10-03_10.55.23_-_Mondrian-style_realistic_painting_of_coding_with_additional_context_of_bootcamp_vmloc8.png",
@@ -215,7 +215,7 @@ Summary.create!(
 puts "Created summary 5"
 
 card_6 = Card.create!(
-  user_id: user_sean.id,
+  user_id: user_sally.id,
   primary_keywords: "Artificial Intelligence",
   secondary_keywords: "Machine Learning",
   image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301969/DALL_E_2023-10-03_10.57.50_-_Mondrian-style_realistic_painting_of_artificial_intelligence_with_additional_context_of_machine_learning_p9sweq.png",
@@ -283,7 +283,7 @@ puts "Created summary 8"
 
 
 card_9 = Card.create!(
-  user_id: user_jack.id,
+  user_id: user_sally.id,
   primary_keywords: "Entrepreneurship",
   secondary_keywords: "Innovation",
   image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696663130/pqarceq60sikxed8bqir.png",
@@ -330,30 +330,6 @@ Summary.create!(
 
 puts "Created summary 10"
 
-
-card_10 = Card.create!(
-  user_id: user_sean.id,
-  primary_keywords: "Marketing Strategies",
-  secondary_keywords: "Digital Advertising",
-  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696663386/e6qu6bxs0lljaaycvwoh.png",
-  categories: [categories_for_card[14], categories_for_card[8] ]
-)
-
-Summary.create!(
-  card_id: card_10.id,
-  key_points: [
-    "Marketing strategies are plans and tactics used to promote products or services to target audiences.",
-    "Digital advertising is a form of online marketing that uses digital channels to reach consumers.",
-    "Content marketing is an effective strategy for engaging audiences and building brand loyalty."
-  ],
-  key_questions: [
-    "What are some effective marketing strategies for businesses?",
-    "How does digital advertising impact consumer behavior and purchasing decisions?",
-    "Why is content marketing important in today's marketing landscape?"
-  ]
-)
-
-puts "Created summary 11"
 
 
 
