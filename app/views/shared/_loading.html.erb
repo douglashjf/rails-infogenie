@@ -1,4 +1,4 @@
-<div class="d-none container z-3 w-100 top-0 left-0 position-absolute vh-100 bg-white" data-loading-page-target="loadingPage">
+<div class=" container z-3 w-100 top-0 left-0 position-absolute vh-100 bg-white" data-loading-page-target="loadingPage">
   <div class="lamp-container" >
     <div class="spinner">
       <svg>
@@ -13,15 +13,15 @@
   <div class="d-flex justify-content-center">
     <hr style="width: 50px; ">
   </div>
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column" data-controller="fun-fact">
     <div class="text-center my-4 pb-2" >
       <strong>Did You Know?</strong>
-      <div class="mt-4" data-controller="fun-fact">
+      <div class="mt-4" >
         <p data-fun-fact-target="factText"></p>
       </div>
     </div>
-    <div class="text-center fixed-bottom mb-2 pb-2 ">
-      <p style="font-weight: bold; color: grey; font-size: 18px;" ><em>Granting your wish...</em></p>
+    <div class="text-center  mt-auto pb-2 ">
+      <p style="font-weight: bold; color: grey; font-size: 18px;"  data-fun-fact-target="loadingText"><em></em></p>
     </div>
   </div>
 </div>
