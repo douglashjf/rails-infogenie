@@ -123,10 +123,10 @@ puts "Created summary 1"
 # Second Card
 card_2 = Card.create!(
   user_id: user_sean.id,
-  primary_keywords: "Music",
-  secondary_keywords: "Theory",
-  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.52.09_-_Mondrian-style_realistic_painting_of_music_with_additional_context_of_theory._Make_this_fit_a_screen_height_of_180px_bdmeul.png",
-  categories: [categories_for_card[13], categories_for_card[19]]
+  primary_keywords: "Internet of Things",
+  secondary_keywords: "career trends",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696753888/e6jl2lassorhdnl94vhl.png",
+  categories: [categories_for_card[8], categories_for_card[4], categories_for_card[5]]
 )
 puts "Created card 2"
 
@@ -134,12 +134,13 @@ puts "Created card 2"
 Summary.create!(
   card_id: card_2.id,
   key_points: [
-    "Music is an art form that uses sound and rhythm to express emotions, tell stories, and evoke certain moods.",
-    "Music theory is the study of the principles and practices of music, including elements like melody, harmony, rhythm, and form."
+    "Internet of Things (IoT) refers to the network of physical devices, vehicles, appliances, and other objects embedded with sensors, software, and connectivity, enabling them to collect and exchange data.",
+    "Career trends in IoT show a growing demand for professionals with expertise in hardware and software development, data analytics, cybersecurity, and cloud computing.",
+    "The widespread adoption of IoT technologies has the potential to revolutionize industries such as healthcare, manufacturing, transportation, and agriculture."
   ],
-  key_questions: [
-    "What is the purpose of music and how does it communicate emotions?",
-    "What are the key components studied in music theory and how do they contribute to musical composition?"
+  key_questions: ["Are there any governmental regulations or policies that have a significant impact on the IoT industry and how do you foresee these regulations evolving and shaping the industry in the near future?",
+    "With the rapid advancements in connectivity and data processing capabilities, how do you see emerging technologies such as 5G, edge computing, or artificial intelligence impacting the IoT industry? ",
+    "Are there any specific technology trends that you believe will have a transformative effect on IoT implementations?"
   ]
 )
 puts "Created summary 2"
@@ -344,6 +345,11 @@ Favourite.create!(
 
 Favourite.create!(
   user_id: user_jack.id,
+  card_id: card_2.id
+)
+
+Favourite.create!(
+  user_id: user_jack.id,
   card_id: card_3.id
 )
 
@@ -355,12 +361,22 @@ Favourite.create!(
 
 Favourite.create!(
   user_id: user_sally.id,
+  card_id: card_2.id
+)
+
+Favourite.create!(
+  user_id: user_sally.id,
   card_id: card_3.id
 )
 
 Favourite.create!(
   user_id: user_sally.id,
   card_id: card_5.id
+)
+
+Favourite.create!(
+  user_id: user_doug.id,
+  card_id: card_2.id
 )
 
 Favourite.create!(
@@ -376,6 +392,11 @@ Favourite.create!(
 Favourite.create!(
   user_id: user_sean.id,
   card_id: card_1.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_2.id
 )
 
 Favourite.create!(
@@ -404,6 +425,13 @@ Comment.create!(
 )
 
 Comment.create!(
+  content: "Insightful and deep questions, love it",
+  user_id: user_sean.id,
+  card_id: card_2.id,
+  created_at: Time.utc(2023, 10, 1, 0, 0, 0)
+)
+
+Comment.create!(
   content: "LOL love this!!!",
   user_id: user_sean.id,
   card_id: card_3.id,
@@ -425,6 +453,13 @@ Comment.create!(
 )
 
 Comment.create!(
+  content: "@Sean ⭐ for creating this card",
+  user_id: user_jack.id,
+  card_id: card_2.id,
+  created_at: Time.utc(2023, 10, 6, 0, 0, 0)
+)
+
+Comment.create!(
   content: "🕺🕺🕺🕺🕺",
   user_id: user_jack.id,
   card_id: card_3.id,
@@ -436,6 +471,13 @@ Comment.create!(
   user_id: user_jack.id,
   card_id: card_4.id,
   created_at: Time.utc(2023, 10, 3, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "sheeeeeeeeesh! 😍",
+  user_id: user_sally.id,
+  card_id: card_2.id,
+  created_at: Time.utc(2023, 10, 6, 0, 0, 0)
 )
 
 Comment.create!(
