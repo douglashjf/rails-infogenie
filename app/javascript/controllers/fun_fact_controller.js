@@ -5,6 +5,8 @@ export default class extends Controller {
   static targets = ["factText","loadingText"]
 
   connect() {
+    window.scrollTo(0, 0);
+
     const funFacts = [
       // "Remember, while making wishes can be fun and inspirational, it's also important to take action to turn those wishes into reality. Wishing is just the first step toward achieving your dreams!",
       // "Your elevator pitch should be concise, typically under 30 seconds, to effectively introduce yourself and your business.",
@@ -17,11 +19,11 @@ export default class extends Controller {
       // "Informed decision-making relies on accurate and current information. Staying updated helps you make smarter choices, whether in business or daily life.",
       // "When you're well-informed, you can engage in meaningful conversations with others, making you a more interesting and valuable contact in your professional and social networks.",
       // "Staying informed is a lifelong learning journey. It keeps your mind active and curious, contributing to personal growth."
-      "Based on your inputs, we feed your keywords, guided by a set of targeted prompts into text generation AI-powered application: ChatGPT. This returns an output which is further streamlined into the summary of points and questions users receive.",
+      "Based on your inputs, we feed your keywords, guided by a set of targeted prompts into text generation AI-powered application: ChatGPT - this returns a summary of key points and questions.",
       "In case you're wondering, our images arn't hand-drawn either. Instead, we are integrated with the AI image generation service Dall-E to produce an abstract interpretation of the keywords submitted.",
       "By interacting with relevant news sources online and extracting the latest updates via the form of an API, the world's information is now at your fingertips.",
-      "Also, from the user's inputs, our smart engine automatically categorizes and sorts created cards into our curated categories without users having to lift a finger",
-      "This seamless interweaving of tasks and logic happens in the background while we shop for a magic carpet to wrap everything into this format to present you your desired output - bite-sized smart updates."
+      "From the user's inputs, our smart engine automatically categorizes and sorts created cards into our curated categories without users having to lift a finger.",
+      "This seamless interweaving of tasks happens in the background while we shop for a magic carpet to wrap everything into this format to present you your desired output - bite-sized smart updates."
     ];
 
     const loadingProgress = [
@@ -32,10 +34,11 @@ export default class extends Controller {
     const displayRandomFunFact = () => {
       console.log('crazy');
       if (index === funFacts.length - 1) index = 0;
-      index ++;
+
       // const randomIndex = Math.floor(Math.random() * funFacts.length);
       const funFactText = funFacts[index];
       this.factTextTarget.innerText = funFactText;
+      index ++;
     }
 
     let i = 0;
