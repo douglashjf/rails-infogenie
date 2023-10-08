@@ -53,14 +53,14 @@ doug_avatar = URI.open("https://media.licdn.com/dms/image/C4D03AQFdMFIAV-alKQ/pr
 user_doug = User.create(
   first_name: 'Doug',
   last_name: 'sally',
-  email: 'sally@gmail.com',
+  email: 'dougie@skiff.com',
   password: 'password'
 )
 user_doug.photo.attach(io: doug_avatar, filename: "doug_avatar.png", content_type: "image/png")
 user_doug.save!
 puts 'Created doug (with avatar) user, 1 card'
 
-sally_avatar = URI.open("https://whoopdisk.com/images/4582.png")
+sally_avatar = URI.open("https://openseauserdata.com/files/f826e047bb394a2ceb3be4d3f1ffc5fb.png")
 user_sally = User.create(
   first_name: 'Sally',
   last_name: 'sally',
@@ -394,52 +394,62 @@ Favourite.create!(
 )
 
 puts "Created Favourites"
+
+
 Comment.create!(
   content: "Saving this for future reference!",
   user_id: user_sean.id,
-  card_id: card_1.id
+  card_id: card_1.id,
+  created_at: Time.utc(2023, 10, 1, 0, 0, 0)
 )
 
 Comment.create!(
   content: "LOL love this!!!",
   user_id: user_sean.id,
-  card_id: card_3.id
+  card_id: card_3.id,
+  created_at: Time.utc(2023, 10, 2, 0, 0, 0)
 )
 
 Comment.create!(
   content: "makes total sense, sharing this",
   user_id: user_sean.id,
-  card_id: card_7.id
+  card_id: card_7.id,
+  created_at: Time.utc(2023, 10, 1, 0, 0, 0)
 )
 
 Comment.create!(
   content: "@Sean you got that right",
   user_id: user_jack.id,
-  card_id: card_1.id
+  card_id: card_1.id,
+  created_at: Time.utc(2023, 10, 4, 0, 0, 0)
 )
 
 Comment.create!(
   content: "🕺🕺🕺🕺🕺",
   user_id: user_jack.id,
-  card_id: card_3.id
+  card_id: card_3.id,
+  created_at: Time.utc(2023, 10, 3, 0, 0, 0)
 )
 
 Comment.create!(
   content: "pity I didn't find this earlier..",
   user_id: user_jack.id,
-  card_id: card_4.id
+  card_id: card_4.id,
+  created_at: Time.utc(2023, 10, 3, 0, 0, 0)
 )
 
 Comment.create!(
   content: "boooooom!",
   user_id: user_sally.id,
-  card_id: card_3.id
+  card_id: card_3.id,
+  created_at: Time.utc(2023, 10, 5, 0, 0, 0)
 )
 
 Comment.create!(
   content: "Who's here?",
   user_id: user_sally.id,
-  card_id: card_5.id
+  card_id: card_5.id,
+  created_at: Time.utc(2023, 10, 5, 0, 0, 0)
 )
 
 
