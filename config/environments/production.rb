@@ -106,6 +106,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.middleware.insert_before Rack::Runtime, Rack::Timeout, service_timeout: ENV["RACK_TIMEOUT_SERVICE_TIMEOUT"].to_i || 200
 end
