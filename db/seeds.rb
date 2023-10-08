@@ -17,7 +17,7 @@ puts "Creating new data"
 # Create all users
 jack_avatar = URI.open("https://i.seadn.io/gcs/files/ea1a6648d854220815cf1425079e915b.png?w=500&auto=format")
 user_jack = User.create!(
-  first_name: "Jacob",
+  first_name: "Jack",
   last_name: "Khong",
   email: "jackinfogenie@gmail.com",
   password: "password"
@@ -51,14 +51,25 @@ puts 'Created Sean (with avatar) user, 1 card'
 
 doug_avatar = URI.open("https://media.licdn.com/dms/image/C4D03AQFdMFIAV-alKQ/profile-displayphoto-shrink_400_400/0/1606904491217?e=1701907200&v=beta&t=2rTcS6JL7DCZS9wWb_2qK1hbJnDiD02HJn9cWTSV2xQ")
 user_doug = User.create(
-  first_name: 'doug',
-  last_name: 'dougson',
-  email: 'dougie@skiff.com',
+  first_name: 'Doug',
+  last_name: 'sally',
+  email: 'sally@gmail.com',
   password: 'password'
 )
 user_doug.photo.attach(io: doug_avatar, filename: "doug_avatar.png", content_type: "image/png")
 user_doug.save!
 puts 'Created doug (with avatar) user, 1 card'
+
+sally_avatar = URI.open("https://whoopdisk.com/images/4582.png")
+user_sally = User.create(
+  first_name: 'Sally',
+  last_name: 'sally',
+  email: 'sally@gmail.com',
+  password: 'password'
+)
+user_sally.photo.attach(io: sally_avatar, filename: "sally_avatar.png", content_type: "image/png")
+user_sally.save!
+puts 'Created Sally (with avatar) user, 1 card'
 
 # Create Fixed Categories based on list
 TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
@@ -320,9 +331,41 @@ Summary.create!(
 puts "Created summary 10"
 
 
+card_10 = Card.create!(
+  user_id: user_sean.id,
+  primary_keywords: "Marketing Strategies",
+  secondary_keywords: "Digital Advertising",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696663386/e6qu6bxs0lljaaycvwoh.png",
+  categories: [categories_for_card[14], categories_for_card[8] ]
+)
+
+Summary.create!(
+  card_id: card_10.id,
+  key_points: [
+    "Marketing strategies are plans and tactics used to promote products or services to target audiences.",
+    "Digital advertising is a form of online marketing that uses digital channels to reach consumers.",
+    "Content marketing is an effective strategy for engaging audiences and building brand loyalty."
+  ],
+  key_questions: [
+    "What are some effective marketing strategies for businesses?",
+    "How does digital advertising impact consumer behavior and purchasing decisions?",
+    "Why is content marketing important in today's marketing landscape?"
+  ]
+)
+
+puts "Created summary 11"
+
+
+
 # Create favourites for jack (1x existing, 1x deleted)
 
 # Existing
+
+Favourite.create!(
+  user_id: user_jack.id,
+  card_id: card_1.id
+)
+
 Favourite.create!(
   user_id: user_jack.id,
   card_id: card_3.id
@@ -333,3 +376,96 @@ Favourite.create!(
   user_id: user_jack.id,
   card_id: card_4.id
 )
+
+Favourite.create!(
+  user_id: user_sally.id,
+  card_id: card_3.id
+)
+
+Favourite.create!(
+  user_id: user_sally.id,
+  card_id: card_5.id
+)
+
+Favourite.create!(
+  user_id: user_doug.id,
+  card_id: card_8.id
+)
+
+Favourite.create!(
+  user_id: user_doug.id,
+  card_id: card_3.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_1.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_3.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_7.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_8.id
+)
+
+puts "Created Favourites"
+Comment.create!(
+  content: "Saving this for future reference!",
+  user_id: user_sean.id,
+  card_id: card_1.id
+)
+
+Comment.create!(
+  content: "LOL love this!!!",
+  user_id: user_sean.id,
+  card_id: card_3.id
+)
+
+Comment.create!(
+  content: "makes total sense, sharing this",
+  user_id: user_sean.id,
+  card_id: card_7.id
+)
+
+Comment.create!(
+  content: "@Sean you got that right",
+  user_id: user_jack.id,
+  card_id: card_1.id
+)
+
+Comment.create!(
+  content: "🕺🕺🕺🕺🕺",
+  user_id: user_jack.id,
+  card_id: card_3.id
+)
+
+Comment.create!(
+  content: "pity I didn't find this earlier..",
+  user_id: user_jack.id,
+  card_id: card_4.id
+)
+
+Comment.create!(
+  content: "boooooom!",
+  user_id: user_sally.id,
+  card_id: card_3.id
+)
+
+Comment.create!(
+  content: "Who's here?",
+  user_id: user_sally.id,
+  card_id: card_5.id
+)
+
+
+
+puts "Created Comments"
