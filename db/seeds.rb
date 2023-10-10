@@ -17,7 +17,7 @@ puts "Creating new data"
 # Create all users
 jack_avatar = URI.open("https://i.seadn.io/gcs/files/ea1a6648d854220815cf1425079e915b.png?w=500&auto=format")
 user_jack = User.create!(
-  first_name: "Jacob",
+  first_name: "Jack",
   last_name: "Khong",
   email: "jackinfogenie@gmail.com",
   password: "password"
@@ -51,14 +51,25 @@ puts 'Created Sean (with avatar) user, 1 card'
 
 doug_avatar = URI.open("https://media.licdn.com/dms/image/C4D03AQFdMFIAV-alKQ/profile-displayphoto-shrink_400_400/0/1606904491217?e=1701907200&v=beta&t=2rTcS6JL7DCZS9wWb_2qK1hbJnDiD02HJn9cWTSV2xQ")
 user_doug = User.create(
-  first_name: 'doug',
-  last_name: 'dougson',
+  first_name: 'Doug',
+  last_name: 'sally',
   email: 'dougie@skiff.com',
   password: 'password'
 )
 user_doug.photo.attach(io: doug_avatar, filename: "doug_avatar.png", content_type: "image/png")
 user_doug.save!
 puts 'Created doug (with avatar) user, 1 card'
+
+sally_avatar = URI.open("https://openseauserdata.com/files/f826e047bb394a2ceb3be4d3f1ffc5fb.png")
+user_sally = User.create(
+  first_name: 'Sally',
+  last_name: 'sally',
+  email: 'sally@gmail.com',
+  password: 'password'
+)
+user_sally.photo.attach(io: sally_avatar, filename: "sally_avatar.png", content_type: "image/png")
+user_sally.save!
+puts 'Created Sally (with avatar) user, 1 card'
 
 # Create Fixed Categories based on list
 TAG = %w[ Life Health Relationships Self Improvement Productivity Mindfulness Work Technology Blockchain Data Science Software Development Media Art Gaming Society Economics Education Equality Culture Philosophy Religion Spirituality World Nature Travel ]
@@ -111,11 +122,11 @@ puts "Created summary 1"
 
 # Second Card
 card_2 = Card.create!(
-  user_id: user_jack.id,
-  primary_keywords: "Music",
-  secondary_keywords: "Theory",
-  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301799/DALL_E_2023-10-03_10.52.09_-_Mondrian-style_realistic_painting_of_music_with_additional_context_of_theory._Make_this_fit_a_screen_height_of_180px_bdmeul.png",
-  categories: [categories_for_card[13], categories_for_card[19]]
+  user_id: user_sean.id,
+  primary_keywords: "Internet of Things",
+  secondary_keywords: "career trends",
+  image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696753888/e6jl2lassorhdnl94vhl.png",
+  categories: [categories_for_card[8], categories_for_card[4], categories_for_card[5]]
 )
 puts "Created card 2"
 
@@ -123,12 +134,13 @@ puts "Created card 2"
 Summary.create!(
   card_id: card_2.id,
   key_points: [
-    "Music is an art form that uses sound and rhythm to express emotions, tell stories, and evoke certain moods.",
-    "Music theory is the study of the principles and practices of music, including elements like melody, harmony, rhythm, and form."
+    "Internet of Things (IoT) refers to the network of physical devices, vehicles, appliances, and other objects embedded with sensors, software, and connectivity, enabling them to collect and exchange data.",
+    "Career trends in IoT show a growing demand for professionals with expertise in hardware and software development, data analytics, cybersecurity, and cloud computing.",
+    "The widespread adoption of IoT technologies has the potential to revolutionize industries such as healthcare, manufacturing, transportation, and agriculture."
   ],
-  key_questions: [
-    "What is the purpose of music and how does it communicate emotions?",
-    "What are the key components studied in music theory and how do they contribute to musical composition?"
+  key_questions: ["Are there any governmental regulations or policies that have a significant impact on the IoT industry and how do you foresee these regulations evolving and shaping the industry in the near future?",
+    "With the rapid advancements in connectivity and data processing capabilities, how do you see emerging technologies such as 5G, edge computing, or artificial intelligence impacting the IoT industry? ",
+    "Are there any specific technology trends that you believe will have a transformative effect on IoT implementations?"
   ]
 )
 puts "Created summary 2"
@@ -182,7 +194,7 @@ puts "Created summary 4"
 
 # Fifth Card
 card_5 = Card.create!(
-  user_id: user_sean.id,
+  user_id: user_sally.id,
   primary_keywords: "Coding",
   secondary_keywords: "Bootcamp",
   image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301798/DALL_E_2023-10-03_10.55.23_-_Mondrian-style_realistic_painting_of_coding_with_additional_context_of_bootcamp_vmloc8.png",
@@ -204,7 +216,7 @@ Summary.create!(
 puts "Created summary 5"
 
 card_6 = Card.create!(
-  user_id: user_sean.id,
+  user_id: user_sally.id,
   primary_keywords: "Artificial Intelligence",
   secondary_keywords: "Machine Learning",
   image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696301969/DALL_E_2023-10-03_10.57.50_-_Mondrian-style_realistic_painting_of_artificial_intelligence_with_additional_context_of_machine_learning_p9sweq.png",
@@ -272,7 +284,7 @@ puts "Created summary 8"
 
 
 card_9 = Card.create!(
-  user_id: user_jack.id,
+  user_id: user_sally.id,
   primary_keywords: "Entrepreneurship",
   secondary_keywords: "Innovation",
   image_url: "https://res.cloudinary.com/ddvj6niez/image/upload/v1696663130/pqarceq60sikxed8bqir.png",
@@ -320,9 +332,22 @@ Summary.create!(
 puts "Created summary 10"
 
 
+
+
 # Create favourites for jack (1x existing, 1x deleted)
 
 # Existing
+
+Favourite.create!(
+  user_id: user_jack.id,
+  card_id: card_1.id
+)
+
+Favourite.create!(
+  user_id: user_jack.id,
+  card_id: card_2.id
+)
+
 Favourite.create!(
   user_id: user_jack.id,
   card_id: card_3.id
@@ -333,3 +358,174 @@ Favourite.create!(
   user_id: user_jack.id,
   card_id: card_4.id
 )
+
+Favourite.create!(
+  user_id: user_sally.id,
+  card_id: card_2.id
+)
+
+Favourite.create!(
+  user_id: user_sally.id,
+  card_id: card_3.id
+)
+
+Favourite.create!(
+  user_id: user_sally.id,
+  card_id: card_5.id
+)
+
+Favourite.create!(
+  user_id: user_doug.id,
+  card_id: card_2.id
+)
+
+Favourite.create!(
+  user_id: user_doug.id,
+  card_id: card_8.id
+)
+
+Favourite.create!(
+  user_id: user_doug.id,
+  card_id: card_3.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_1.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_2.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_3.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_7.id
+)
+
+Favourite.create!(
+  user_id: user_sean.id,
+  card_id: card_8.id
+)
+
+puts "Created Favourites"
+
+
+Comment.create!(
+  content: "Saving this for future reference!",
+  user_id: user_sean.id,
+  card_id: card_1.id,
+  created_at: Time.utc(2023, 10, 1, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "Insightful and deep questions, love it",
+  user_id: user_sean.id,
+  card_id: card_2.id,
+  created_at: Time.utc(2023, 10, 1, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "LOL love this!!!",
+  user_id: user_sean.id,
+  card_id: card_3.id,
+  created_at: Time.utc(2023, 10, 2, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "makes total sense, sharing this",
+  user_id: user_sean.id,
+  card_id: card_7.id,
+  created_at: Time.utc(2023, 10, 1, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "@Sean you got that right",
+  user_id: user_jack.id,
+  card_id: card_1.id,
+  created_at: Time.utc(2023, 10, 4, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "@Sean ⭐ for creating this card",
+  user_id: user_jack.id,
+  card_id: card_2.id,
+  created_at: Time.utc(2023, 10, 6, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "🕺🕺🕺🕺🕺",
+  user_id: user_jack.id,
+  card_id: card_3.id,
+  created_at: Time.utc(2023, 10, 3, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "pity I didn't find this earlier..",
+  user_id: user_jack.id,
+  card_id: card_4.id,
+  created_at: Time.utc(2023, 10, 3, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "sheeeeeeeeesh! 😍",
+  user_id: user_sally.id,
+  card_id: card_2.id,
+  created_at: Time.utc(2023, 10, 6, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "boooooom!",
+  user_id: user_sally.id,
+  card_id: card_3.id,
+  created_at: Time.utc(2023, 10, 5, 0, 0, 0)
+)
+
+Comment.create!(
+  content: "Who's here?",
+  user_id: user_sally.id,
+  card_id: card_5.id,
+  created_at: Time.utc(2023, 10, 5, 0, 0, 0)
+)
+
+
+
+puts "Created Comments"
+
+
+NewsArticle.create!(
+  description: "French operator Kinéis announced that its spatial connectivity helps revolutionize forest fire prevention using early detection. New space technologies and satellite-based Internet of Things (IoT) capabilities are contributing to better prevention in detecting forest fires and reducing their impact on the environment. Kinéis showcases this transformative application, which holds the potential to mitigate the devastating effects of wildfires globally.",
+  url: "https://www.iot-now.com/2023/10/09/137056-kineis-uses-satellite-based-iot-connectivity-for-early-forest-fire-detection/#:~:text=French%20operator%20Kin%C3%A9is%20announced%20that,their%20impact%20on%20the%20environment.",
+  published_at: Time.utc(2023, 10, 9, 0, 0, 0),
+  name: "Kinéis uses satellite-based IoT connectivity for early forest fire detection",
+  card_id: card_2.id,
+  title: "Kinéis uses satellite-based IoT connectivity for early forest fire detection"
+)
+
+NewsArticle.create!(
+  description: "Virgin Media O2 aims to revolutionise rural agriculture with its “Connected Farm of the Future” initiative, in partnership with Cannon Hall Farm located in Barnsley.",
+  url: "https://www.iottechnews.com/news/2023/sep/21/virgin-media-o2-showcases-connected-farm-of-the-future/",
+  published_at: Time.utc(2023, 10, 8, 0, 0, 0),
+  name: "Virgin Media O2 showcases the 'connected farm of the future'",
+  card_id: card_2.id,
+  title: "Virgin Media O2 showcases the 'connected farm of the future'"
+)
+
+NewsArticle.create!(
+  description: "BlackBerry Ltd., wrapping up a strategic review of its options, plans to hold an initial public offering for the company’s Internet of Things division, separating the business from its main cybersecurity operations.",
+  url: "https://www.bloomberg.com/news/articles/2023-10-04/blackberry-plans-ipo-for-for-its-internet-of-things-business#xj4y7vzkg",
+  published_at: Time.utc(2023, 10, 6, 0, 0, 0),
+  name: "BlackBerry Plans IPO for Its Internet of Things Business",
+  card_id: card_2.id,
+  title: "BlackBerry Plans IPO for Its Internet of Things Business"
+)
+
+
+
+puts 'created newsarticle for card 2'
