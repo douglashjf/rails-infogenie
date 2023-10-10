@@ -497,3 +497,35 @@ Comment.create!(
 
 
 puts "Created Comments"
+
+
+NewsArticle.create!(
+  description: "French operator Kinéis announced that its spatial connectivity helps revolutionize forest fire prevention using early detection. New space technologies and satellite-based Internet of Things (IoT) capabilities are contributing to better prevention in detecting forest fires and reducing their impact on the environment. Kinéis showcases this transformative application, which holds the potential to mitigate the devastating effects of wildfires globally.",
+  url: "https://www.iot-now.com/2023/10/09/137056-kineis-uses-satellite-based-iot-connectivity-for-early-forest-fire-detection/#:~:text=French%20operator%20Kin%C3%A9is%20announced%20that,their%20impact%20on%20the%20environment.",
+  published_at: Time.utc(2023, 10, 9, 0, 0, 0),
+  name: "Kinéis uses satellite-based IoT connectivity for early forest fire detection",
+  card_id: card_2.id,
+  title: "Kinéis uses satellite-based IoT connectivity for early forest fire detection"
+)
+
+NewsArticle.create!(
+  description: "Virgin Media O2 aims to revolutionise rural agriculture with its “Connected Farm of the Future” initiative, in partnership with Cannon Hall Farm located in Barnsley.",
+  url: "https://www.iottechnews.com/news/2023/sep/21/virgin-media-o2-showcases-connected-farm-of-the-future/",
+  published_at: Time.utc(2023, 10, 8, 0, 0, 0),
+  name: "Virgin Media O2 showcases the 'connected farm of the future'",
+  card_id: card_2.id,
+  title: "Virgin Media O2 showcases the 'connected farm of the future'"
+)
+
+NewsArticle.create!(
+  description: "BlackBerry Ltd., wrapping up a strategic review of its options, plans to hold an initial public offering for the company’s Internet of Things division, separating the business from its main cybersecurity operations.",
+  url: "https://www.bloomberg.com/news/articles/2023-10-04/blackberry-plans-ipo-for-for-its-internet-of-things-business#xj4y7vzkg",
+  published_at: Time.utc(2023, 10, 6, 0, 0, 0),
+  name: "BlackBerry Plans IPO for Its Internet of Things Business",
+  card_id: card_2.id,
+  title: "BlackBerry Plans IPO for Its Internet of Things Business"
+)
+
+
+
+puts 'created newsarticle for card 2'
