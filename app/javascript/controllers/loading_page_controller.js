@@ -13,6 +13,7 @@ export default class extends Controller {
   toggleLoadingPage(e) {
     e.preventDefault();
     this.loadingPageTarget.classList.remove("d-none");
+    window.scrollTo(0, 0);
 
     fetch(this.formTarget.action, {
       method: "POST",
