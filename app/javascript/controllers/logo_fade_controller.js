@@ -10,7 +10,6 @@ export default class extends Controller {
     e.preventDefault();
     this.element.classList.add('fade-out')
     this.element.classList.add('pe-none')
-    document.querySelector('video').play();
   }
 
 }
