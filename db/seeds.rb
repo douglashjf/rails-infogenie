@@ -1,3 +1,5 @@
+require "open-uri"
+
 puts "Clearing old data"
 
 Comment.destroy_all
