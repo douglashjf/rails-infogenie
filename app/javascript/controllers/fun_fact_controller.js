@@ -20,7 +20,7 @@ export default class extends Controller {
       // "When you're well-informed, you can engage in meaningful conversations with others, making you a more interesting and valuable contact in your professional and social networks.",
       // "Staying informed is a lifelong learning journey. It keeps your mind active and curious, contributing to personal growth."
       "Based on your inputs, we feed your keywords, guided by a set of targeted prompts into text generation AI-powered application: ChatGPT - this returns a summary of key points and questions.",
-      "In case you're wondering, our images arn't hand-drawn either. Instead, we are integrated with the AI image generation service Dall-E to produce an abstract interpretation of the keywords submitted.",
+      "In case you're wondering, our images aren't hand-drawn either. Instead, we are integrated with the AI image generation service Dall-E to produce an abstract interpretation of the keywords submitted.",
       "By interacting with relevant news sources online and extracting the latest updates via the form of an API, the world's information is now at your fingertips.",
       "From the user's inputs, our smart engine automatically categorizes and sorts created cards into our curated categories without users having to lift a finger.",
       "This seamless interweaving of tasks happens in the background while we shop for a magic carpet to wrap everything into this format to present you your desired output - bite-sized smart updates."
