@@ -31,7 +31,7 @@ jacob_avatar = URI.open("https://pbs.twimg.com/media/Ftq4k41WIAYadtY?format=jpg&
 user_jacob = User.create!(
   first_name: "Jacob",
   last_name: "Khong",
-  email: "jacobkhongdev@gmail.com",
+  email: "jacob@gmail.com",
   password: "password"
 )
 user_jacob.photo.attach(io: jacob_avatar, filename: "jacob_avatar.png", content_type: "image/png")
